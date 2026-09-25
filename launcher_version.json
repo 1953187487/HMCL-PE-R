@@ -1,0 +1,16 @@
+{
+  "latestRelease": {
+    "versionCode": 10000,
+    "versionName": "1.0.0",
+    "date": "2026.09.25",
+    "url": ["https://github.com/HMCL-PE-Renewed/HMCL-PE-R/releases/download/v1.0.0/HMCLPE-R-release.apk"],
+    "updateLog": "First community fork release. Restores HMCL-PE for Android with GPLv3 attribution preserved."
+  },
+  "latestPrerelease": {
+    "versionCode": 10000,
+    "versionName": "1.0.0",
+    "date": "2026.09.25",
+    "url": ["https://github.com/HMCL-PE-Renewed/HMCL-PE-R/releases/download/v1.0.0/HMCLPE-R-release.apk"],
+    "updateLog": "First community fork release."
+  }
+}
