@@ -1,17 +1,18 @@
 > [!NOTE]
-> **HMCL-PE (upstream, by Tungstend) has stopped maintenance.** This repository,
-> **HMCL-PE-Renewed** ("HMCL-PE-R"), is a **community fork** that picks up where
-> upstream left off. See [DERIVED-FROM.md](./DERIVED-FROM.md) for full GPLv3
-> attribution and compliance statement. If you prefer an actively maintained
-> project, please also consider [Fold Craft Launcher](https://fcl-team.github.io/)
-> or [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher).
+> **本项目是基于 [HMCL-PE 2.0.8](https://github.com/Tungstend/HMCL-PE)（Tungstend）的**开源二改**（derived work）。**
+>
+> HMCL-PE 上游目前已停止更新。本仓库是**对上游源码的二次修改**，不是上游的续订或官方延续。
+> 完整协议合规与作者归属声明见 [DERIVED-FROM.md](./DERIVED-FROM.md)。
+>
+> **协议**：本项目与上游均为 **GPLv3**。所有二次修改在 GPLv3 下发布，保留全部上游作者版权声明。
+> 二次修改的产物同样受 GPLv3 约束（含传染性 copyleft 要求）。
 
 <div align="center">
     <img width="175" src="/HMCLPE/src/main/res/drawable/ic_craft_table.png"></img>
 </div>
 
 <h1 align="center">HMCL-PE-R</h1>
-<p align="center">Hello Minecraft! Launcher : Pocket Edition — Renewed</p>
+<p align="center">基于 HMCL-PE 2.0.8 的开源二改版本 (GPLv3 derived work)</p>
 
 <div align="center">
 
@@ -26,17 +27,13 @@
 
 </div>
 
-- **HMCL-PE-Renewed** is a community fork of
-  [HMCL-PE 2.0.8](https://github.com/Tungstend/HMCL-PE) by Tungstend. It aims to
-  keep Android Minecraft Java Edition launch support alive after upstream
-  maintenance stopped, under the same GPLv3 license.
-- **Run Minecraft Java Edition directly on your Android device**, with mod
-  support and all versions of the Game.
-
-- **Attribution**: this project is derived from HMCL-PE (Tungstend) and
-  references [HMCL](https://github.com/HMCL-dev/HMCL) for desktop-lineage
-  design. See [DERIVED-FROM.md](./DERIVED-FROM.md) and
-  [docs/DERIVATION-ANALYSIS.md](./docs/DERIVATION-ANALYSIS.md).
+- **HMCL-PE-R** 是基于 [HMCL-PE 2.0.8](https://github.com/Tungstend/HMCL-PE) 的**开源二改**（GPLv3 derived work）。
+  上游由 Tungstend 维护，本项目是社区对其源码的二次修改，与上游项目并列存在，不宣称替代或延续上游。
+- **运行 Minecraft Java Edition on Android**，通过复用上游已经实现的 PojavLauncher + Boat + VirGL 运行时。
+- **遵守 GPLv3**：本项目完全沿用上游 GPLv3 协议，所有二次修改均在 GPLv3 下分发，
+  保留上游全部版权声明与衍生声明。详见 [DERIVED-FROM.md](./DERIVED-FROM.md)。
+- **致谢上游**：HMCL-PE (Tungstend)、[HMCL](https://github.com/HMCL-dev/HMCL)（huangyuhui）、
+  [Boat](https://github.com/AOF-Dev/Boat)、[PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher)。
 
 <h1 align="center">Features</h1>
 

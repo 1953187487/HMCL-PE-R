@@ -1,8 +1,7 @@
-# Contributing to HMCL-PE-Renewed
+# Contributing to HMCL-PE-R (基于 HMCL-PE 的二改版本)
 
-Thank you for considering a contribution. This is a community fork of
-[Tungstend's HMCL-PE](https://github.com/Tungstend/HMCL-PE). By submitting
-a change, you accept the following terms.
+感谢贡献。本项目是基于 [Tungstend 的 HMCL-PE](https://github.com/Tungstend/HMCL-PE)
+的**开源二改版本 (GPLv3 derived work)**。提交变更即表示你接受以下条款。
 
 ## Legal
 

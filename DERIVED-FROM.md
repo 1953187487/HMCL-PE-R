@@ -1,16 +1,22 @@
-# DERIVED-FROM
+# DERIVED-FROM (开源协议归属声明)
 
-This project (HMCL-PE-Renewed, "HMCL-PE-R") is a **community fork** derived from
-two upstream open source projects, all under the **GNU General Public License v3**:
+**本项目是基于 HMCL-PE 2.0.8 (Tungstend) 的开源二改版本 (GPLv3 derived work)。**
 
-## Primary upstream
+- 本项目是**对上游源码的二次修改**，不宣称替代、续订或延续上游项目。
+- 上游项目继续以 Tungstend 的名义存在，本项目与上游并列。
+- 所有二次修改严格遵循 GPLv3，包括保留上游作者的完整版权声明。
+
+上游项目 (all under GNU General Public License v3):
+
+## Primary upstream (二改的直接父源)
 
 - **HMCL-PE** (Hello Minecraft! Launcher : Pocket Edition)
   - Author: Tungstend (Tungsten, @念小六)
   - Repository: https://github.com/Tungstend/HMCL-PE
   - Base version forked from: 2.0.8 (release of 2024.02.08)
   - License: GPL v3 (see `LICENSE`)
-  - Status upstream: maintenance stopped (final release 2.0.8)
+  - Upstream status: 上游自主决定停止更新（final release 2.0.8），
+    本项目与上游状态无关，仅使用其公开源码作为二改基础。
 
 ## Reference upstream (design + desktop code lineage)
 
@@ -47,10 +53,10 @@ attribution notice.
 - Brand name updated to "HMCL-PE-R" / "Pocket Edition - Renewed"
 - Release signing config reworked to use local `release.jks` and environment
   variables (upstream hardcoded keystore password is removed)
-- Upstream "stopped maintenance" warning replaced with fork identity notice
-- This repository's own `CHANGELOG.md`, `ROADMAP.md`, `CONTRIBUTING.md`
-  and `DERIVED-FROM.md` (this file) added
-- See `docs/DERIVATION-ANALYSIS.md` for detailed migration analysis
+- Upstream "停止更新" 提示已改为二改身份说明
+- 新增本项目的 `CHANGELOG.md`、`ROADMAP.md`、`CONTRIBUTING.md`
+  以及本文件 `DERIVED-FROM.md`
+- 详见 `docs/DERIVATION-ANALYSIS.md` 的二改方法分析
 
 ## How to contribute
 

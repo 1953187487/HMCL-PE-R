@@ -8,8 +8,9 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 ## [1.0.0] - 2026-09-25
 
 ### Added
-- Community fork of HMCL-PE 2.0.8 (Tungstend) as a working successor after
-  upstream stopped maintenance.
+- Community-derived fork of HMCL-PE 2.0.8 (Tungstend), released under GPLv3
+  with full upstream attribution preserved. This is a derived work, not a
+  successor to or continuation of the upstream project.
 - `DERIVED-FROM.md` documenting upstream attribution and GPLv3 compliance.
 - `docs/DERIVATION-ANALYSIS.md` with detailed analysis comparing:
   - HMCL 3.17 (desktop main branch)
