@@ -175,7 +175,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
     if (env == NULL) {
         abort();
     }
-    char *app_packageName = "com.tungsten.hmclpe";
+    char *app_packageName = "com.hmclpe.renewed";
     jint app_signature_hash_code_debug = 369753433;
     jint app_signature_hash_code_debug_ = 3665141352;
     jint app_signature_hash_code_release = 606150242;
