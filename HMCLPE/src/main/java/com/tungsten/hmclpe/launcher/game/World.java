@@ -113,7 +113,7 @@ public class World {
             throw new IOException("level.dat missing LevelName");
 
         if (data.get("LastPlayed") instanceof LongTag)
-            lastPlayed = data.<LongTag>get("LastPlayed").getValue();
+            lastPlayed = ((Long) data.<LongTag>get("LastPlayed").getValue()).longValue();
         else
             throw new IOException("level.dat missing LastPlayed");
 

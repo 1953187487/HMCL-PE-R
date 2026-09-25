@@ -2,22 +2,22 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="#C8C8C8"/>
+            <solid android:color="@color/colorSurfaceContainerHighest"/>
             <corners
-                android:topLeftRadius="5.0dip"
-                android:topRightRadius="5.0dip"
-                android:bottomLeftRadius="5.0dip"
-                android:bottomRightRadius="5.0dip"/>
+                android:topLeftRadius="6.0dip"
+                android:topRightRadius="6.0dip"
+                android:bottomLeftRadius="6.0dip"
+                android:bottomRightRadius="6.0dip"/>
         </shape>
     </item>
     <item>
         <shape>
-            <solid android:color="#F6F6F6"/>
+            <solid android:color="@color/colorSurfaceContainer"/>
             <corners
-                android:topLeftRadius="5.0dip"
-                android:topRightRadius="5.0dip"
-                android:bottomLeftRadius="5.0dip"
-                android:bottomRightRadius="5.0dip"/>
+                android:topLeftRadius="6.0dip"
+                android:topRightRadius="6.0dip"
+                android:bottomLeftRadius="6.0dip"
+                android:bottomRightRadius="6.0dip"/>
         </shape>
     </item>
 </selector>

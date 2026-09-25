@@ -7,8 +7,10 @@ import com.tungsten.hmclpe.R;
 import com.tungsten.hmclpe.launcher.MainActivity;
 import com.tungsten.hmclpe.launcher.game.Argument;
 import com.tungsten.hmclpe.launcher.game.Artifact;
+import com.tungsten.hmclpe.launcher.game.GameJavaVersion;
 import com.tungsten.hmclpe.launcher.game.RuledArgument;
 import com.tungsten.hmclpe.launcher.game.Version;
+import com.tungsten.hmclpe.launcher.setting.SettingUtils;
 import com.tungsten.hmclpe.launcher.setting.game.PrivateGameSetting;
 import com.tungsten.hmclpe.utils.file.FileStringUtils;
 import com.tungsten.hmclpe.utils.gson.GsonUtils;
@@ -62,8 +64,6 @@ public class CheckJavaTask extends AsyncTask<Object,Integer,Exception> {
             if (privateGameSetting.notCheckJvm) {
                 return null;
             }
-            int expectedJava;
-            int java;
             String versionJson = FileStringUtils.getStringFromFile(launchVersion + "/" + new File(launchVersion).getName() + ".json");
             Gson gson = JsonUtils.defaultGsonBuilder()
                     .registerTypeAdapter(Artifact.class, new Artifact.Serializer())
@@ -72,21 +72,17 @@ public class CheckJavaTask extends AsyncTask<Object,Integer,Exception> {
                     .registerTypeAdapter(Argument.class, new Argument.Deserializer())
                     .create();
             Version version = gson.fromJson(versionJson, Version.class);
-            expectedJava = version.getMinimumLauncherVersion() < 9 ? 8 : (version.getJavaVersion() == null ? 8 : version.getJavaVersion().getMajorVersion());
-            if (privateGameSetting.javaSetting.autoSelect) {
-                java = expectedJava;
-                if (expectedJava == 16) {
-                    java = 17;
-                }
-            }
-            else {
-                java = privateGameSetting.javaSetting.name.equals("default") ? 8 : 17;
-            }
-            if (java == expectedJava || (java == 17 && expectedJava == 16)) {
+            int expectedJava = GameJavaVersion.resolveRequiredMajor(version);
+            int java = privateGameSetting.javaSetting.autoSelect
+                    ? SettingUtils.getJavaVersionByName(SettingUtils.selectJavaDir(expectedJava))
+                    : SettingUtils.getJavaVersionByName(privateGameSetting.javaSetting.name);
+            if (java == expectedJava) {
                 return null;
             }
             else {
-                return new Exception(activity.getString(R.string.launch_check_dialog_exception_error_java) + " -- java" + java);
+                String installed = java > 0 ? ", installed java" + java : ", no valid java found";
+                return new Exception(activity.getString(R.string.launch_check_dialog_exception_error_java)
+                        + " -- expected java" + expectedJava + installed);
             }
         }
         catch (Exception e) {

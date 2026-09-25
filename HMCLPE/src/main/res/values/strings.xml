@@ -1,15 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">HMCL-PE-R</string>
-    <string name="app_full_name" translatable="false">Hello Minecraft! Launcher : Pocket Edition - Renewed</string>
+    <string name="app_full_name" translatable="false">Hello Minecraft! Launcher : Pocket Edition</string>
     <string name="app_name_pri" translatable="false">Hello Minecraft! Launcher</string>
-    <string name="app_name_sec" translatable="false">Pocket Edition - Renewed</string>
+    <string name="app_name_sec" translatable="false">Pocket Edition</string>
     <string name="version_name" translatable="false">v1.0.0</string>
-    <string name="app_bar_title" translatable="false">Hello Minecraft! Launcher Pocket Edition - Renewed v1.0.0</string>
+    <string name="app_bar_title" translatable="false">Hello Minecraft! Launcher Pocket Edition v1.0.0</string>
 
-    <string name="dialog_outdated_warning_title">About</string>
-    <string name="dialog_outdated_warning_msg">HMCL-PE-R is a community fork of HMCL-PE (by Tungstend) that picks up where upstream left off. It is compatible with PojavLauncher-based Minecraft Java Edition on Android. If you encounter issues, please file a bug in this fork's repository.</string>
+    <string name="dialog_outdated_warning_title">HMCL-PE-R</string>
+    <string name="dialog_outdated_warning_msg">This is a community-derived work of HMCL-PE 2.0.8 by Tungstend, developed and maintained by 1953187487 under GPLv3.\nAll upstream copyright notices are preserved. Full attribution and license details are in the About page and README.</string>
     <string name="dialog_outdated_warning_hide">Don\'t show again</string>
     <string name="dialog_outdated_warning_positive">Got it</string>
+    <string name="dialog_outdated_warning_upstream">Upstream</string>
+    <string name="dialog_outdated_warning_license">License</string>
 
     <string name="launcher_spinner_text" translatable="false">▲</string>
     <string name="dialog_add_offline_account_uuid" translatable="false">UUID</string>
@@ -36,11 +38,12 @@
     <string name="game_setting_ui_boat_renderer_virgl" translatable="false">VirGLRenderer (OpenGL 4.3)</string>
     <string name="game_setting_ui_pojav_renderer_gl4es_114" translatable="false">Holy GL4ES (OpenGL 2.1/3.2)</string>
     <string name="game_setting_ui_pojav_renderer_virgl" translatable="false">VirGLRenderer (OpenGL 4.3)</string>
+    <string name="game_setting_ui_pojav_renderer_vulkan_zink" translatable="false">Vulkan Zink / OSMesa (Software OpenGL)</string>
     <string name="dialog_color_selector_arrow" translatable="false">→</string>
     <string name="download_setting_ui_source_bmclapi" translatable="false">BMCLAPI（bangbang93，https://bmclapi2.bangbang93.com/）</string>
-    <string name="ui_about_hmclpe_main" translatable="false">Hello Minecraft! Launcher : Pocket Edition - Renewed</string>
-    <string name="ui_about_hmclpe_sub" translatable="false">v1.0.0 - Community Fork of HMCL-PE</string>
-    <string name="ui_about_tungsten_main" translatable="false">Upstream: Tungsten (HMCL-PE)</string>
+    <string name="ui_about_hmclpe_main" translatable="false">HMCL-PE-R (this repository)</string>
+    <string name="ui_about_hmclpe_sub" translatable="false">Maintained by 1953187487</string>
+    <string name="ui_about_tungsten_main" translatable="false">Upstream: HMCL-PE by Tungstend</string>
     <string name="ui_about_tungsten_sub" translatable="false">B 站 ID：@念小六</string>
     <string name="ui_about_shirosakimio_main" translatable="false">ShirosakiMio</string>
     <string name="ui_about_shirosakimio_sub" translatable="false">B 站 ID：@ShirosakiMio</string>
@@ -671,7 +674,7 @@
     <string name="game_setting_ui_game_launcher_hint">Boat is recommended.</string>
     <string name="game_setting_ui_boat_renderer">Boat Renderer</string>
     <string name="game_setting_ui_pojav_renderer">PojavLauncher Renderer</string>
-    <string name="universal_setting_ui_declare">Hello Minecraft! Launcher Pocket Edition is an Android Minecraft launcher which allows users to manage multiple Minecraft instances easily. You can donate to us on Afdian to support our file hosting and project development.</string>
+    <string name="universal_setting_ui_declare">Hello Minecraft! Launcher Pocket Edition is a free, open-source Minecraft launcher. This build, HMCL-PE-R, is a community-derived work of HMCL-PE 2.0.8 (Tungstend), maintained by 1953187487 under GPLv3.</string>
     <string name="universal_setting_ui_update">Update</string>
     <string name="universal_setting_ui_update_state_latest">This is the latest version.</string>
     <string name="universal_setting_ui_update_state_update">Update Available!</string>
@@ -972,6 +975,7 @@
     <string name="drawer_game_menu_force_exit">Force exit</string>
     <string name="drawer_game_menu_force_exit_button">Exit</string>
     <string name="ui_about_about">About</string>
+    <string name="ui_about_fork_desc">HMCL-PE-R is a community-derived work of HMCL-PE 2.0.8 (Tungstend), maintained by 1953187487 and licensed under GPLv3. All upstream copyright notices are preserved.</string>
     <string name="drawer_custom_menu_title">Control Layout Options</string>
     <string name="drawer_custom_menu_current">Current Pattern</string>
     <string name="drawer_custom_menu_current_pattern">Current layout pattern</string>
@@ -990,5 +994,20 @@
     <string name="drawer_custom_menu_warn">You need to create or select a sublayout first</string>
 	<string name="feedback_ui_join_qq_channel">Join QQ Channel</string>
 
+    <!-- Hin2n Multiplayer (added in fork) -->
+    <string name="hin2n_create_tip">Create room: Enter Hin2n to create a new Commune and share the invite code with your friends.</string>
+    <string name="hin2n_install_needed_create">Hin2n is not installed. You need to install Hin2n first to create a room.</string>
+    <string name="hin2n_install_needed_join">Hin2n is not installed. You need to install Hin2n first to join a room.</string>
+    <string name="hin2n_join_tip">Join room: invite code %1$s. Enter it in Hin2n to join the Commune.</string>
+    <string name="hin2n_join_code_hint">Enter invite code</string>
+    <string name="hin2n_save_session_ip_hint">Virtual IP:port</string>
+    <string name="hin2n_default_ip_port">127.0.0.1:%1$d</string>
+    <string name="hin2n_open_failed">Failed to open Hin2n, please open it manually.</string>
+    <string name="hin2n_open_github">Open GitHub</string>
+    <string name="hin2n_view_help">View Help</string>
+    <string name="hin2n_session_cleared">Session cleared</string>
+    <string name="hin2n_save_session_title">Save Room Info</string>
+    <string name="hin2n_save_session_tip">Enter the invite code and virtual IP from Hin2n to save them locally for easy viewing.</string>
+    <string name="hin2n_save_positive">Save</string>
 
 </resources>

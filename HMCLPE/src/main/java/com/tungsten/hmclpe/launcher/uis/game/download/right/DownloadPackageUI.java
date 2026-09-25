@@ -80,10 +80,11 @@ public class DownloadPackageUI extends BaseUI implements View.OnClickListener, A
 
         @Override
         protected RemoteModRepository getBackedRemoteModRepository() {
+            // 默认 Modrinth (免 API Key); CurseForge 硬编码 key 易失效, 作为备选
             if (downloadSourceSpinner.getSelectedItemPosition() == 1) {
-                return ModrinthRemoteModRepository.MODPACKS;
-            } else {
                 return CurseForgeRemoteModRepository.MODPACKS;
+            } else {
+                return ModrinthRemoteModRepository.MODPACKS;
             }
         }
 
@@ -111,8 +112,8 @@ public class DownloadPackageUI extends BaseUI implements View.OnClickListener, A
         search.setOnClickListener(this);
 
         sourceList = new ArrayList<>();
-        sourceList.add(context.getString(R.string.download_mod_source_curse_forge));
         sourceList.add(context.getString(R.string.download_mod_source_modrinth));
+        sourceList.add(context.getString(R.string.download_mod_source_curse_forge));
         sourceListAdapter = new ArrayAdapter<>(context, R.layout.item_spinner, sourceList);
         sourceListAdapter.setDropDownViewResource(R.layout.item_spinner_drop_down);
         downloadSourceSpinner.setAdapter(sourceListAdapter);
@@ -138,7 +139,7 @@ public class DownloadPackageUI extends BaseUI implements View.OnClickListener, A
         editVersionSpinner.setAdapter(versionListAdapter);
 
         categoryList = new ArrayList<>();
-        categoryList.add(new RemoteModRepository.Category(CurseForgeRemoteModRepository.CATEGORY_ALL, "0", new ArrayList<>()));
+        categoryList.add(new RemoteModRepository.Category(ModrinthRemoteModRepository.CATEGORY_ALL, "all", new ArrayList<>()));
         categoryListAdapter = new CategorySpinnerAdapter(context,categoryList,CurseForgeRemoteModRepository.SECTION_MODPACK);
         editCategory.setAdapter(categoryListAdapter);
 
@@ -198,7 +199,7 @@ public class DownloadPackageUI extends BaseUI implements View.OnClickListener, A
                     packageList.addAll(list);
                     List<RemoteModRepository.Category> categories = repository.getCategories().collect(toList());
                     categoryList.clear();
-                    categoryList.add(new RemoteModRepository.Category(downloadSourceSpinner.getSelectedItemPosition() == 0 ? CurseForgeRemoteModRepository.CATEGORY_ALL : ModrinthRemoteModRepository.CATEGORY_ALL, downloadSourceSpinner.getSelectedItemPosition() == 0 ? "0" : "all", new ArrayList<>()));
+                    categoryList.add(new RemoteModRepository.Category(downloadSourceSpinner.getSelectedItemPosition() == 1 ? CurseForgeRemoteModRepository.CATEGORY_ALL : ModrinthRemoteModRepository.CATEGORY_ALL, downloadSourceSpinner.getSelectedItemPosition() == 1 ? "0" : "all", new ArrayList<>()));
                     for (int i = 0;i < categories.size();i++) {
                         categoryList.add(categories.get(i));
                         categoryList.addAll(categories.get(i).getSubcategories());

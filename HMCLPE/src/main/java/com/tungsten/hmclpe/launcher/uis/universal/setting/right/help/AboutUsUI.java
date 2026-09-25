@@ -85,10 +85,12 @@ public class AboutUsUI extends BaseUI implements View.OnClickListener {
         Uri uri = null;
 
         if (view == hmclpe) {
-            //uri = Uri.parse("https://tungstend.github.io/");
+            // 本仓库（二改）
+            uri = Uri.parse("https://github.com/1953187487/HMCL-PE-R");
         }
         if (view == tungs) {
-            uri = Uri.parse("https://space.bilibili.com/18115101");
+            // 上游 HMCL-PE
+            uri = Uri.parse("https://github.com/Tungstend/HMCL-PE");
         }
         if (view == mio) {
             uri = Uri.parse("https://space.bilibili.com/35801833");

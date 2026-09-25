@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BottomBar">
+        <attr name="bb_tabXmlResource" format="reference" />
+        <attr name="bb_showShadow" format="boolean" />
+        <attr name="bb_tabBackgroundColor" format="color" />
+    </declare-styleable>
+</resources>

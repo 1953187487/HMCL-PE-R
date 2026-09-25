@@ -137,11 +137,15 @@ public class MKManager implements View.OnKeyListener, View.OnCapturedPointerList
             case KeyEvent.KEYCODE_BACK:
                 return true;
             case KeyEvent.KEYCODE_ENTER:
-                if (!menuHelper.enterLock && keyEvent.getAction() == KeyEvent.ACTION_UP && menuHelper.touchCharInput != null && !menuHelper.touchCharInput.isEnabled()) {
-                    menuHelper.touchCharInput.switchKeyboardState();
-                }
                 if (menuHelper.enterLock) {
                     menuHelper.enterLock = false;
+                }
+                if ((keyEvent.getMetaState() & KeyEvent.META_CTRL_ON) != 0) {
+                    InputBridge.sendEvent(menuHelper.launcher, LwjglGlfwKeycode.GLFW_KEY_ENTER, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
+                    break;
+                }
+                if (!menuHelper.enterLock && keyEvent.getAction() == KeyEvent.ACTION_UP && menuHelper.touchCharInput != null && !menuHelper.touchCharInput.isEnabled()) {
+                    menuHelper.touchCharInput.switchKeyboardState();
                 }
                 return true;
             case KeyEvent.KEYCODE_POUND:
@@ -452,6 +456,39 @@ public class MKManager implements View.OnKeyListener, View.OnCapturedPointerList
             case KeyEvent.KEYCODE_PAGE_DOWN:
                 InputBridge.sendEvent(menuHelper.launcher, LwjglGlfwKeycode.GLFW_KEY_PAGE_DOWN, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
                 break;
+            case KeyEvent.KEYCODE_FORWARD_DEL:
+                InputBridge.sendEvent(menuHelper.launcher, LwjglGlfwKeycode.GLFW_KEY_DELETE, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
+                break;
+            case KeyEvent.KEYCODE_DPAD_CENTER:
+                InputBridge.sendEvent(menuHelper.launcher, LwjglGlfwKeycode.GLFW_KEY_ENTER, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
+                break;
+            case KeyEvent.KEYCODE_MOVE_HOME:
+                InputBridge.sendEvent(menuHelper.launcher, LwjglGlfwKeycode.GLFW_KEY_HOME, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
+                break;
+            case KeyEvent.KEYCODE_MOVE_END:
+                InputBridge.sendEvent(menuHelper.launcher, LwjglGlfwKeycode.GLFW_KEY_END, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
+                break;
+            case KeyEvent.KEYCODE_STAR:
+                InputBridge.sendEvent(menuHelper.launcher, LwjglGlfwKeycode.GLFW_KEY_KP_MULTIPLY, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
+                break;
+            case KeyEvent.KEYCODE_META_LEFT:
+                InputBridge.sendEvent(menuHelper.launcher, LwjglGlfwKeycode.GLFW_KEY_LEFT_SUPER, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
+                break;
+            case KeyEvent.KEYCODE_META_RIGHT:
+                InputBridge.sendEvent(menuHelper.launcher, LwjglGlfwKeycode.GLFW_KEY_RIGHT_SUPER, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
+                break;
+            case KeyEvent.KEYCODE_MENU:
+            // KeyEvent.KEYCODE_MENUS (82) is a hidden platform constant; its value equals KEYCODE_MENU above
+            case KeyEvent.KEYCODE_APP_SWITCH:
+                InputBridge.sendEvent(menuHelper.launcher, LwjglGlfwKeycode.GLFW_KEY_MENU, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
+                break;
+            // KeyEvent.KEYCODE_SHIFT_MODE (600) is a hidden platform constant
+            case 600:
+                shiftMode = keyEvent.getAction() == KeyEvent.ACTION_DOWN;
+                InputBridge.sendEvent(menuHelper.launcher, LwjglGlfwKeycode.GLFW_KEY_RIGHT_SHIFT, keyEvent.getAction() == KeyEvent.ACTION_DOWN);
+                break;
+            // KeyEvent.KEYCODE_FORWARD_SLASH (73) is a hidden platform constant that
+            // collides with KEYCODE_BACKSLASH above, so it is handled there.
         }
         if (menuHelper.gameCursorMode == 0 && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
             switch (keyEvent.getKeyCode()) {

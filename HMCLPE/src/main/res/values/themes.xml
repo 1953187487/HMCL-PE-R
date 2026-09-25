@@ -26,7 +26,7 @@
     </style>
 
     <style name="MenuTextStyle">
-        <item name="android:textColor">@color/colorPureBlack</item>
+        <item name="android:textColor">@color/colorOnSurface</item>
         <item name="android:textSize">11sp</item>
     </style>
 </resources>

@@ -27,6 +27,7 @@ import com.tungsten.hmclpe.control.view.TouchCharInput;
 import com.tungsten.hmclpe.launcher.dialogs.control.AddViewDialog;
 import com.tungsten.hmclpe.launcher.dialogs.control.ChildManagerDialog;
 import com.tungsten.hmclpe.launcher.dialogs.control.EditControlPatternDialog;
+import com.tungsten.hmclpe.launcher.dialogs.Hin2nMenuDialog;
 import com.tungsten.hmclpe.launcher.list.local.controller.ChildLayout;
 import com.tungsten.hmclpe.launcher.list.local.controller.ControlPattern;
 import com.tungsten.hmclpe.manifest.AppManifest;
@@ -449,7 +450,9 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
     @Override
     public void onClick(View view) {
         if (view == openHin2nMenu) {
-
+            // 打开陶瓦联机 (Hin2n) 菜单 - 本二改新增
+            Hin2nMenuDialog hin2nDialog = new Hin2nMenuDialog(context);
+            hin2nDialog.show();
         }
         if (view == forceExit) {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);

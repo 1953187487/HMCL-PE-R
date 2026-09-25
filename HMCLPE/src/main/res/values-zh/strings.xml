@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="dialog_outdated_warning_title">警告</string>
-    <string name="dialog_outdated_warning_msg">HMCL-PE 已停止维护。 如果您想在 Android 设备上运行 Minecraft: Java 版并获得更好的体验，请下载 FoldCraftLauncher 或 PojavLauncher。\n注：如果你在使用其他启动器时出现任何问题，HMCL-dev不负任何责任，请向你使用的启动器的开发者求助。</string>
+    <string name="dialog_outdated_warning_title">HMCL-PE-R</string>
+    <string name="dialog_outdated_warning_msg">本项目是基于 HMCL-PE 2.0.8 (Tungstend) 的开源二改版本，由 1953187487 个人开发维护，遵循 GPLv3 协议。\n所有上游版权声明均已保留。完整归属与协议信息见关于页面和 README。</string>
     <string name="dialog_outdated_warning_hide">不再显示</string>
     <string name="dialog_outdated_warning_positive">我明白了</string>
+    <string name="dialog_outdated_warning_upstream">上游</string>
+    <string name="dialog_outdated_warning_license">协议</string>
 
     <string name="dialog_unknown_error_title">警告</string>
     <string name="dialog_unknown_error_msg">启动器遇到无法处理的错误，请联系开发者解决。</string>
@@ -717,8 +719,9 @@
     <string name="game_setting_ui_game_launcher_hint">推荐使用 Boat 启动器。</string>
     <string name="game_setting_ui_boat_renderer">Boat 渲染方式</string>
     <string name="game_setting_ui_pojav_renderer">PojavLauncher 渲染方式</string>
+    <string name="game_setting_ui_pojav_renderer_vulkan_zink">Vulkan Zink / OSMesa（软渲染）</string>
 
-    <string name="universal_setting_ui_declare">Hello Minecraft! Launcher Pocket Edition 是一个免费、自由、开放源代码的 Minecraft 启动器。您的赞助将帮助 Hello Minecraft! Launcher Pocket Edition 获得更好的发展，还可以获得 HMCL-PE 的开发进展。</string>
+    <string name="universal_setting_ui_declare">Hello Minecraft! Launcher Pocket Edition 是一个免费、自由、开放源代码的 Minecraft 启动器。本版本 HMCL-PE-R 是基于 HMCL-PE 2.0.8（Tungstend）的开源二改，由 1953187487 维护，遵循 GPLv3 协议。</string>
     <string name="universal_setting_ui_update">启动器更新</string>
     <string name="universal_setting_ui_update_state_latest">当前版本为最新版本</string>
     <string name="universal_setting_ui_update_state_checking">正在检测…</string>
@@ -996,7 +999,7 @@
     <string name="dialog_community_positive">确定</string>
 
     <string name="dialog_hin2n_help_title">帮助</string>
-    <string name="dialog_hin2n_help_text">主机玩家（房主）： 你需要在先启动游戏，并进入一个存档作为联机世界，然后在游戏内菜单中选择 对局域网开放 选项，记住你的端口号，接下来打开 HMCL-PE 控制面板，打开联机模块菜单，点击创建房间，确认显示的端口号与游戏提示的一致，然后确认并开房，房间开启后，你将可以点击房间信息以查看你的邀请码和服务器地址，你需要将它们发送给你的联机伙伴。注意，请不要将 邀请码，ip，端口 告诉任何陌生人。  成员玩家： 你需要向主机玩家（房主）索要邀请码和 服务器地址，然后打开 HMCL-PE 控制面板，打开联机模块菜单，点击加入房间，输入你的邀请码，点击确定即可，接下来启动游戏，在游戏的多人游戏板块中添加服务器，服务器名称任意，服务器地址填写房主提供的服务器地址，即可加入服务器。</string>
+    <string name="dialog_hin2n_help_text">Hin2n 是独立的 Android VPN App (GPL-3.0)，通过 Android VPNService 建立 tun 虚拟网卡，让多台 Android 设备组成虚拟局域网。它不是 HMCL-PE 内部集成的库，而是通过 Intent 引导打开。\n\n【房主（Host）步骤】\n1. 先启动 HMCL-PE 并进入游戏存档；\n2. 在游戏内菜单中打开「对局域网开放」选项；\n3. 记住游戏提示的端口号（默认 25565）；\n4. 从控制面板 → 联机模块 → 创建房间，打开 Hin2n App；\n5. 在 Hin2n 中建立新的 Commune（虚拟网络），记下邀请码与虚拟 IP；\n6. 把邀请码和虚拟 IP 发给联机伙伴（不要发给陌生人）。\n\n【成员（Client）步骤】\n1. 从房主处拿到邀请码；\n2. 从控制面板 → 联机模块 → 加入房间，打开 Hin2n App；\n3. 在 Hin2n 中输入邀请码并加入 Commune；\n4. 回到 HMCL-PE 启动游戏，进入「多人游戏 → 添加服务器」；\n5. 服务器地址填房主给的「虚拟 IP:端口」；\n6. 连接成功后即可联机。\n\n【常见问题】\n- 双方都需安装 Hin2n App，可去 https://github.com/switch-iot/hin2n/releases 下载；\n- 双方游戏版本必须完全一致，否则服务器端会拒绝连接；\n- 如果连不上，先检查 Hin2n 的 VPN 是否处于「已连接」状态。</string>
     <string name="dialog_hin2n_help_positive">确定</string>
 
     <string name="dialog_force_exit_title">提示</string>
@@ -1057,6 +1060,7 @@
     <string name="drawer_custom_menu_warn">你需要先创建或选择一个子布局</string>
 
     <string name="ui_about_about">关于</string>
+    <string name="ui_about_fork_desc">HMCL-PE-R 是基于 HMCL-PE 2.0.8（Tungstend）的开源二改，由 1953187487 维护，遵循 GPLv3 协议，保留全部上游版权声明。</string>
     <string name="ui_about_thank">鸣谢</string>
     <string name="ui_about_cosine_sub">提供大量技术支持</string>
     <string name="ui_about_tsaltedfishking_sub">提供 HMCL-PE 官网模板</string>
@@ -1071,4 +1075,21 @@
     <string name="ui_about_github_sub">感谢各位的建议、bug 反馈及赞助</string>
     <string name="dialog_create_community_error">无法检测游戏端口号，你需启动游戏并在游戏内打开 对局域网开放 选项方能启动联机！</string>
     <string name="feedback_ui_join_discord">加入官方 Discord</string>
+
+    <!-- Hin2n Multiplayer (added in fork) -->
+    <string name="hin2n_create_tip">创建房间：请进入 Hin2n 建立新的 Commune，记下邀请码后发给伙伴。</string>
+    <string name="hin2n_install_needed_create">你还没有安装 Hin2n App。\n创建房间需要先安装 Hin2n，才能建立虚拟局域网。</string>
+    <string name="hin2n_install_needed_join">你还没有安装 Hin2n App。\n加入房间需要先安装 Hin2n，才能连接到房主的虚拟网络。</string>
+    <string name="hin2n_join_tip">加入房间：邀请码 %1$s，请在 Hin2n 中输入并加入 Commune。</string>
+    <string name="hin2n_join_code_hint">输入邀请码</string>
+    <string name="hin2n_save_session_ip_hint">虚拟 IP:端口</string>
+    <string name="hin2n_default_ip_port">127.0.0.1:%1$d</string>
+    <string name="hin2n_open_failed">无法启动 Hin2n，请手动打开</string>
+    <string name="hin2n_open_github">打开 GitHub</string>
+    <string name="hin2n_view_help">查看联机帮助</string>
+    <string name="hin2n_session_cleared">会话已清除</string>
+    <string name="hin2n_save_session_title">保存房间信息</string>
+    <string name="hin2n_save_session_tip">输入 Hin2n 中显示的邀请码和虚拟 IP，保存到本地方便查看。</string>
+    <string name="hin2n_save_positive">保存</string>
+
 </resources>

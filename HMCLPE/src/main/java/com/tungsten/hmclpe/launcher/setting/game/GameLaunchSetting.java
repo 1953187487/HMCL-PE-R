@@ -4,10 +4,12 @@ import com.google.gson.Gson;
 import com.tungsten.hmclpe.auth.Account;
 import com.tungsten.hmclpe.launcher.game.Argument;
 import com.tungsten.hmclpe.launcher.game.Artifact;
+import com.tungsten.hmclpe.launcher.game.GameJavaVersion;
 import com.tungsten.hmclpe.launcher.game.RuledArgument;
 import com.tungsten.hmclpe.launcher.game.Version;
 import com.tungsten.hmclpe.launcher.launch.LaunchVersion;
 import com.tungsten.hmclpe.manifest.AppManifest;
+import com.tungsten.hmclpe.launcher.setting.SettingUtils;
 import com.tungsten.hmclpe.launcher.setting.launcher.LauncherSetting;
 import com.tungsten.hmclpe.utils.file.FileStringUtils;
 import com.tungsten.hmclpe.utils.gson.GsonUtils;
@@ -93,12 +95,7 @@ public class GameLaunchSetting {
                     .registerTypeAdapter(Argument.class, new Argument.Deserializer())
                     .create();
             Version version = gson.fromJson(versionJson, Version.class);
-            if (version.getJavaVersion() == null || version.getJavaVersion().getMajorVersion() == 8){
-                javaPath = AppManifest.JAVA_DIR + "/default";
-            }
-            else {
-                javaPath = AppManifest.JAVA_DIR + "/JRE17";
-            }
+            javaPath = AppManifest.JAVA_DIR + "/" + SettingUtils.selectJavaDir(GameJavaVersion.resolveRequiredMajor(version));
         }
         else {
             javaPath = AppManifest.JAVA_DIR + "/" + privateGameSetting.javaSetting.name;

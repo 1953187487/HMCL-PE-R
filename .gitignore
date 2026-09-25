@@ -26,3 +26,7 @@ HMCLPE/release.jks
 
 # Local-only backup of upstream artifacts removed during fork bootstrap.
 /.upstream-removed-backup/
+
+# Local build and agent artifacts.
+javac.*.args
+.monkeycode/

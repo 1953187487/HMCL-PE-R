@@ -3,17 +3,17 @@
     <item android:state_pressed="true">
         <shape>
             <solid
-                android:color="#B9C3FF"/>
+                android:color="@color/colorPrimaryFixedDim"/>
             <corners
-                android:radius="5dp"/>
+                android:radius="6dp"/>
         </shape>
     </item>
     <item>
         <shape>
             <solid
-                android:color="#F6F6F6"/>
+                android:color="@color/colorSurfaceContainer"/>
             <corners
-                android:radius="5dp"/>
+                android:radius="6dp"/>
         </shape>
     </item>
 </selector>

@@ -58,7 +58,7 @@
 You can compile the software **using Android Studio**, with the **Android SDK & NDK** packages.
 Clone the remote repository using the following URL:
 ```
-https://github.com/HMCL-PE-Renewed/HMCL-PE-R
+https://github.com/1953187487/HMCL-PE-R
 ```
 
 Set the release signing credentials before building:

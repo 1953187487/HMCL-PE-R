@@ -37,7 +37,11 @@ public class LoadMe {
 
         BOAT_LIB_DIR = context.getDir("runtime",0).getAbsolutePath() + "/boat";
 
-        boolean isJava17 = javaPath.endsWith("JRE17");
+        // Java 9+ JREs (17, 21, 25, ...) keep their libraries in a flat lib/ layout,
+        // while the bundled legacy Java 8 runtime ("default") splits them per
+        // architecture under lib/<arch>/. Any JRE that is not the legacy one uses the
+        // modern layout, so Java 21 and Java 25 work without further changes.
+        boolean isJava17 = !javaPath.endsWith("default");
 
 		patchLinker();
 

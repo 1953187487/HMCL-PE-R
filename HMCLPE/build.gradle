@@ -36,7 +36,7 @@ android {
         applicationId "com.hmclpe.renewed"
         minSdk 26
         targetSdk 34
-        versionCode 10000
+        versionCode 10001
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -77,7 +77,6 @@ dependencies {
     implementation project(path: ':Boat')
     implementation project(path: ':PojavLauncher')
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.github.naman14:app-theme-engine:0.5.2@aar'
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
     implementation 'org.nanohttpd:nanohttpd:2.3.1'
@@ -86,14 +85,18 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'com.moandjiezana.toml:toml4j:0.7.2'
     implementation 'org.apache.commons:commons-compress:1.21'
-    implementation 'com.github.steveice10:opennbt:1.5'
     implementation 'com.jaredrummler:colorpicker:1.1.0'
     implementation 'com.jaredrummler:android-device-names:2.1.0'
     implementation 'org.jsoup:jsoup:1.14.3'
     implementation 'org.apache.commons:commons-lang3:3.13.0'
     implementation 'org.jenkins-ci:constant-pool-scanner:1.2'
-    implementation 'com.github.gzu-liyujiang:Android_CN_OAID:4.2.4'
-    implementation 'com.github.nedimf:maildroid:v0.1.0-release'
+    // com.github.steveice10:opennbt、com.github.gzu-liyujiang:Android_CN_OAID、
+    // com.github.nedimf:maildroid、com.github.naman14:app-theme-engine 均托管在
+    // JitPack / JCenter, 这两个仓库已不再允许匿名下载, 依赖已改为仓库内置实现。
+    //
+    // Hin2n 是独立的 VPN Android App (https://github.com/switch-iot/hin2n),
+    // 不是可导入的 Java 库。本二改通过 Intent 引导用户去 Hin2n App 建立虚拟网络隧道,
+    // 让多台 Android 设备上的 Minecraft Java 版能跨公网直连联机 (类似 n2n 虚拟局域网)。
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'

@@ -126,6 +126,89 @@ public class SettingUtils {
         return list;
     }
 
+    public static int getJavaMajorVersion(String version){
+        if (version == null){
+            return -1;
+        }
+        try {
+            String[] parts = version.split("\\.");
+            if (parts[0].equals("1")){
+                return parts.length > 1 ? Integer.parseInt(parts[1]) : -1;
+            }
+            return Integer.parseInt(parts[0]);
+        }
+        catch (Exception e) {
+            return -1;
+        }
+    }
+
+    /**
+     * Resolve the major version of the JRE living in the given Java directory.
+     *
+     * <p>The setting stores either a directory name such as {@code JRE17} or a
+     * full path such as {@code .../java/default}; both are accepted.
+     */
+    public static int getJavaVersionByName(String name){
+        if (name == null || name.isEmpty()){
+            return -1;
+        }
+        String dirName = name;
+        int slash = dirName.lastIndexOf('/');
+        if (slash >= 0){
+            dirName = dirName.substring(slash + 1);
+        }
+        for (JavaListBean bean : getJavaVersionInfo()){
+            if (bean.name.equals(dirName)){
+                return getJavaMajorVersion(bean.version);
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Pick the best installed JRE for a game that requires the given Java major
+     * version.
+     *
+     * <p>Minecraft validates the JVM major version exactly, so a match is always
+     * preferred. When no exact match is installed, the newest JRE at or above the
+     * requirement is returned, which keeps newer game releases launchable as soon
+     * as a matching JRE is downloaded. Otherwise the newest available JRE wins.
+     */
+    public static String selectJavaDir(int requiredMajor){
+        String exact = null;
+        String sufficient = null;
+        String newest = null;
+        int sufficientVersion = -1;
+        int newestVersion = -1;
+        for (JavaListBean bean : getJavaVersionInfo()){
+            int version = getJavaMajorVersion(bean.version);
+            if (version <= 0){
+                continue;
+            }
+            if (version == requiredMajor && exact == null){
+                exact = bean.name;
+            }
+            if (version >= requiredMajor && version > sufficientVersion){
+                sufficientVersion = version;
+                sufficient = bean.name;
+            }
+            if (version > newestVersion){
+                newestVersion = version;
+                newest = bean.name;
+            }
+        }
+        if (exact != null){
+            return exact;
+        }
+        if (sufficient != null){
+            return sufficient;
+        }
+        if (newest != null){
+            return newest;
+        }
+        return "JRE17";
+    }
+
     public static ArrayList<ControlPattern> getControlPatternList(){
         ArrayList<ControlPattern> list = new ArrayList<>();
         String[] string = new File(AppManifest.CONTROLLER_DIR + "/").list();

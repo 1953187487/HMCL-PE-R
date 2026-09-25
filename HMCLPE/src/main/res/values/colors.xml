@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--
+      Palette aligned with HMCL desktop (assets/css/blue.css, Material 3 "Monet").
+      The seed color is #5C6BC0, matching HMCL's blue theme.
+    -->
     <color name="colorPrimary">#5C6BC0</color>
-    <color name="colorSecondary">#283593</color>
+    <color name="colorPrimaryContainer">#5C6BC0</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnPrimaryContainer">#F8F6FF</color>
+    <color name="colorPrimaryFixed">#DEE0FF</color>
+    <color name="colorPrimaryFixedDim">#BAC3FF</color>
+    <color name="colorSecondary">#575C7F</color>
+    <color name="colorSecondaryContainer">#D0D5FD</color>
+    <color name="colorOnSecondaryContainer">#565B7D</color>
     <color name="colorThird">#43A047</color>
     <color name="colorForth">#E67E22</color>
     <color name="colorFifth">#9C27B0</color>
@@ -9,27 +20,38 @@
     <color name="colorPrimaryDark">#CB5C6BC0</color>
     <color name="colorAccent">#5C6BC0</color>
 
+    <color name="colorSurface">#FBF8FF</color>
+    <color name="colorOnSurface">#1B1B21</color>
+    <color name="colorOnSurfaceVariant">#454651</color>
+    <color name="colorOutline">#767683</color>
+    <color name="colorOutlineVariant">#C6C5D3</color>
+    <color name="colorSurfaceContainerLow">#F5F2FA</color>
+    <color name="colorSurfaceContainer">#EFEDF5</color>
+    <color name="colorSurfaceContainerHigh">#E9E7EF</color>
+    <color name="colorSurfaceContainerHighest">#E3E1E9</color>
+    <color name="colorError">#BA1A1A</color>
+
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="colorPureWhite">#FFFFFF</color>
-    <color name="colorPureBlack">#000000</color>
+    <color name="colorPureBlack">#1B1B21</color>
     <color name="colorLightWhite">#99FFFFFF</color>
     <color name="colorShallowWhite">#40FFFFFF</color>
     <color name="colorDarkGray">#40000000</color>
-    <color name="colorGray">#1A000000</color>
-    <color name="colorLightGray">#0D000000</color>
-    <color name="colorWhiteGray">#E3E3E3</color>
-    <color name="colorLightBlue">#655C6BC0</color>
+    <color name="colorGray">#1A1B1B21</color>
+    <color name="colorLightGray">#0D1B1B21</color>
+    <color name="colorWhiteGray">#E3E1E9</color>
+    <color name="colorLightBlue">#654352A5</color>
     <color name="colorGreen">#3DFF2C</color>
     <color name="colorYellow">#F0FF00</color>
     <color name="colorRed">#FF0000</color>
-    <color name="colorLinkBlue">#03A9F4</color>
-    <color name="colorLinkBlueDark">#005D8F</color>
-    <color name="colorTextBlue">#D5F1FF</color>
-    <color name="colorStartRockerBlue">#1A00C4FF</color>
-    <color name="colorEndRockerBlue">#3300C4FF</color>
+    <color name="colorLinkBlue">#4352A5</color>
+    <color name="colorLinkBlueDark">#2F3F92</color>
+    <color name="colorTextBlue">#DEE0FF</color>
+    <color name="colorStartRockerBlue">#1A4352A5</color>
+    <color name="colorEndRockerBlue">#334352A5</color>
     <color name="colorBrown">#835300</color>
 
-    <color name="launcher_ui_background">#9AFFFFFF</color>
-    <color name="launcher_ui_background_light">#4DFFFFFF</color>
+    <color name="launcher_ui_background">#9AFBF8FF</color>
+    <color name="launcher_ui_background_light">#4DFBF8FF</color>
     <color name="colorPressed">#BDBDBD</color>
 </resources>

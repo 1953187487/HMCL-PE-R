@@ -1,9 +1,11 @@
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        // Local mirror for artifacts that cannot be downloaded reliably from Maven Central
+        // on restricted networks. Populate it by placing artifacts in Maven layout.
+        maven { url 'file:///opt/maven-local' }
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
         maven { url 'https://www.jitpack.io' }
     }
 }
