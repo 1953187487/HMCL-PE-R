@@ -1,5 +1,8 @@
 package com.tungsten.hmclpe.update;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +15,11 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowMetrics;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -202,6 +207,7 @@ public class UpdateDialog extends Dialog implements View.OnClickListener {
                                 buttonProgress.setVisibility(View.GONE);
                                 buttonText.setText(R.string.dialog_update_install);
                                 showStatus("");
+                                showDownloadCompleteAnimation();
                                 launchInstaller(apkFile);
                             });
                         }
@@ -270,6 +276,33 @@ public class UpdateDialog extends Dialog implements View.OnClickListener {
     private void showStatus(String text){
         statusText.setVisibility(View.VISIBLE);
         statusText.setText(text);
+    }
+
+    private void showDownloadCompleteAnimation(){
+        if (buttonRoot == null) return;
+        buttonRoot.animate()
+            .scaleX(0.85f)
+            .scaleY(0.85f)
+            .setDuration(100)
+            .setListener(new Animator.AnimatorListener(){
+                @Override
+                public void onAnimationStart(Animator animation) {}
+                @Override
+                public void onAnimationEnd(Animator animation){
+                    buttonRoot.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(150)
+                        .setInterpolator(new AccelerateDecelerateInterpolator())
+                        .start();
+                }
+                @Override
+                public void onAnimationCancel(Animator animation) {}
+                @Override
+                public void onAnimationRepeat(Animator animation) {}
+            })
+            .setInterpolator(new AccelerateDecelerateInterpolator())
+            .start();
     }
 
     @Override
