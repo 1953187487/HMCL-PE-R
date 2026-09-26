@@ -1,16 +1,16 @@
 {
   "latestRelease": {
-    "versionCode": 10007,
-    "versionName": "1.0.3",
+    "versionCode": 10008,
+    "versionName": "1.0.4",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/HMCLPE-R-v1.0.3-debug.apk"],
-    "updateLog": "<b>v1.0.3</b><br><br>• Fixed world download: worlds now download to /saves/ correctly without requiring folder selection.<br>• Fixed Java 21 launch: JRE21 directory name parsing works even when release file is missing.<br>• Extended version list: search UI now supports versions up to 26.3.<br>• Added user agreement dialog on first launch.<br>• Added quick launch from world list context menu.<br>• Improved download experience with direct download dialog for all resource types."
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/HMCLPE-R-v1.0.4-debug.apk"],
+    "updateLog": "<b>v1.0.4</b><br><br>• Added download complete animation in update dialog<br>• Enhanced download progress UI with percentage text and larger progress bar<br>• Fixed world download path issues from v1.0.3<br>• All v1.0.3 fixes and features included"
   },
   "latestPrerelease": {
-    "versionCode": 10007,
-    "versionName": "1.0.3",
+    "versionCode": 10008,
+    "versionName": "1.0.4",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/HMCLPE-R-v1.0.3-debug.apk"],
-    "updateLog": "<b>v1.0.3</b><br><br>World download fix, Java 21 launch fix, version list extended to 26.3, user agreement, world quick launch."
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/HMCLPE-R-v1.0.4-debug.apk"],
+    "updateLog": "<b>v1.0.4</b><br><br>Update animation, enhanced download progress UI, world download fixes."
   }
 }
