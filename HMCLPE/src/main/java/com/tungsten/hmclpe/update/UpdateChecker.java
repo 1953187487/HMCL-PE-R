@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
+import android.os.Looper;
 
 import com.google.gson.Gson;
 import com.tungsten.hmclpe.launcher.MainActivity;
@@ -13,7 +14,7 @@ import java.io.IOException;
 
 public class UpdateChecker {
 
-    public static final String UPDATE_URL = "https://raw.githubusercontent.com/Tungstend/HMCL-PE/main/launcher_version.json";
+    public static final String UPDATE_URL = "https://raw.githubusercontent.com/1953187487/HMCL-PE-R/main/launcher_version.json";
 
     private Context context;
     private MainActivity activity;
@@ -25,61 +26,62 @@ public class UpdateChecker {
     public UpdateChecker (Context context, MainActivity activity) {
         this.context = context;
         this.activity = activity;
-        handler = new Handler();
+        handler = new Handler(Looper.getMainLooper());
     }
 
     public void check (boolean getBetaVersion,UpdateCallback callback) {
-        if (!isChecking) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        if (callback != null) {
-                            handler.post(callback::onCheck);
-                        }
-                        isChecking = true;
-                        String updateJson = NetworkUtils.doGet(NetworkUtils.toURL(UPDATE_URL));
-                        UpdateJSON json = new Gson().fromJson(updateJson,UpdateJSON.class);
-                        LauncherVersion latest;
-                        boolean isBeta;
-                        if (getBetaVersion) {
-                            LauncherVersion betaVersion = json.latestPrerelease;
-                            LauncherVersion releaseVersion = json.latestRelease;
-                            latest = betaVersion.versionCode > releaseVersion.versionCode ? betaVersion : releaseVersion;
-                            isBeta = betaVersion.versionCode > releaseVersion.versionCode;
-                        }
-                        else {
-                            latest = json.latestRelease;
-                            isBeta = false;
-                        }
-                        if (latest.versionCode > getPackageVersionCode()) {
-                            showUpdateDialog(latest,isBeta);
-                            if (callback != null) {
-                                handler.post(() -> {
-                                    callback.onFinish(false);
-                                });
-                            }
-                        }
-                        else {
-                            if (callback != null) {
-                                handler.post(() -> {
-                                    callback.onFinish(true);
-                                });
-                            }
-                        }
-                        isChecking = false;
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        if (callback != null) {
-                            handler.post(() -> {
-                                callback.onFinish(true);
-                            });
-                        }
-                        isChecking = false;
+        if (isChecking) {
+            if (callback != null) {
+                handler.post(() -> callback.onFinish(true));
+            }
+            return;
+        }
+        new Thread(() -> {
+            isChecking = true;
+            try {
+                if (callback != null) {
+                    handler.post(callback::onCheck);
+                }
+                String updateJson = NetworkUtils.doGet(NetworkUtils.toURL(UPDATE_URL));
+                if (updateJson == null || updateJson.trim().isEmpty()) {
+                    throw new IOException("Empty version payload");
+                }
+                UpdateJSON json = new Gson().fromJson(updateJson, UpdateJSON.class);
+                if (json == null || json.latestRelease == null) {
+                    throw new IOException("Invalid version payload");
+                }
+                LauncherVersion latest;
+                boolean isBeta;
+                if (getBetaVersion && json.latestPrerelease != null) {
+                    LauncherVersion betaVersion = json.latestPrerelease;
+                    LauncherVersion releaseVersion = json.latestRelease;
+                    latest = betaVersion.versionCode > releaseVersion.versionCode ? betaVersion : releaseVersion;
+                    isBeta = betaVersion.versionCode > releaseVersion.versionCode;
+                }
+                else {
+                    latest = json.latestRelease;
+                    isBeta = false;
+                }
+                if (latest.versionCode > getPackageVersionCode()) {
+                    showUpdateDialog(latest, isBeta);
+                    if (callback != null) {
+                        handler.post(() -> callback.onFinish(false));
                     }
                 }
-            }).start();
-        }
+                else {
+                    if (callback != null) {
+                        handler.post(() -> callback.onFinish(true));
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                if (callback != null) {
+                    handler.post(() -> callback.onFinish(true));
+                }
+            } finally {
+                isChecking = false;
+            }
+        }).start();
     }
 
     private int getPackageVersionCode() {

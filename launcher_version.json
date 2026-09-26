@@ -1,16 +1,16 @@
 {
   "latestRelease": {
-    "versionCode": 10000,
-    "versionName": "1.0.0",
-    "date": "2026.09.25",
-    "url": ["https://github.com/HMCL-PE-Renewed/HMCL-PE-R/releases/download/v1.0.0/HMCLPE-R-release.apk"],
-    "updateLog": "First community fork release. Restores HMCL-PE for Android with GPLv3 attribution preserved."
+    "versionCode": 10002,
+    "versionName": "1.0.1",
+    "date": "2026.09.26",
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.1/HMCLPE-R-v1.0.1-debug.apk"],
+    "updateLog": "<b>v1.0.1</b><br><br>• Resource pack & world download pages: added Modrinth / CurseForge source switcher.<br>• Java runtime paths now expose 8 / 17 / 21 / 25 as selectable rows.<br>• Splash installer auto-installs Java 21 / 25 when bundled assets are present.<br>• Overhauled the update checker: one-click download + auto install."
   },
   "latestPrerelease": {
-    "versionCode": 10000,
-    "versionName": "1.0.0",
-    "date": "2026.09.25",
-    "url": ["https://github.com/HMCL-PE-Renewed/HMCL-PE-R/releases/download/v1.0.0/HMCLPE-R-release.apk"],
-    "updateLog": "First community fork release."
+    "versionCode": 10002,
+    "versionName": "1.0.1",
+    "date": "2026.09.26",
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.1/HMCLPE-R-v1.0.1-debug.apk"],
+    "updateLog": "<b>v1.0.1</b><br><br>Multi-source download support, Java 8/17/21/25 selectable paths, updated UI."
   }
 }

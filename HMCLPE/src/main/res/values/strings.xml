@@ -705,6 +705,13 @@
     <string name="dialog_update_log">Changelog</string>
     <string name="dialog_update_update">Update</string>
     <string name="dialog_update_ignore">Ignore</string>
+    <string name="dialog_update_downloading">Downloading…</string>
+    <string name="dialog_update_install">Install</string>
+    <string name="dialog_update_failed">Update failed, tap to retry</string>
+    <string name="dialog_update_checking">Checking for updates…</string>
+    <string name="dialog_update_latest">You are up to date</string>
+    <string name="dialog_update_progress_hint">Downloading update…</string>
+    <string name="dialog_update_no_network">Network error, check your connection</string>
     <string name="exterior_setting_ui_theme_title">Appearance</string>
     <string name="exterior_setting_ui_theme">Theme</string>
     <string name="exterior_setting_ui_bar_trans">Transparent titlebar</string>
