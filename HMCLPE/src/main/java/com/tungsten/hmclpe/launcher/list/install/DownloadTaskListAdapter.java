@@ -44,9 +44,11 @@ public class DownloadTaskListAdapter extends RecyclerView.Adapter<DownloadTaskLi
         holder.fileName.setText(downloadTaskListBean.name);
         if (checkMod || (!downloadTaskListBean.name.equals(context.getString(R.string.dialog_install_assets_check)) && !downloadTaskListBean.name.equals(context.getString(R.string.dialog_install_game_install_forge_build)) && (downloadTaskListBean.path == null || downloadTaskListBean.path.equals("")) && (downloadTaskListBean.url == null || downloadTaskListBean.url.equals("")) && (downloadTaskListBean.sha1 == null || downloadTaskListBean.sha1.equals("")))) {
             holder.progressBar.setIndeterminate(true);
+            holder.progressText.setText("");
         }
         else {
             holder.progressBar.setIndeterminate(false);
+            holder.progressText.setText(downloadTaskListBean.progress + "%");
         }
     }
 
@@ -86,11 +88,13 @@ public class DownloadTaskListAdapter extends RecyclerView.Adapter<DownloadTaskLi
 
         private final TextView fileName;
         private final ProgressBar progressBar;
+        private final TextView progressText;
 
         public ViewHolder(View parent) {
             super(parent);
             this.progressBar = parent.findViewById(R.id.download_task_progress);
             this.fileName = parent.findViewById(R.id.download_task_name);
+            this.progressText = parent.findViewById(R.id.download_task_progress_text);
         }
     }
 }
