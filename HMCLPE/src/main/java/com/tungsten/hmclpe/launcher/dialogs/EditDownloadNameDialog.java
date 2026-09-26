@@ -92,10 +92,11 @@ public class EditDownloadNameDialog extends Dialog implements View.OnClickListen
                         gameDir = privateGameSetting.gameDirSetting.path;
                     }
                 }
-                FileUtils.createDirectory(gameDir + (ui.resourceType == 0 ? "/mods/" : "/resourcepacks/"));
+                String subDir = getSubDirForType(ui.resourceType);
+                FileUtils.createDirectory(gameDir + subDir);
                 String name = version.getName();
                 String url = version.getFile().getUrl();
-                String path = dir == null ? (gameDir + (ui.resourceType == 0 ? "/mods/" : "/resourcepacks/") + editText.getText().toString()) : dir + "/" + editText.getText().toString();
+                String path = dir == null ? (gameDir + subDir + editText.getText().toString()) : dir + "/" + editText.getText().toString();
                 DownloadTaskListBean downloadTaskListBean = new DownloadTaskListBean(name, url, path, "");
                 ArrayList<DownloadTaskListBean> list = new ArrayList<>();
                 list.add(downloadTaskListBean);
@@ -107,5 +108,13 @@ public class EditDownloadNameDialog extends Dialog implements View.OnClickListen
         if (view == negative) {
             dismiss();
         }
+    }
+
+    private String getSubDirForType(int resourceType){
+        if (resourceType == 0) return "/mods/";
+        if (resourceType == 1) return "/";
+        if (resourceType == 2) return "/resourcepacks/";
+        if (resourceType == 3) return "/saves/";
+        return "/";
     }
 }

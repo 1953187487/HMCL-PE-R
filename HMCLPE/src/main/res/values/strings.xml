@@ -3,8 +3,8 @@
     <string name="app_full_name" translatable="false">Hello Minecraft! Launcher : Pocket Edition</string>
     <string name="app_name_pri" translatable="false">Hello Minecraft! Launcher</string>
     <string name="app_name_sec" translatable="false">Pocket Edition</string>
-    <string name="version_name" translatable="false">v1.0.0</string>
-    <string name="app_bar_title" translatable="false">Hello Minecraft! Launcher Pocket Edition v1.0.0</string>
+    <string name="version_name" translatable="false">v1.0.2</string>
+    <string name="app_bar_title" translatable="false">Hello Minecraft! Launcher Pocket Edition v1.0.2</string>
 
     <string name="dialog_outdated_warning_title">HMCL-PE-R</string>
     <string name="dialog_outdated_warning_msg">This is a community-derived work of HMCL-PE 2.0.8 by Tungstend, developed and maintained by 1953187487 under GPLv3.\nAll upstream copyright notices are preserved. Full attribution and license details are in the About page and README.</string>
@@ -712,6 +712,26 @@
     <string name="dialog_update_latest">You are up to date</string>
     <string name="dialog_update_progress_hint">Downloading update…</string>
     <string name="dialog_update_no_network">Network error, check your connection</string>
+
+    <string name="main_ui_external_sources">外部资源</string>
+    <string name="main_ui_external_sources_desc">启动源 · 渲染器</string>
+    <string name="main_ui_version_text">当前版本 v1.0.2</string>
+
+    <string name="external_sources_title">外部资源</string>
+    <string name="external_sources_refresh">刷新</string>
+    <string name="external_sources_refreshing">刷新中…</string>
+    <string name="external_sources_refresh_ok">已刷新</string>
+    <string name="external_sources_refresh_fail">刷新失败</string>
+    <string name="external_sources_launch_sources">启动源</string>
+    <string name="external_sources_renderers">渲染器</string>
+    <string name="external_sources_empty">暂无数据，点击右上角刷新</string>
+    <string name="external_sources_install">安装</string>
+    <string name="external_sources_url_copied">链接已复制</string>
+    <string name="external_sources_custom_url">自定义数据源 URL</string>
+    <string name="external_sources_custom_url_hint">https://example.com/sources.json</string>
+    <string name="external_sources_save">保存</string>
+    <string name="external_sources_reset">恢复默认</string>
+    <string name="external_sources_saved">数据源已保存</string>
     <string name="exterior_setting_ui_theme_title">Appearance</string>
     <string name="exterior_setting_ui_theme">Theme</string>
     <string name="exterior_setting_ui_bar_trans">Transparent titlebar</string>

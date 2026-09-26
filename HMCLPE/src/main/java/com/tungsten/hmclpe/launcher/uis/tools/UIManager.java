@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.tungsten.hmclpe.launcher.MainActivity;
 import com.tungsten.hmclpe.launcher.uis.account.AccountUI;
 import com.tungsten.hmclpe.launcher.uis.game.download.DownloadUI;
+import com.tungsten.hmclpe.launcher.uis.game.download.right.ExternalSourcesUI;
 import com.tungsten.hmclpe.launcher.uis.game.download.right.game.DownloadFabricAPIUI;
 import com.tungsten.hmclpe.launcher.uis.game.download.right.game.DownloadFabricUI;
 import com.tungsten.hmclpe.launcher.uis.game.download.right.game.DownloadForgeUI;
@@ -37,6 +38,7 @@ public class UIManager {
     public GameManagerUI gameManagerUI;
     public VersionListUI versionListUI;
     public DownloadUI downloadUI;
+    public ExternalSourcesUI externalSourcesUI;
     public SettingUI settingUI;
 
     public ModUpdateUI modUpdateUI;
@@ -67,6 +69,7 @@ public class UIManager {
         gameManagerUI = new GameManagerUI(context, activity);
         versionListUI = new VersionListUI(context, activity);
         downloadUI = new DownloadUI(context, activity);
+        externalSourcesUI = new ExternalSourcesUI(context, activity);
         settingUI = new SettingUI(context, activity);
 
         modUpdateUI = new ModUpdateUI(context, activity);
@@ -92,6 +95,7 @@ public class UIManager {
         gameManagerUI.onCreate();
         versionListUI.onCreate();
         downloadUI.onCreate();
+        externalSourcesUI.onCreate();
         settingUI.onCreate();
 
         modUpdateUI.onCreate();
@@ -126,6 +130,7 @@ public class UIManager {
                 gameManagerUI,
                 versionListUI,
                 downloadUI,
+                externalSourcesUI,
                 settingUI,
                 installGameUI,
                 downloadForgeUI,

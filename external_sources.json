@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "generatedAt": "2026.09.26",
+  "launchSources": [
+    {
+      "id": "minecraft-java-edition-1.8.9",
+      "name": "Minecraft 1.8.9 Java",
+      "version": "1.8.9",
+      "description": "经典 Java 版客户端，兼容 Boat / Pojav 渲染器，广泛用于小游戏服。",
+      "iconUrl": "https://assets.minecraft.net/1.8.9/minecraft.png",
+      "downloadUrl": "https://piston-data.mojang.com/packages/4d0743b51c301b24865e59cb46b156de5c0b2c87/minecraft-client.jar",
+      "pageUrl": "https://www.minecraft.net/",
+      "minLauncherVersion": "1.0.0",
+      "sha256": ""
+    },
+    {
+      "id": "minecraft-java-edition-1.12.2",
+      "name": "Minecraft 1.12.2 Java",
+      "version": "1.12.2",
+      "description": "末影龙之后的经典版本，适合中后期服务器与轻量级模组。",
+      "iconUrl": "https://assets.minecraft.net/1.12.2/minecraft.png",
+      "downloadUrl": "https://piston-data.mojang.com/packages/316e953d6b0d451b34f5b8b0c58f4f2e39a7c3c6/minecraft-client.jar",
+      "pageUrl": "https://www.minecraft.net/",
+      "minLauncherVersion": "1.0.0",
+      "sha256": ""
+    },
+    {
+      "id": "minecraft-java-edition-1.16.5",
+      "name": "Minecraft 1.16.5 Java",
+      "version": "1.16.5",
+      "description": "末地更新完整版本，Boat 官方主要支持版本。",
+      "iconUrl": "https://assets.minecraft.net/1.16.5/minecraft.png",
+      "downloadUrl": "https://piston-data.mojang.com/packages/152590507a921b78403522f91c46d7d3c32c274c/minecraft-client.jar",
+      "pageUrl": "https://www.minecraft.net/",
+      "minLauncherVersion": "1.0.0",
+      "sha256": ""
+    },
+    {
+      "id": "minecraft-java-edition-1.19.4",
+      "name": "Minecraft 1.19.4 Java",
+      "version": "1.19.4",
+      "description": "Tricky Trials 完整版本，PojavLauncher 主要支持版本。",
+      "iconUrl": "https://assets.minecraft.net/1.19.4/minecraft.png",
+      "downloadUrl": "https://piston-data.mojang.com/packages/04a248469d1c7d17a22a95d5d6c6c0e39e9b2d41/minecraft-client.jar",
+      "pageUrl": "https://www.minecraft.net/",
+      "minLauncherVersion": "1.0.0",
+      "sha256": ""
+    }
+  ],
+  "renderers": [
+    {
+      "id": "boat-renderer",
+      "name": "Boat Renderer",
+      "version": "3.1.1",
+      "description": "基于 OpenGL ES 3.x 的 3D 渲染器，支持现代 Java 版游戏。",
+      "iconUrl": "https://raw.githubusercontent.com/skydelite/Boat-renderer/main/.github/icon.png",
+      "downloadUrl": "https://github.com/skydelite/Boat-renderer/releases/latest",
+      "pageUrl": "https://github.com/skydelite/Boat-renderer",
+      "minLauncherVersion": "1.0.0",
+      "sha256": ""
+    },
+    {
+      "id": "pojav-renderer",
+      "name": "Pojav Renderer",
+      "version": "1.5.6",
+      "description": "基于 Java/OpenGL ES 3.2 的渲染器，支持最新 Java 版。",
+      "iconUrl": "https://raw.githubusercontent.com/PojavLauncherTeam/PojavLauncher/master/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+      "downloadUrl": "https://github.com/PojavLauncherTeam/PojavLauncher/releases/latest",
+      "pageUrl": "https://github.com/PojavLauncherTeam/PojavLauncher",
+      "minLauncherVersion": "1.0.0",
+      "sha256": ""
+    },
+    {
+      "id": "virgl-3.0.0",
+      "name": "VirGL 3.0.0",
+      "version": "3.0.0",
+      "description": "通过 GL4ES 将 OpenGL 3.3+ 转换为 OpenGL ES 3.0，兼容旧设备。",
+      "iconUrl": "https://raw.githubusercontent.com/KhronosGroup/VirGL/main/external/virglrenderer/data/virgl.png",
+      "downloadUrl": "https://github.com/KhronosGroup/VirGL/releases/latest",
+      "pageUrl": "https://github.com/KhronosGroup/VirGL",
+      "minLauncherVersion": "1.0.0",
+      "sha256": ""
+    }
+  ]
+}

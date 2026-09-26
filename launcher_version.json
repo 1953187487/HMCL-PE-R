@@ -1,16 +1,16 @@
 {
   "latestRelease": {
-    "versionCode": 10002,
-    "versionName": "1.0.1",
+    "versionCode": 10003,
+    "versionName": "1.0.2",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.1/HMCLPE-R-v1.0.1-debug.apk"],
-    "updateLog": "<b>v1.0.1</b><br><br>• Resource pack & world download pages: added Modrinth / CurseForge source switcher.<br>• Java runtime paths now expose 8 / 17 / 21 / 25 as selectable rows.<br>• Splash installer auto-installs Java 21 / 25 when bundled assets are present.<br>• Overhauled the update checker: one-click download + auto install."
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.2/HMCLPE-R-v1.0.2-debug.apk"],
+    "updateLog": "<b>v1.0.2</b><br><br>• Complete UI overhaul: tile-based (Minecraft-style) home screen with a hero launch card and 3x2 tile grid.<br>• New External Sources page: browse launch sources and renderers from a hosted JSON manifest, with refresh + custom URL override.<br>• Fixed world download: worlds now save to /saves/ instead of /resourcepacks/."
   },
   "latestPrerelease": {
-    "versionCode": 10002,
-    "versionName": "1.0.1",
+    "versionCode": 10003,
+    "versionName": "1.0.2",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.1/HMCLPE-R-v1.0.1-debug.apk"],
-    "updateLog": "<b>v1.0.1</b><br><br>Multi-source download support, Java 8/17/21/25 selectable paths, updated UI."
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.2/HMCLPE-R-v1.0.2-debug.apk"],
+    "updateLog": "<b>v1.0.2</b><br><br>Tile-based UI, external launch source & renderer registry, world download path fix."
   }
 }
