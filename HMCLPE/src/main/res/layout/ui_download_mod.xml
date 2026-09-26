@@ -180,15 +180,17 @@
                             android:layout_height="match_parent"
                             android:id="@+id/download_mod_arg_version"/>
 
-                        <EditText
-                            android:singleLine="true"
-                            android:background="@drawable/launcher_view_white"
-                            android:layout_width="120dp"
-                            android:layout_height="match_parent"
-                            android:textSize="@dimen/text_size_middle"
-                            android:paddingStart="9dp"
-                            android:paddingEnd="9dp"
-                            android:id="@+id/edit_download_mod_arg_version"/>
+                    <EditText
+                        android:singleLine="true"
+                        android:background="@android:color/transparent"
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/text_size_middle"
+                        android:paddingStart="9dp"
+                        android:paddingEnd="9dp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:id="@+id/edit_download_mod_arg_version"/>
 
                     </RelativeLayout>
 

@@ -7,6 +7,7 @@ import android.os.Build;
 import android.util.Log;
 
 import com.tungsten.hmclpe.launcher.launch.AccountPatch;
+import com.tungsten.hmclpe.launcher.setting.SettingUtils;
 import com.tungsten.hmclpe.launcher.setting.game.GameLaunchSetting;
 import com.tungsten.hmclpe.launcher.setting.renderer.RendererOptions;
 import com.tungsten.hmclpe.launcher.launch.LaunchVersion;
@@ -36,7 +37,8 @@ public class PojavLauncher {
             String javaPath = gameLaunchSetting.javaPath;
             JREUtils.relocateLibPath(context,javaPath);
             String libraryPath = javaPath + "/lib/aarch64/jli:" + javaPath + "/lib/aarch64:" + AppManifest.POJAV_LIB_DIR + "/lwjgl3:" + JREUtils.LD_LIBRARY_PATH + ":" + AppManifest.POJAV_LIB_DIR + "/lwjgl3";;
-            boolean isJava17 = javaPath.endsWith("JRE17");
+            int javaMajor = SettingUtils.getJavaVersionByName(javaPath);
+            boolean isJava17 = (javaMajor == 17);
             String classPath = getLWJGL3ClassPath() + ":" + version.getClassPath(gameLaunchSetting.gameFileDirectory,isHighVersion(gameLaunchSetting),isJava17);
             Vector<String> args = new Vector<String>();
             Tools.getCacioJavaArgs(context, args, !isJava17, width, height);

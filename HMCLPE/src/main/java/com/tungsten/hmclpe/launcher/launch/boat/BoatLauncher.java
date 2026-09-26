@@ -3,6 +3,7 @@ package com.tungsten.hmclpe.launcher.launch.boat;
 import android.content.Context;
 
 import com.tungsten.hmclpe.launcher.launch.AccountPatch;
+import com.tungsten.hmclpe.launcher.setting.SettingUtils;
 import com.tungsten.hmclpe.launcher.setting.game.GameLaunchSetting;
 import com.tungsten.hmclpe.launcher.setting.renderer.RendererOptions;
 import com.tungsten.hmclpe.launcher.launch.LaunchVersion;
@@ -29,7 +30,8 @@ public class BoatLauncher {
             String libraryPath;
             String classPath;
             String r = RendererOptions.getLibraryForBoat(gameLaunchSetting.boatRenderer);
-            boolean isJava17 = javaPath.endsWith("JRE17");
+            int javaMajor = SettingUtils.getJavaVersionByName(javaPath);
+            boolean isJava17 = (javaMajor == 17);
             if (!highVersion){
                 libraryPath = javaPath + "/lib/aarch64/jli:" + javaPath + "/lib/aarch64:" + AppManifest.BOAT_LIB_DIR + ":" + AppManifest.BOAT_LIB_DIR + "/lwjgl-2:" + AppManifest.BOAT_LIB_DIR + "/renderer/" + r;
                 classPath = AppManifest.BOAT_LIB_DIR + "/lwjgl-2/lwjgl.jar:" + AppManifest.BOAT_LIB_DIR + "/lwjgl-2/lwjgl_util.jar:" + version.getClassPath(gameLaunchSetting.gameFileDirectory,false,false);
