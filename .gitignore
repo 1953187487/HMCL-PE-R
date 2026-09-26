@@ -30,3 +30,4 @@ HMCLPE/release.jks
 # Local build and agent artifacts.
 javac.*.args
 .monkeycode/
+*.apk

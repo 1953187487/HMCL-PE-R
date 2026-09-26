@@ -1,16 +1,16 @@
 {
   "latestRelease": {
-    "versionCode": 10007,
-    "versionName": "1.0.3",
+    "versionCode": 10008,
+    "versionName": "1.0.4",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/HMCLPE-R-v1.0.3-debug.apk"],
-    "updateLog": "<b>v1.0.3</b><br><br>• Fixed Java launch: proper Java version detection for JRE8/17/21/25<br>• Fixed mod search UI: removed blue overlay blocking version dropdown<br>• Fixed world download: direct download without folder selection<br>• Added update complete animation in update dialog<br>• Enhanced download progress UI with percentage text<br>• Extended version list to 26.3<br>• Added user agreement on first launch<br>• Added world quick launch from context menu"
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/HMCLPE-R-v1.0.4-debug.apk"],
+    "updateLog": "<b>v1.0.4</b><br><br>• Removed Component Manager from settings<br>• Fixed game launch: improved Java version detection<br>• Fixed world download: direct path to saves directory<br>• Fixed mod search UI: no more blue overlay blocking dropdown<br>• Extended Java support: JRE8/17/21/25<br>• Added user agreement on first launch<br>• Added world quick launch from context menu<br>• Enhanced download progress with percentage text<br>• Added update complete animation<br>• Extended version list to 26.3"
   },
   "latestPrerelease": {
-    "versionCode": 10007,
-    "versionName": "1.0.3",
+    "versionCode": 10008,
+    "versionName": "1.0.4",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/HMCLPE-R-v1.0.3-debug.apk"],
-    "updateLog": "<b>v1.0.3</b><br><br>Java launch fix, mod search UI fix, world download fix, update animation, download progress enhancement."
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/HMCLPE-R-v1.0.4-debug.apk"],
+    "updateLog": "<b>v1.0.4</b><br><br>Removed component manager, fixed game launch, fixed world download, fixed mod search UI, extended Java support to 25."
   }
 }

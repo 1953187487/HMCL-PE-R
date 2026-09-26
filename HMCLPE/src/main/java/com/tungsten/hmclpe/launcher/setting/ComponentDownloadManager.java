@@ -61,6 +61,7 @@ public class ComponentDownloadManager {
         
         String arch = getDeviceArchitecture();
         
+        // Java components
         components.add(new ComponentInfo(
             "Java 8",
             getJavaDownloadUrl("8", arch),
@@ -93,6 +94,7 @@ public class ComponentDownloadManager {
             getJavaSize("25")
         ));
         
+        // Launcher components
         components.add(new ComponentInfo(
             "Boat Launcher",
             "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/boat-launcher.zip",
@@ -109,37 +111,93 @@ public class ComponentDownloadManager {
             50 * 1024 * 1024
         ));
         
+        components.add(new ComponentInfo(
+            "Caciocavallo",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/caciocavallo.zip",
+            AppManifest.CACIOCAVALLO_DIR,
+            isCaciocavalloDownloaded(),
+            20 * 1024 * 1024
+        ));
+        
+        components.add(new ComponentInfo(
+            "Caciocavallo 17",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/caciocavallo17.zip",
+            AppManifest.CACIOCAVALLO17_DIR,
+            isCaciocavallo17Downloaded(),
+            20 * 1024 * 1024
+        ));
+        
+        // Plugin components
+        components.add(new ComponentInfo(
+            "Forge Installer",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/forge-installer.zip",
+            AppManifest.PLUGIN_DIR + "/installer",
+            isPluginDownloaded("installer"),
+            5 * 1024 * 1024
+        ));
+        
+        components.add(new ComponentInfo(
+            "Touch Injector",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/touch-injector.zip",
+            AppManifest.PLUGIN_DIR + "/touch",
+            isPluginDownloaded("touch"),
+            10 * 1024 * 1024
+        ));
+        
+        components.add(new ComponentInfo(
+            "Authlib Injector",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/authlib-injector.zip",
+            AppManifest.PLUGIN_DIR + "/login/authlib-injector",
+            isPluginDownloaded("login/authlib-injector"),
+            5 * 1024 * 1024
+        ));
+        
         return components;
     }
 
     public boolean isJava8Downloaded() {
-        File javaDir = new File(AppManifest.JAVA_DIR + "/default");
-        return javaDir.exists() && new File(javaDir, "version").exists();
+        File file = new File(AppManifest.JAVA_DIR + "/default");
+        return file.exists() && new File(file, "version").exists();
     }
 
     public boolean isJava17Downloaded() {
-        File javaDir = new File(AppManifest.JAVA_DIR + "/JRE17");
-        return javaDir.exists() && new File(javaDir, "version").exists();
+        File file = new File(AppManifest.JAVA_DIR + "/JRE17");
+        return file.exists() && new File(file, "version").exists();
     }
 
     public boolean isJava21Downloaded() {
-        File javaDir = new File(AppManifest.JAVA_DIR + "/JRE21");
-        return javaDir.exists() && new File(javaDir, "version").exists();
+        File file = new File(AppManifest.JAVA_DIR + "/JRE21");
+        return file.exists() && new File(file, "version").exists();
     }
 
     public boolean isJava25Downloaded() {
-        File javaDir = new File(AppManifest.JAVA_DIR + "/JRE25");
-        return javaDir.exists() && new File(javaDir, "version").exists();
+        File file = new File(AppManifest.JAVA_DIR + "/JRE25");
+        return file.exists() && new File(file, "version").exists();
     }
 
     public boolean isBoatDownloaded() {
-        File boatDir = new File(AppManifest.BOAT_LIB_DIR);
-        return boatDir.exists() && boatDir.isDirectory();
+        File file = new File(AppManifest.BOAT_LIB_DIR);
+        return file.exists() && file.isDirectory();
     }
 
     public boolean isPojavDownloaded() {
-        File pojavDir = new File(AppManifest.POJAV_LIB_DIR);
-        return pojavDir.exists() && pojavDir.isDirectory();
+        File file = new File(AppManifest.POJAV_LIB_DIR);
+        return file.exists() && file.isDirectory();
+    }
+
+    public boolean isCaciocavalloDownloaded() {
+        File dir = new File(AppManifest.CACIOCAVALLO_DIR);
+        return dir.exists() && dir.isDirectory();
+    }
+
+    public boolean isCaciocavallo17Downloaded() {
+        File dir = new File(AppManifest.CACIOCAVALLO17_DIR);
+        return dir.exists() && dir.isDirectory();
+    }
+
+    public boolean isPluginDownloaded(String pluginPath) {
+        File pluginDir = new File(AppManifest.PLUGIN_DIR + "/" + pluginPath);
+        return pluginDir.exists() && pluginDir.isDirectory();
     }
 
     public void downloadMissingComponents() {

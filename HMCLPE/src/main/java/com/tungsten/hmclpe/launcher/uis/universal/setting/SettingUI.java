@@ -20,7 +20,6 @@ public class SettingUI extends BaseUI implements View.OnClickListener {
     public LinearLayout startUniversalSettingUI;
     public LinearLayout startExteriorSettingUI;
     public LinearLayout startDownloadSettingUI;
-    public LinearLayout startComponentManagerUI;
     public LinearLayout startHelpUI;
     public LinearLayout startFeedbackUI;
     public LinearLayout startDonateUI;
@@ -39,7 +38,6 @@ public class SettingUI extends BaseUI implements View.OnClickListener {
         startUniversalSettingUI = activity.findViewById(R.id.start_universal_setting_ui);
         startExteriorSettingUI = activity.findViewById(R.id.start_exterior_setting_ui);
         startDownloadSettingUI = activity.findViewById(R.id.start_download_setting_ui);
-        startComponentManagerUI = activity.findViewById(R.id.start_component_manager_ui);
         startHelpUI = activity.findViewById(R.id.start_help_ui);
         startFeedbackUI = activity.findViewById(R.id.start_feedback_ui);
         startDonateUI = activity.findViewById(R.id.start_donate_ui);
@@ -49,7 +47,6 @@ public class SettingUI extends BaseUI implements View.OnClickListener {
         startUniversalSettingUI.setOnClickListener(this);
         startExteriorSettingUI.setOnClickListener(this);
         startDownloadSettingUI.setOnClickListener(this);
-        startComponentManagerUI.setOnClickListener(this);
         startHelpUI.setOnClickListener(this);
         startFeedbackUI.setOnClickListener(this);
         startDonateUI.setOnClickListener(this);
@@ -103,9 +100,6 @@ public class SettingUI extends BaseUI implements View.OnClickListener {
         }
         if (v == startDownloadSettingUI){
             settingUIManager.switchSettingUIs(settingUIManager.downloadSettingUI);
-        }
-        if (v == startComponentManagerUI){
-            settingUIManager.switchSettingUIs(settingUIManager.componentManagerUI);
         }
         if (v == startHelpUI){
             settingUIManager.switchSettingUIs(settingUIManager.helpUI);
