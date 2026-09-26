@@ -108,7 +108,7 @@ public class EditDownloadNameDialog extends Dialog implements View.OnClickListen
                 DownloadTaskListBean downloadTaskListBean = new DownloadTaskListBean(name, url, path, "");
                 ArrayList<DownloadTaskListBean> list = new ArrayList<>();
                 list.add(downloadTaskListBean);
-                DownloadDialog dialog = new DownloadDialog(getContext(), ui.activity, list, alert);
+                DownloadDialog dialog = new DownloadDialog(getContext(), ui.activity, list, alert, ui.resourceType);
                 dismiss();
                 dialog.show();
             }

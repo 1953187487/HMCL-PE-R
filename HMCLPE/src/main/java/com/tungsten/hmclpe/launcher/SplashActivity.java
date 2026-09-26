@@ -30,7 +30,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.tungsten.hmclpe.R;
-import com.tungsten.hmclpe.launcher.setting.ComponentDownloadManager;
 import com.tungsten.hmclpe.launcher.setting.InitializeSetting;
 import com.tungsten.hmclpe.launcher.setting.InstallLauncherFile;
 import com.tungsten.hmclpe.launcher.setting.launcher.LauncherSetting;
@@ -199,43 +198,9 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void checkAndDownloadComponents() {
-        ComponentDownloadManager downloadManager = new ComponentDownloadManager(this);
-        downloadManager.setCallback(new ComponentDownloadManager.DownloadCallback() {
-            @Override
-            public void onProgress(String componentName, int progress, String status) {
-                runOnUiThread(() -> {
-                    loadingText.setText(status);
-                    loadingProgress.setProgress(progress);
-                    loadingProgressText.setText(progress + " %");
-                });
-            }
-
-            @Override
-            public void onCompleted(boolean success) {
-                runOnUiThread(() -> {
-                    new Thread(() -> {
-                        InstallLauncherFile.checkLauncherFiles(SplashActivity.this);
-                    }).start();
-                });
-            }
-        });
-
-        ArrayList<ComponentDownloadManager.ComponentInfo> components = downloadManager.getComponentList();
-        boolean needsDownload = false;
-        for (ComponentDownloadManager.ComponentInfo comp : components) {
-            if (!comp.downloaded) {
-                needsDownload = true;
-                break;
-            }
-        }
-
-        if (needsDownload) {
-            downloadManager.downloadMissingComponents();
-        } else {
-            new Thread(() -> {
-                InstallLauncherFile.checkLauncherFiles(SplashActivity.this);
-            }).start();
-        }
+        new Thread(() -> {
+            InstallLauncherFile.checkLauncherFiles(SplashActivity.this);
+        }).start();
     }
 
     @Override

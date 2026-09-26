@@ -18,12 +18,18 @@ import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import com.tungsten.hmclpe.R;
 import com.tungsten.hmclpe.launcher.MainActivity;
+import com.tungsten.hmclpe.launcher.game.World;
 import com.tungsten.hmclpe.launcher.list.install.DownloadTaskListAdapter;
 import com.tungsten.hmclpe.launcher.list.install.DownloadTaskListBean;
+import com.tungsten.hmclpe.manifest.AppManifest;
 import com.tungsten.hmclpe.task.DownloadTask;
+import com.tungsten.hmclpe.utils.io.FileUtils;
 import com.tungsten.hmclpe.utils.io.NetSpeed;
 import com.tungsten.hmclpe.utils.io.NetSpeedTimer;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -32,6 +38,7 @@ public class DownloadDialog extends Dialog implements View.OnClickListener, Hand
     private MainActivity activity;
     private ArrayList<DownloadTaskListBean> list;
     private boolean alert;
+    private int resourceType;
 
     private RecyclerView taskListView;
     private DownloadTaskListAdapter downloadTaskListAdapter;
@@ -44,10 +51,15 @@ public class DownloadDialog extends Dialog implements View.OnClickListener, Hand
     private DownloadTask downloadTask;
 
     public DownloadDialog(@NonNull Context context, MainActivity activity, ArrayList<DownloadTaskListBean> list, boolean alert) {
+        this(context, activity, list, alert, -1);
+    }
+
+    public DownloadDialog(@NonNull Context context, MainActivity activity, ArrayList<DownloadTaskListBean> list, boolean alert, int resourceType) {
         super(context);
         this.activity = activity;
         this.list = list;
         this.alert = alert;
+        this.resourceType = resourceType;
         setContentView(R.layout.dialog_download);
         setCancelable(false);
         init();
@@ -118,11 +130,13 @@ public class DownloadDialog extends Dialog implements View.OnClickListener, Hand
                         Exception e = new Exception(stringBuilder.toString());
                         e.printStackTrace();
                         throwException(e);
-                    }
-                    else {
+                    } else {
+                        if (resourceType == 3) {
+                            extractWorldFiles();
+                        }
                         exit();
                         if (alert) {
-                            Toast.makeText(getContext(),getContext().getString(R.string.dialog_download_success),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getContext().getString(R.string.dialog_download_success), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -135,6 +149,33 @@ public class DownloadDialog extends Dialog implements View.OnClickListener, Hand
         });
         downloadTask.setMaxTask(maxDownloadTask);
         downloadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, list);
+    }
+
+    private void extractWorldFiles() {
+        new Thread(() -> {
+            String savesDir = activity.launcherSetting.gameFileDirectory + "/saves";
+            try {
+                Path savesPath = new File(savesDir).toPath();
+                for (DownloadTaskListBean bean : list) {
+                    File zipFile = new File(bean.path);
+                    if (zipFile.exists() && zipFile.getName().endsWith(".zip")) {
+                        try {
+                            World world = new World(zipFile.toPath());
+                            String name = zipFile.getName();
+                            if (name.endsWith(".zip")) {
+                                name = name.substring(0, name.length() - 4);
+                            }
+                            world.install(savesPath, name);
+                            zipFile.delete();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     private void throwException(Exception e) {
