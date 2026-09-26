@@ -36,7 +36,7 @@ android {
         applicationId "com.hmclpe.renewed"
         minSdk 26
         targetSdk 34
-        versionCode 10004
+        versionCode 10005
         versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

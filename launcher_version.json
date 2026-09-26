@@ -1,16 +1,16 @@
 {
   "latestRelease": {
-    "versionCode": 10004,
+    "versionCode": 10005,
     "versionName": "1.0.2",
     "date": "2026.09.26",
     "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.2/HMCLPE-R-v1.0.2-debug.apk"],
-    "updateLog": "<b>v1.0.2</b><br><br>• Complete UI overhaul: tile-based (Minecraft-style) home screen with a hero launch card and 3x2 tile grid.<br>• New External Sources page: browse launch sources and renderers from a hosted JSON manifest, with refresh + custom URL override.<br>• Update dialog redesign: entire dialog is now scrollable so long changelogs can be read and the Update button stays in view.<br>• Fixed world download: worlds now save to /saves/ instead of /resourcepacks/."
+    "updateLog": "<b>v1.0.2</b><br><br>• Fixed world download: worlds now save to /saves/ instead of /resourcepacks/.<br>• Fixed update dialog: entire dialog is now scrollable so long changelogs are readable.<br>• Expanded Boat renderers: added GL4ES 1.15, Vulkan-Zink, vGPU, and GlideNuke options.<br>• Expanded Pojav renderers: added GL4ES 1.15, vGPU, and GlideNuke options.<br>• Renderer selection centralized in RendererOptions for easier future additions."
   },
   "latestPrerelease": {
-    "versionCode": 10004,
+    "versionCode": 10005,
     "versionName": "1.0.2",
     "date": "2026.09.26",
     "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.2/HMCLPE-R-v1.0.2-debug.apk"],
-    "updateLog": "<b>v1.0.2</b><br><br>Tile-based UI, external launch source & renderer registry, world download path fix, scrollable update dialog."
+    "updateLog": "<b>v1.0.2</b><br><br>World download path fix, scrollable update dialog, expanded Boat/Pojav renderer options."
   }
 }

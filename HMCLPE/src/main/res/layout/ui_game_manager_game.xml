@@ -1067,6 +1067,46 @@
                             android:textColor="@color/colorPureBlack"
                             android:id="@+id/boat_renderer_virgl_isolate"/>
 
+                        <RadioButton
+                            android:singleLine="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/game_setting_ui_boat_renderer_gl4es_115"
+                            android:textSize="@dimen/text_size_middle"
+                            android:textColor="@color/colorPureBlack"
+                            android:id="@+id/boat_renderer_gl4es_115_isolate"/>
+
+                        <RadioButton
+                            android:singleLine="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/game_setting_ui_boat_renderer_vulkan_zink"
+                            android:textSize="@dimen/text_size_middle"
+                            android:textColor="@color/colorPureBlack"
+                            android:id="@+id/boat_renderer_vulkan_zink_isolate"/>
+
+                        <RadioButton
+                            android:singleLine="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/game_setting_ui_boat_renderer_vgpu"
+                            android:textSize="@dimen/text_size_middle"
+                            android:textColor="@color/colorPureBlack"
+                            android:id="@+id/boat_renderer_vgpu_isolate"/>
+
+                        <RadioButton
+                            android:singleLine="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/game_setting_ui_boat_renderer_glidenuke"
+                            android:textSize="@dimen/text_size_middle"
+                            android:textColor="@color/colorPureBlack"
+                            android:id="@+id/boat_renderer_glidenuke_isolate"/>
+
                     </LinearLayout>
 
                     <View
@@ -1161,6 +1201,36 @@
                             android:textSize="@dimen/text_size_middle"
                             android:textColor="@color/colorPureBlack"
                             android:id="@+id/pojav_renderer_vulkan_zink_isolate"/>
+
+                        <RadioButton
+                            android:singleLine="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/game_setting_ui_pojav_renderer_gl4es_115"
+                            android:textSize="@dimen/text_size_middle"
+                            android:textColor="@color/colorPureBlack"
+                            android:id="@+id/pojav_renderer_gl4es_115_isolate"/>
+
+                        <RadioButton
+                            android:singleLine="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/game_setting_ui_pojav_renderer_vgpu"
+                            android:textSize="@dimen/text_size_middle"
+                            android:textColor="@color/colorPureBlack"
+                            android:id="@+id/pojav_renderer_vgpu_isolate"/>
+
+                        <RadioButton
+                            android:singleLine="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/game_setting_ui_pojav_renderer_glidenuke"
+                            android:textSize="@dimen/text_size_middle"
+                            android:textColor="@color/colorPureBlack"
+                            android:id="@+id/pojav_renderer_glidenuke_isolate"/>
 
                     </LinearLayout>
 

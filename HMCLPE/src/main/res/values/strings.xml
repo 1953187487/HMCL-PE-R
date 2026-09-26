@@ -41,10 +41,23 @@
     <string name="game_setting_ui_game_launcher_boat" translatable="false">Boat</string>
     <string name="game_setting_ui_game_launcher_pojav" translatable="false">PojavLauncher</string>
     <string name="game_setting_ui_boat_renderer_gl4es_114" translatable="false">Holy GL4ES (OpenGL 2.1/3.2)</string>
+    <string name="game_setting_ui_boat_renderer_gl4es_115" translatable="false">Holy GL4ES 115 (OpenGL 4.x)</string>
     <string name="game_setting_ui_boat_renderer_virgl" translatable="false">VirGLRenderer (OpenGL 4.3)</string>
+    <string name="game_setting_ui_boat_renderer_vulkan_zink" translatable="false">Vulkan Zink / OSMesa (Software)</string>
+    <string name="game_setting_ui_boat_renderer_vgpu" translatable="false">vGPU Mali (Native GLES3.2)</string>
+    <string name="game_setting_ui_boat_renderer_glidenuke" translatable="false">GlideNuke + GL4ES (GLES3 passthrough)</string>
     <string name="game_setting_ui_pojav_renderer_gl4es_114" translatable="false">Holy GL4ES (OpenGL 2.1/3.2)</string>
+    <string name="game_setting_ui_pojav_renderer_gl4es_115" translatable="false">Holy GL4ES 115 (OpenGL 4.x)</string>
     <string name="game_setting_ui_pojav_renderer_virgl" translatable="false">VirGLRenderer (OpenGL 4.3)</string>
     <string name="game_setting_ui_pojav_renderer_vulkan_zink" translatable="false">Vulkan Zink / OSMesa (Software OpenGL)</string>
+    <string name="game_setting_ui_pojav_renderer_vgpu" translatable="false">vGPU Mali (Native GLES3.2)</string>
+    <string name="game_setting_ui_pojav_renderer_glidenuke" translatable="false">GlideNuke + GL4ES (GLES3 passthrough)</string>
+    <string name="game_setting_ui_boat_renderer">Boat Renderer</string>
+    <string name="game_setting_ui_pojav_renderer">PojavLauncher Renderer</string>
+    <string name="game_setting_ui_launch_mode">Launch Method</string>
+    <string name="game_setting_ui_launch_mode_auto" translatable="false">Auto (recommended)</string>
+    <string name="game_setting_ui_launch_mode_modern" translatable="false">Modern (Java 17+ / LWJGL 3)</string>
+    <string name="game_setting_ui_launch_mode_legacy" translatable="false">Legacy (Java 8 / LWJGL 2)</string>
     <string name="dialog_color_selector_arrow" translatable="false">→</string>
     <string name="download_setting_ui_source_bmclapi" translatable="false">BMCLAPI（bangbang93，https://bmclapi2.bangbang93.com/）</string>
     <string name="ui_about_hmclpe_main" translatable="false">HMCL-PE-R (this repository)</string>
@@ -678,8 +691,6 @@
     <string name="game_setting_ui_launch_setting">Launch options</string>
     <string name="game_setting_ui_game_launcher">Game Launch</string>
     <string name="game_setting_ui_game_launcher_hint">Boat is recommended.</string>
-    <string name="game_setting_ui_boat_renderer">Boat Renderer</string>
-    <string name="game_setting_ui_pojav_renderer">PojavLauncher Renderer</string>
     <string name="universal_setting_ui_declare">Hello Minecraft! Launcher Pocket Edition is a free, open-source Minecraft launcher. This build, HMCL-PE-R, is a community-derived work of HMCL-PE 2.0.8 (Tungstend), maintained by 1953187487 under GPLv3.</string>
     <string name="universal_setting_ui_update">Update</string>
     <string name="universal_setting_ui_update_state_latest">This is the latest version.</string>

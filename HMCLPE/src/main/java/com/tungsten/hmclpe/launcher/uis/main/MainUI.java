@@ -41,7 +41,7 @@ import java.util.ArrayList;
 
 public class MainUI extends BaseUI implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    public View mainUI;
+    public LinearLayout mainUI;
 
     private LinearLayout startAccountUI;
     private LinearLayout startGameManagerUI;
@@ -49,7 +49,6 @@ public class MainUI extends BaseUI implements View.OnClickListener, AdapterView.
     private LinearLayout startDownloadUI;
     private LinearLayout startMultiPlayerUI;
     private LinearLayout startSettingUI;
-    private LinearLayout startExternalSourcesUI;
 
     private LinearLayout startGame;
     private TextView launchVersionText;
@@ -85,7 +84,6 @@ public class MainUI extends BaseUI implements View.OnClickListener, AdapterView.
         startDownloadUI = activity.findViewById(R.id.start_ui_download);
         startMultiPlayerUI = activity.findViewById(R.id.start_ui_multi_player);
         startSettingUI = activity.findViewById(R.id.start_ui_setting);
-        startExternalSourcesUI = activity.findViewById(R.id.start_ui_external_sources);
 
         startGame = activity.findViewById(R.id.launcher_play_button);
         launchVersionText = activity.findViewById(R.id.launch_version_text);
@@ -99,6 +97,7 @@ public class MainUI extends BaseUI implements View.OnClickListener, AdapterView.
         noVersionAlert = activity.findViewById(R.id.no_version_alert_text);
         currentVersionText = activity.findViewById(R.id.current_version_name_text);
 
+        //icon
         versionListIcon = activity.findViewById(R.id.version_list_icon);
         downloadIcon = activity.findViewById(R.id.download_icon);
         multiplayerIcon = activity.findViewById(R.id.multiplayer_icon);
@@ -110,7 +109,6 @@ public class MainUI extends BaseUI implements View.OnClickListener, AdapterView.
         startDownloadUI.setOnClickListener(this);
         startMultiPlayerUI.setOnClickListener(this);
         startSettingUI.setOnClickListener(this);
-        startExternalSourcesUI.setOnClickListener(this);
 
         startGame.setOnClickListener(this);
     }
@@ -246,9 +244,6 @@ public class MainUI extends BaseUI implements View.OnClickListener, AdapterView.
         }
         if (v == startSettingUI){
             activity.uiManager.switchMainUI(activity.uiManager.settingUI);
-        }
-        if (v == startExternalSourcesUI){
-            activity.uiManager.switchMainUI(activity.uiManager.externalSourcesUI);
         }
         if (v == startGame){
             String settingPath = activity.publicGameSetting.currentVersion + "/hmclpe.cfg";

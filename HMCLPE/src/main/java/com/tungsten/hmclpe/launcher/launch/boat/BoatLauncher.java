@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.tungsten.hmclpe.launcher.launch.AccountPatch;
 import com.tungsten.hmclpe.launcher.setting.game.GameLaunchSetting;
+import com.tungsten.hmclpe.launcher.setting.renderer.RendererOptions;
 import com.tungsten.hmclpe.launcher.launch.LaunchVersion;
 import com.tungsten.hmclpe.launcher.launch.TouchInjector;
 import com.tungsten.hmclpe.manifest.AppManifest;
@@ -27,7 +28,7 @@ public class BoatLauncher {
             }
             String libraryPath;
             String classPath;
-            String r = gameLaunchSetting.boatRenderer.equals("VirGL") ? "virgl" : "gl4es";
+            String r = RendererOptions.getLibraryForBoat(gameLaunchSetting.boatRenderer);
             boolean isJava17 = javaPath.endsWith("JRE17");
             if (!highVersion){
                 libraryPath = javaPath + "/lib/aarch64/jli:" + javaPath + "/lib/aarch64:" + AppManifest.BOAT_LIB_DIR + ":" + AppManifest.BOAT_LIB_DIR + "/lwjgl-2:" + AppManifest.BOAT_LIB_DIR + "/renderer/" + r;
@@ -53,13 +54,7 @@ public class BoatLauncher {
             args.add("-Dorg.lwjgl.util.Debug=true");
             args.add("-Dos.name=Linux");
             args.add("-Dlwjgl.platform=Boat");
-            if (gameLaunchSetting.boatRenderer.equals("VirGL")) {
-                args.add("-Dorg.lwjgl.opengl.libname=libGL.so.1");
-            }
-            else {
-                args.add("-Dorg.lwjgl.opengl.libname=libgl4es_114.so");
-            }
-            args.add("-Dlwjgl.platform=Boat");
+            args.add("-Dorg.lwjgl.opengl.libname=" + RendererOptions.getLwjglLibNameForBoat(gameLaunchSetting.boatRenderer));
             args.add("-Dos.name=Linux");
             args.add("-Djava.io.tmpdir=" + AppManifest.DEFAULT_CACHE_DIR);
             String[] accountArgs;

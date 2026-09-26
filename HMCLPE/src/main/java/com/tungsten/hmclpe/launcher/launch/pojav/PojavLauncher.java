@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.tungsten.hmclpe.launcher.launch.AccountPatch;
 import com.tungsten.hmclpe.launcher.setting.game.GameLaunchSetting;
+import com.tungsten.hmclpe.launcher.setting.renderer.RendererOptions;
 import com.tungsten.hmclpe.launcher.launch.LaunchVersion;
 import com.tungsten.hmclpe.launcher.launch.TouchInjector;
 import com.tungsten.hmclpe.manifest.AppManifest;
@@ -68,7 +69,7 @@ public class PojavLauncher {
                 String[] extraJavaFlags = gameLaunchSetting.extraJavaFlags.split(" ");
                 Collections.addAll(args, extraJavaFlags);
             }
-            args.add("-Dorg.lwjgl.opengl.libname=" + JREUtils.getGraphicsLibrary(gameLaunchSetting.pojavRenderer));
+            args.add("-Dorg.lwjgl.opengl.libname=" + RendererOptions.getGraphicsLibraryForPojav(gameLaunchSetting.pojavRenderer));
             args.add("-cp");
             args.add(classPath);
             args.add(version.mainClass);
