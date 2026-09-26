@@ -1,16 +1,16 @@
 {
   "latestRelease": {
-    "versionCode": 10012,
-    "versionName": "1.0.8",
+    "versionCode": 20000,
+    "versionName": "2.0.0",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.8/HMCLPE-R-v1.0.8-debug.apk"],
-    "updateLog": "<b>v1.0.8</b><br><br>• New Terracotta multiplayer: built-in P2P virtual network<br>• Multiplayer now in main menu under General section<br>• Create room and share invite code with friends<br>• Join rooms using invite code<br>• Display virtual IP:Port for in-game connection<br>• Replaced old Hin2n integration with native Terracotta UI<br>• Session persistence: room info saved locally<br>• Copy invite code and virtual IP to clipboard"
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v2.0.0/HMCLPE-R-v2.0.0-debug.apk"],
+    "updateLog": "<b>v2.0.0</b><br><br>• Dark mode: toggle in Exterior Settings<br>• Version 2.0.0 release<br>• Enhanced UI and settings<br>• Improved user experience"
   },
   "latestPrerelease": {
-    "versionCode": 10012,
-    "versionName": "1.0.8",
+    "versionCode": 20000,
+    "versionName": "2.0.0",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.8/HMCLPE-R-v1.0.8-debug.apk"],
-    "updateLog": "<b>v1.0.8</b><br><br>Terracotta multiplayer, main menu multiplayer, room creation, invite codes, virtual IP display."
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v2.0.0/HMCLPE-R-v2.0.0-debug.apk"],
+    "updateLog": "<b>v2.0.0</b><br><br>Dark mode, enhanced UI, version 2.0.0 release."
   }
 }

@@ -14,11 +14,12 @@ public class LauncherSetting {
     public boolean getBetaVersion;
     public boolean fullscreen;
     public boolean transBar;
+    public boolean darkMode;
     public String launcherTheme;
     public BackgroundSetting launcherBackground;
     public String cachePath;
 
-    public LauncherSetting(String gameFileDirectory,SourceSetting downloadUrlSource,int language,int maxDownloadTask,boolean autoDownloadTaskQuantity,boolean autoCheckUpdate,boolean getBetaVersion,boolean fullscreen,boolean transBar,String launcherTheme,BackgroundSetting launcherBackground,String cachePath){
+    public LauncherSetting(String gameFileDirectory,SourceSetting downloadUrlSource,int language,int maxDownloadTask,boolean autoDownloadTaskQuantity,boolean autoCheckUpdate,boolean getBetaVersion,boolean fullscreen,boolean transBar,boolean darkMode,String launcherTheme,BackgroundSetting launcherBackground,String cachePath){
         this.gameFileDirectory = gameFileDirectory;
         this.downloadUrlSource = downloadUrlSource;
         this.language = language;
@@ -28,6 +29,7 @@ public class LauncherSetting {
         this.getBetaVersion = getBetaVersion;
         this.fullscreen = fullscreen;
         this.transBar = transBar;
+        this.darkMode = darkMode;
         this.launcherTheme = launcherTheme;
         this.launcherBackground = launcherBackground;
         this.cachePath = cachePath;

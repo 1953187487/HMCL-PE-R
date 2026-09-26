@@ -55,6 +55,7 @@ public class ExteriorSettingUI extends BaseUI implements View.OnClickListener, C
     private View colorView;
     private TextView colorText;
     private SwitchCompat transBarSwitch;
+    private SwitchCompat darkModeSwitch;
     private SwitchCompat fullscreenSwitch;
     private LinearLayout fullscreenSetting;
     private RadioButton defaultRadio;
@@ -79,6 +80,7 @@ public class ExteriorSettingUI extends BaseUI implements View.OnClickListener, C
         colorView = activity.findViewById(R.id.theme_color_view);
         colorText = activity.findViewById(R.id.theme_color_text);
         transBarSwitch = activity.findViewById(R.id.switch_trans_bar);
+        darkModeSwitch = activity.findViewById(R.id.switch_dark_mode);
         fullscreenSwitch = activity.findViewById(R.id.switch_full_screen);
         fullscreenSetting = activity.findViewById(R.id.fullscreen_layout);
         defaultRadio = activity.findViewById(R.id.select_bg_default);
@@ -141,6 +143,7 @@ public class ExteriorSettingUI extends BaseUI implements View.OnClickListener, C
 
         selectTheme.setOnClickListener(this);
         transBarSwitch.setOnCheckedChangeListener(this);
+        darkModeSwitch.setOnCheckedChangeListener(this);
         fullscreenSwitch.setOnCheckedChangeListener(this);
         defaultRadio.setOnCheckedChangeListener(this);
         classicRadio.setOnCheckedChangeListener(this);
@@ -205,6 +208,7 @@ public class ExteriorSettingUI extends BaseUI implements View.OnClickListener, C
         });
 
         transBarSwitch.setChecked(activity.launcherSetting.transBar);
+        darkModeSwitch.setChecked(activity.launcherSetting.darkMode);
         fullscreenSwitch.setChecked(activity.launcherSetting.fullscreen);
 
         if (!(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)){
@@ -327,6 +331,11 @@ public class ExteriorSettingUI extends BaseUI implements View.OnClickListener, C
                 activity.appBar.setBackgroundColor(Color.parseColor(getThemeColor(context,activity.launcherSetting.launcherTheme)));
             }
         }
+        if (buttonView == darkModeSwitch){
+            activity.launcherSetting.darkMode = isChecked;
+            GsonUtils.saveLauncherSetting(activity.launcherSetting,AppManifest.SETTING_DIR + "/launcher_setting.json");
+            applyDarkMode(isChecked);
+        }
         if (buttonView == fullscreenSwitch){
             activity.launcherSetting.fullscreen = isChecked;
             GsonUtils.saveLauncherSetting(activity.launcherSetting,AppManifest.SETTING_DIR + "/launcher_setting.json");
@@ -401,6 +410,17 @@ public class ExteriorSettingUI extends BaseUI implements View.OnClickListener, C
             }).start();
         }
         GsonUtils.saveLauncherSetting(activity.launcherSetting,AppManifest.SETTING_DIR + "/launcher_setting.json");
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void applyDarkMode(boolean enabled) {
+        if (enabled) {
+            activity.launcherLayout.setBackgroundColor(Color.parseColor("#1E1E1E"));
+            activity.appBar.setBackgroundColor(Color.parseColor("#121212"));
+        } else {
+            activity.launcherLayout.setBackground(context.getDrawable(R.drawable.ic_background));
+            activity.appBar.setBackgroundColor(Color.parseColor(getThemeColor(context,activity.launcherSetting.launcherTheme)));
+        }
     }
 
     @SuppressLint("HandlerLeak")

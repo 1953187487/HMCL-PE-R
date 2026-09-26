@@ -1117,5 +1117,6 @@
     <string name="terracotta_loading">Connecting...</string>
     <string name="drawer_game_menu_function_multiplayer">Multiplayer</string>
     <string name="drawer_game_menu_function_multiplayer_open">Open</string>
+    <string name="exterior_setting_ui_dark_mode">Dark Mode</string>
 
 </resources>

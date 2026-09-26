@@ -134,6 +134,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     exteriorConfig.apply(MainActivity.this);
                     appBar.setBackgroundColor(launcherSetting.transBar ? getResources().getColor(R.color.launcher_ui_background) : Color.parseColor(ExteriorSettingUI.getThemeColor(MainActivity.this,launcherSetting.launcherTheme)));
 
+                    if (launcherSetting.darkMode) {
+                        launcherLayout.setBackgroundColor(Color.parseColor("#1E1E1E"));
+                        appBar.setBackgroundColor(Color.parseColor("#121212"));
+                    }
+
                     OutdatedWarningDialog.init(MainActivity.this);
 
                     isLoaded = true;

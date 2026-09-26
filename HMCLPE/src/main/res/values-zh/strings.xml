@@ -1148,5 +1148,6 @@
     <string name="terracotta_loading">连接中...</string>
     <string name="drawer_game_menu_function_multiplayer">多人联机</string>
     <string name="drawer_game_menu_function_multiplayer_open">打开</string>
+    <string name="exterior_setting_ui_dark_mode">深色模式</string>
 
 </resources>
