@@ -26,9 +26,11 @@ import androidx.annotation.NonNull;
 import com.tungsten.hmclpe.R;
 import com.tungsten.hmclpe.launcher.MainActivity;
 import com.tungsten.hmclpe.launcher.list.download.DownloadResourceAdapter;
+import com.tungsten.hmclpe.launcher.mod.LocalizedRemoteModRepository;
 import com.tungsten.hmclpe.launcher.mod.RemoteMod;
 import com.tungsten.hmclpe.launcher.mod.RemoteModRepository;
 import com.tungsten.hmclpe.launcher.mod.curse.CurseForgeRemoteModRepository;
+import com.tungsten.hmclpe.launcher.mod.modrinth.ModrinthRemoteModRepository;
 import com.tungsten.hmclpe.launcher.view.spinner.CategorySpinnerAdapter;
 import com.tungsten.hmclpe.launcher.uis.tools.BaseUI;
 import com.tungsten.hmclpe.utils.animation.CustomAnimationUtils;
@@ -66,6 +68,27 @@ public class DownloadWorldUI extends BaseUI implements View.OnClickListener, Ada
 
     private RemoteModRepository repository;
 
+    private Spinner downloadSourceSpinner;
+    private ArrayList<String> sourceList;
+    private ArrayAdapter<String> sourceListAdapter;
+
+    private class Repository extends LocalizedRemoteModRepository {
+
+        @Override
+        protected RemoteModRepository getBackedRemoteModRepository() {
+            if (downloadSourceSpinner.getSelectedItemPosition() == 1) {
+                return CurseForgeRemoteModRepository.WORLDS;
+            } else {
+                return ModrinthRemoteModRepository.WORLDS;
+            }
+        }
+
+        @Override
+        public Type getType() {
+            return Type.WORLD;
+        }
+    }
+
     public DownloadWorldUI(Context context, MainActivity activity) {
         super(context, activity);
     }
@@ -76,6 +99,7 @@ public class DownloadWorldUI extends BaseUI implements View.OnClickListener, Ada
         downloadWorldUI = activity.findViewById(R.id.ui_download_world);
 
         editName = activity.findViewById(R.id.download_world_arg_name);
+        downloadSourceSpinner = activity.findViewById(R.id.download_world_arg_source);
         editVersion = activity.findViewById(R.id.edit_download_world_arg_version);
         editVersionSpinner = activity.findViewById(R.id.download_world_arg_version);
         editCategory = activity.findViewById(R.id.download_world_arg_type);
@@ -83,6 +107,13 @@ public class DownloadWorldUI extends BaseUI implements View.OnClickListener, Ada
 
         search = activity.findViewById(R.id.search_world_list);
         search.setOnClickListener(this);
+
+        sourceList = new ArrayList<>();
+        sourceList.add(context.getString(R.string.download_mod_source_modrinth));
+        sourceList.add(context.getString(R.string.download_mod_source_curse_forge));
+        sourceListAdapter = new ArrayAdapter<>(context, R.layout.item_spinner, sourceList);
+        sourceListAdapter.setDropDownViewResource(R.layout.item_spinner_drop_down);
+        downloadSourceSpinner.setAdapter(sourceListAdapter);
 
         sortList = new ArrayList<>();
         sortList.add(context.getString(R.string.download_mod_sort_date));
@@ -105,10 +136,10 @@ public class DownloadWorldUI extends BaseUI implements View.OnClickListener, Ada
         editVersionSpinner.setAdapter(versionListAdapter);
 
         categoryList = new ArrayList<>();
-        categoryList.add(new RemoteModRepository.Category(CurseForgeRemoteModRepository.CATEGORY_ALL, "0", new ArrayList<>()));
+        categoryList.add(new RemoteModRepository.Category(ModrinthRemoteModRepository.CATEGORY_ALL, "all", new ArrayList<>()));
         categoryListAdapter = new CategorySpinnerAdapter(context,categoryList,CurseForgeRemoteModRepository.SECTION_WORLD);
-        editCategory.setAdapter(categoryListAdapter);
 
+        downloadSourceSpinner.setOnItemSelectedListener(this);
         editVersionSpinner.setOnItemSelectedListener(this);
         editCategory.setOnItemSelectedListener(this);
         editSort.setOnItemSelectedListener(this);
@@ -121,7 +152,7 @@ public class DownloadWorldUI extends BaseUI implements View.OnClickListener, Ada
         refreshText = activity.findViewById(R.id.refresh_world_list);
         refreshText.setOnClickListener(this);
 
-        repository = new CurseForgeRemoteModRepository(RemoteModRepository.Type.WORLD, CurseForgeRemoteModRepository.SECTION_WORLD);
+        repository = new Repository();
 
         worldListView = activity.findViewById(R.id.download_world_list);
         worldList = new ArrayList<>();
@@ -164,7 +195,7 @@ public class DownloadWorldUI extends BaseUI implements View.OnClickListener, Ada
                     worldList.addAll(list);
                     List<RemoteModRepository.Category> categories = repository.getCategories().collect(toList());
                     categoryList.clear();
-                    categoryList.add(new RemoteModRepository.Category(CurseForgeRemoteModRepository.CATEGORY_ALL, "0", new ArrayList<>()));
+                    categoryList.add(new RemoteModRepository.Category(downloadSourceSpinner.getSelectedItemPosition() == 1 ? CurseForgeRemoteModRepository.CATEGORY_ALL : ModrinthRemoteModRepository.CATEGORY_ALL, downloadSourceSpinner.getSelectedItemPosition() == 1 ? "0" : "all", new ArrayList<>()));
                     for (int i = 0;i < categories.size();i++) {
                         categoryList.add(categories.get(i));
                         categoryList.addAll(categories.get(i).getSubcategories());
@@ -218,7 +249,7 @@ public class DownloadWorldUI extends BaseUI implements View.OnClickListener, Ada
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (parent == editCategory || parent == editSort || parent == editVersionSpinner){
+        if (parent == downloadSourceSpinner || parent == editCategory || parent == editSort || parent == editVersionSpinner){
             search();
             if (parent == editVersionSpinner){
                 editVersion.setText((String) parent.getItemAtPosition(position));

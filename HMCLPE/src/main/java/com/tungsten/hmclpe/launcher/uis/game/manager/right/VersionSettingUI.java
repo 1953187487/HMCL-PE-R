@@ -101,8 +101,12 @@ public class VersionSettingUI extends BaseUI implements View.OnClickListener, Co
     private RadioButton checkJavaAuto;
     private RadioButton checkJava8;
     private RadioButton checkJava17;
+    private RadioButton checkJava21;
+    private RadioButton checkJava25;
     private TextView java8Path;
     private TextView java17Path;
+    private TextView java21Path;
+    private TextView java25Path;
 
     private RadioButton checkGameDirDefault;
     private RadioButton checkGameDirIsolate;
@@ -189,10 +193,16 @@ public class VersionSettingUI extends BaseUI implements View.OnClickListener, Co
         checkJavaAuto = activity.findViewById(R.id.check_java_path_auto_isolate);
         checkJava8 = activity.findViewById(R.id.check_java_path_8_isolate);
         checkJava17 = activity.findViewById(R.id.check_java_path_17_isolate);
+        checkJava21 = activity.findViewById(R.id.check_java_path_21_isolate);
+        checkJava25 = activity.findViewById(R.id.check_java_path_25_isolate);
         java8Path = activity.findViewById(R.id.java_8_path_isolate);
         java17Path = activity.findViewById(R.id.java_17_path_isolate);
+        java21Path = activity.findViewById(R.id.java_21_path_isolate);
+        java25Path = activity.findViewById(R.id.java_25_path_isolate);
         java8Path.setText(AppManifest.JAVA_DIR + "/default");
         java17Path.setText(AppManifest.JAVA_DIR + "/JRE17");
+        java21Path.setText(AppManifest.JAVA_DIR + "/JRE21");
+        java25Path.setText(AppManifest.JAVA_DIR + "/JRE25");
 
         checkGameDirDefault = activity.findViewById(R.id.check_default_game_dir_isolate);
         checkGameDirIsolate = activity.findViewById(R.id.check_isolate_game_dir_isolate);
@@ -305,6 +315,8 @@ public class VersionSettingUI extends BaseUI implements View.OnClickListener, Co
         checkJavaAuto.setOnClickListener(this);
         checkJava8.setOnClickListener(this);
         checkJava17.setOnClickListener(this);
+        checkJava21.setOnClickListener(this);
+        checkJava25.setOnClickListener(this);
 
         checkTouchInjector.setOnCheckedChangeListener(this);
 
@@ -567,19 +579,34 @@ public class VersionSettingUI extends BaseUI implements View.OnClickListener, Co
             checkJavaAuto.setChecked(true);
             checkJava8.setChecked(false);
             checkJava17.setChecked(false);
+            checkJava21.setChecked(false);
+            checkJava25.setChecked(false);
         }
         else {
-            if (setting.javaSetting.name.equals("default")){
+            checkJavaAuto.setChecked(false);
+            checkJava8.setChecked(false);
+            checkJava17.setChecked(false);
+            checkJava21.setChecked(false);
+            checkJava25.setChecked(false);
+            String javaName = setting.javaSetting.name;
+            if (javaName.equals("default")){
                 javaPathText.setText(AppManifest.JAVA_DIR + "/default");
-                checkJavaAuto.setChecked(false);
                 checkJava8.setChecked(true);
-                checkJava17.setChecked(false);
             }
-            if (setting.javaSetting.name.equals("JRE17")){
+            else if (javaName.equals("JRE17")){
                 javaPathText.setText(AppManifest.JAVA_DIR + "/JRE17");
-                checkJavaAuto.setChecked(false);
-                checkJava8.setChecked(false);
                 checkJava17.setChecked(true);
+            }
+            else if (javaName.equals("JRE21")){
+                javaPathText.setText(AppManifest.JAVA_DIR + "/JRE21");
+                checkJava21.setChecked(true);
+            }
+            else if (javaName.equals("JRE25")){
+                javaPathText.setText(AppManifest.JAVA_DIR + "/JRE25");
+                checkJava25.setChecked(true);
+            }
+            else {
+                javaPathText.setText(AppManifest.JAVA_DIR + "/" + javaName);
             }
         }
         if (setting.gameDirSetting.type == 0){
@@ -708,6 +735,8 @@ public class VersionSettingUI extends BaseUI implements View.OnClickListener, Co
             javaPathText.setText(context.getString(R.string.game_setting_ui_java_path_auto));
             checkJava8.setChecked(false);
             checkJava17.setChecked(false);
+            checkJava21.setChecked(false);
+            checkJava25.setChecked(false);
             privateGameSetting.javaSetting.autoSelect = true;
             GsonUtils.savePrivateGameSetting(privateGameSetting, activity.launcherSetting.gameFileDirectory + "/versions/" + versionName + "/hmclpe.cfg");
         }
@@ -715,6 +744,8 @@ public class VersionSettingUI extends BaseUI implements View.OnClickListener, Co
             javaPathText.setText(AppManifest.JAVA_DIR + "/default");
             checkJavaAuto.setChecked(false);
             checkJava17.setChecked(false);
+            checkJava21.setChecked(false);
+            checkJava25.setChecked(false);
             privateGameSetting.javaSetting.autoSelect = false;
             privateGameSetting.javaSetting.name = "default";
             GsonUtils.savePrivateGameSetting(privateGameSetting, activity.launcherSetting.gameFileDirectory + "/versions/" + versionName + "/hmclpe.cfg");
@@ -723,8 +754,30 @@ public class VersionSettingUI extends BaseUI implements View.OnClickListener, Co
             javaPathText.setText(AppManifest.JAVA_DIR + "/JRE17");
             checkJavaAuto.setChecked(false);
             checkJava8.setChecked(false);
+            checkJava21.setChecked(false);
+            checkJava25.setChecked(false);
             privateGameSetting.javaSetting.autoSelect = false;
             privateGameSetting.javaSetting.name = "JRE17";
+            GsonUtils.savePrivateGameSetting(privateGameSetting, activity.launcherSetting.gameFileDirectory + "/versions/" + versionName + "/hmclpe.cfg");
+        }
+        if (v == checkJava21 && privateGameSetting != null){
+            javaPathText.setText(AppManifest.JAVA_DIR + "/JRE21");
+            checkJavaAuto.setChecked(false);
+            checkJava8.setChecked(false);
+            checkJava17.setChecked(false);
+            checkJava25.setChecked(false);
+            privateGameSetting.javaSetting.autoSelect = false;
+            privateGameSetting.javaSetting.name = "JRE21";
+            GsonUtils.savePrivateGameSetting(privateGameSetting, activity.launcherSetting.gameFileDirectory + "/versions/" + versionName + "/hmclpe.cfg");
+        }
+        if (v == checkJava25 && privateGameSetting != null){
+            javaPathText.setText(AppManifest.JAVA_DIR + "/JRE25");
+            checkJavaAuto.setChecked(false);
+            checkJava8.setChecked(false);
+            checkJava17.setChecked(false);
+            checkJava21.setChecked(false);
+            privateGameSetting.javaSetting.autoSelect = false;
+            privateGameSetting.javaSetting.name = "JRE25";
             GsonUtils.savePrivateGameSetting(privateGameSetting, activity.launcherSetting.gameFileDirectory + "/versions/" + versionName + "/hmclpe.cfg");
         }
         if (v == checkGameDirDefault && privateGameSetting != null){

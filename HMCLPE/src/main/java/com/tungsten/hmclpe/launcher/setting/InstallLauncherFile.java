@@ -104,6 +104,8 @@ public class InstallLauncherFile {
          */
         checkJava8(activity, progressCallback);
         checkJava17(activity, progressCallback);
+        checkJava21(activity, progressCallback);
+        checkJava25(activity, progressCallback);
         activity.runOnUiThread(() -> {
             enterLauncher(activity);
         });
@@ -161,6 +163,48 @@ public class InstallLauncherFile {
             unpack200(activity.getApplicationContext().getApplicationInfo().nativeLibraryDir, AppManifest.JAVA_DIR + "/JRE17");
             try {
                 postPrepare(activity, "default");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    public static void checkJava21(SplashActivity activity, AssetsUtils.ProgressCallback callback){
+        activity.runOnUiThread(() -> {
+            activity.loadingText.setText(activity.getString(R.string.loading_hint_java_21));
+        });
+        String assetVersion = AssetsUtils.readAssetsTxt(activity, "app_runtime/java/JRE21/version");
+        if (assetVersion == null){
+            return;
+        }
+        if (!new File(AppManifest.JAVA_DIR + "/JRE21").exists() || !new File(AppManifest.JAVA_DIR + "/JRE21/version").exists() || Integer.parseInt(Objects.requireNonNull(FileStringUtils.getStringFromFile(AppManifest.JAVA_DIR + "/JRE21/version"))) < Integer.parseInt(assetVersion)) {
+            FileUtils.deleteDirectory(AppManifest.JAVA_DIR + "/JRE21");
+            AssetsUtils.getInstance(activity).setProgressCallback(callback).copyOnMainThread("app_runtime/java/JRE21",AppManifest.JAVA_DIR + "/JRE21");
+            unpack200(activity.getApplicationContext().getApplicationInfo().nativeLibraryDir, AppManifest.JAVA_DIR + "/JRE21");
+            try {
+                postPrepare(activity, "JRE21");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    public static void checkJava25(SplashActivity activity, AssetsUtils.ProgressCallback callback){
+        activity.runOnUiThread(() -> {
+            activity.loadingText.setText(activity.getString(R.string.loading_hint_java_25));
+        });
+        String assetVersion = AssetsUtils.readAssetsTxt(activity, "app_runtime/java/JRE25/version");
+        if (assetVersion == null){
+            return;
+        }
+        if (!new File(AppManifest.JAVA_DIR + "/JRE25").exists() || !new File(AppManifest.JAVA_DIR + "/JRE25/version").exists() || Integer.parseInt(Objects.requireNonNull(FileStringUtils.getStringFromFile(AppManifest.JAVA_DIR + "/JRE25/version"))) < Integer.parseInt(assetVersion)) {
+            FileUtils.deleteDirectory(AppManifest.JAVA_DIR + "/JRE25");
+            AssetsUtils.getInstance(activity).setProgressCallback(callback).copyOnMainThread("app_runtime/java/JRE25",AppManifest.JAVA_DIR + "/JRE25");
+            unpack200(activity.getApplicationContext().getApplicationInfo().nativeLibraryDir, AppManifest.JAVA_DIR + "/JRE25");
+            try {
+                postPrepare(activity, "JRE25");
             } catch (IOException e) {
                 e.printStackTrace();
             }

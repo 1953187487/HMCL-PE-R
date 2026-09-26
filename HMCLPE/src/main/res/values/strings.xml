@@ -28,6 +28,12 @@
     <string name="install_game_ui_quilt_api" translatable="false">Quilt API</string>
     <string name="download_mod_source_curse_forge" translatable="false">CurseForge</string>
     <string name="download_mod_source_modrinth" translatable="false">Modrinth</string>
+    <string name="download_resource_pack_ui_source">Download Source</string>
+    <string name="download_world_ui_source">Download Source</string>
+    <string name="loading_hint_java_21">Checking Java 21…</string>
+    <string name="loading_hint_java_25">Checking Java 25…</string>
+    <string name="game_setting_ui_java_path_21">21 (64 bit)</string>
+    <string name="game_setting_ui_java_path_25">25 (64 bit)</string>
     <string name="download_resource_mcbbs" translatable="false">MCBBS</string>
     <string name="download_resource_curse_forge" translatable="false">CurseForge</string>
     <string name="download_resource_modrinth" translatable="false">Modrinth</string>

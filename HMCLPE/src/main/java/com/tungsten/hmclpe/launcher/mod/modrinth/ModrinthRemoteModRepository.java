@@ -27,22 +27,26 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class ModrinthRemoteModRepository implements RemoteModRepository {
-    public static final ModrinthRemoteModRepository MODS = new ModrinthRemoteModRepository("mod");
-    public static final ModrinthRemoteModRepository MODPACKS = new ModrinthRemoteModRepository("modpack");
+    public static final ModrinthRemoteModRepository MODS = new ModrinthRemoteModRepository("mod", Type.MOD);
+    public static final ModrinthRemoteModRepository MODPACKS = new ModrinthRemoteModRepository("modpack", Type.MODPACK);
+    public static final ModrinthRemoteModRepository RESOURCE_PACKS = new ModrinthRemoteModRepository("resourcepack", Type.RESOURCE_PACK);
+    public static final ModrinthRemoteModRepository WORLDS = new ModrinthRemoteModRepository("world", Type.WORLD);
 
     private static final String PREFIX = "https://api.modrinth.com";
 
     public static final Category CATEGORY_ALL = new Category();
 
     private final String projectType;
+    private final Type type;
 
-    private ModrinthRemoteModRepository(String projectType) {
+    private ModrinthRemoteModRepository(String projectType, Type type) {
         this.projectType = projectType;
+        this.type = type;
     }
 
     @Override
     public Type getType() {
-        return Type.MOD;
+        return type;
     }
 
     private static String convertSortType(SortType sortType) {

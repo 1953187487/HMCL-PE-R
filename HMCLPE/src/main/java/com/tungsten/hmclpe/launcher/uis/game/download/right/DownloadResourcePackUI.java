@@ -26,9 +26,11 @@ import androidx.annotation.NonNull;
 import com.tungsten.hmclpe.R;
 import com.tungsten.hmclpe.launcher.MainActivity;
 import com.tungsten.hmclpe.launcher.list.download.DownloadResourceAdapter;
+import com.tungsten.hmclpe.launcher.mod.LocalizedRemoteModRepository;
 import com.tungsten.hmclpe.launcher.mod.RemoteMod;
 import com.tungsten.hmclpe.launcher.mod.RemoteModRepository;
 import com.tungsten.hmclpe.launcher.mod.curse.CurseForgeRemoteModRepository;
+import com.tungsten.hmclpe.launcher.mod.modrinth.ModrinthRemoteModRepository;
 import com.tungsten.hmclpe.launcher.setting.SettingUtils;
 import com.tungsten.hmclpe.launcher.uis.tools.BaseUI;
 import com.tungsten.hmclpe.launcher.view.spinner.CategorySpinnerAdapter;
@@ -74,6 +76,27 @@ public class DownloadResourcePackUI extends BaseUI implements View.OnClickListen
 
     private RemoteModRepository repository;
 
+    private Spinner downloadSourceSpinner;
+    private ArrayList<String> sourceList;
+    private ArrayAdapter<String> sourceListAdapter;
+
+    private class Repository extends LocalizedRemoteModRepository {
+
+        @Override
+        protected RemoteModRepository getBackedRemoteModRepository() {
+            if (downloadSourceSpinner.getSelectedItemPosition() == 1) {
+                return CurseForgeRemoteModRepository.RESOURCE_PACKS;
+            } else {
+                return ModrinthRemoteModRepository.RESOURCE_PACKS;
+            }
+        }
+
+        @Override
+        public Type getType() {
+            return Type.RESOURCE_PACK;
+        }
+    }
+
     public DownloadResourcePackUI(Context context, MainActivity activity) {
         super(context, activity);
     }
@@ -84,6 +107,7 @@ public class DownloadResourcePackUI extends BaseUI implements View.OnClickListen
         downloadResourcePackUI = activity.findViewById(R.id.ui_download_resource_pack);
 
         gameSpinner = activity.findViewById(R.id.download_resource_pack_arg_game);
+        downloadSourceSpinner = activity.findViewById(R.id.download_resource_pack_arg_source);
         editName = activity.findViewById(R.id.download_resource_pack_arg_name);
         editVersion = activity.findViewById(R.id.edit_download_resource_pack_arg_version);
         editVersionSpinner = activity.findViewById(R.id.download_resource_pack_arg_version);
@@ -96,6 +120,13 @@ public class DownloadResourcePackUI extends BaseUI implements View.OnClickListen
         gameList = SettingUtils.getLocalVersionNames(activity.launcherSetting.gameFileDirectory);
         gameListAdapter = new ArrayAdapter<>(context,R.layout.item_spinner,gameList);
         gameSpinner.setAdapter(gameListAdapter);
+
+        sourceList = new ArrayList<>();
+        sourceList.add(context.getString(R.string.download_mod_source_modrinth));
+        sourceList.add(context.getString(R.string.download_mod_source_curse_forge));
+        sourceListAdapter = new ArrayAdapter<>(context, R.layout.item_spinner, sourceList);
+        sourceListAdapter.setDropDownViewResource(R.layout.item_spinner_drop_down);
+        downloadSourceSpinner.setAdapter(sourceListAdapter);
 
         sortList = new ArrayList<>();
         sortList.add(context.getString(R.string.download_mod_sort_date));
@@ -118,11 +149,12 @@ public class DownloadResourcePackUI extends BaseUI implements View.OnClickListen
         editVersionSpinner.setAdapter(versionListAdapter);
 
         categoryList = new ArrayList<>();
-        categoryList.add(new RemoteModRepository.Category(CurseForgeRemoteModRepository.CATEGORY_ALL, "0", new ArrayList<>()));
+        categoryList.add(new RemoteModRepository.Category(ModrinthRemoteModRepository.CATEGORY_ALL, "all", new ArrayList<>()));
         categoryListAdapter = new CategorySpinnerAdapter(context,categoryList,CurseForgeRemoteModRepository.SECTION_RESOURCE_PACK);
         editCategory.setAdapter(categoryListAdapter);
 
         gameSpinner.setOnItemSelectedListener(this);
+        downloadSourceSpinner.setOnItemSelectedListener(this);
         editVersionSpinner.setOnItemSelectedListener(this);
         editCategory.setOnItemSelectedListener(this);
         editSort.setOnItemSelectedListener(this);
@@ -135,7 +167,7 @@ public class DownloadResourcePackUI extends BaseUI implements View.OnClickListen
         refreshText = activity.findViewById(R.id.refresh_resource_pack_list);
         refreshText.setOnClickListener(this);
 
-        repository = new CurseForgeRemoteModRepository(RemoteModRepository.Type.RESOURCE_PACK,CurseForgeRemoteModRepository.SECTION_RESOURCE_PACK);
+        repository = new Repository();
 
         resourcePackListView = activity.findViewById(R.id.download_resource_pack_list);
         resourcePackList = new ArrayList<>();
@@ -206,7 +238,7 @@ public class DownloadResourcePackUI extends BaseUI implements View.OnClickListen
                     resourcePackList.addAll(list);
                     List<RemoteModRepository.Category> categories = repository.getCategories().collect(toList());
                     categoryList.clear();
-                    categoryList.add(new RemoteModRepository.Category(CurseForgeRemoteModRepository.CATEGORY_ALL, "0", new ArrayList<>()));
+                    categoryList.add(new RemoteModRepository.Category(downloadSourceSpinner.getSelectedItemPosition() == 1 ? CurseForgeRemoteModRepository.CATEGORY_ALL : ModrinthRemoteModRepository.CATEGORY_ALL, downloadSourceSpinner.getSelectedItemPosition() == 1 ? "0" : "all", new ArrayList<>()));
                     for (int i = 0;i < categories.size();i++) {
                         categoryList.add(categories.get(i));
                         categoryList.addAll(categories.get(i).getSubcategories());
@@ -260,7 +292,7 @@ public class DownloadResourcePackUI extends BaseUI implements View.OnClickListen
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if (adapterView == editCategory || adapterView == editSort || adapterView == editVersionSpinner){
+        if (adapterView == downloadSourceSpinner || adapterView == editCategory || adapterView == editSort || adapterView == editVersionSpinner){
             search();
             if (adapterView == editVersionSpinner){
                 editVersion.setText((String) adapterView.getItemAtPosition(i));
