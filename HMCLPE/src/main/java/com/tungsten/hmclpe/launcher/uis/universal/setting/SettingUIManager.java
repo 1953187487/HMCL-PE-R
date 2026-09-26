@@ -10,6 +10,7 @@ import com.tungsten.hmclpe.launcher.uis.universal.setting.right.help.AboutUsUI;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.help.DonateUI;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.help.FeedbackUI;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.help.HelpUI;
+import com.tungsten.hmclpe.launcher.uis.universal.setting.right.launcher.ComponentManagerUI;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.launcher.DownloadSettingUI;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.launcher.ExteriorSettingUI;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.launcher.UniversalSettingUI;
@@ -20,6 +21,7 @@ public class SettingUIManager {
     public DownloadSettingUI downloadSettingUI;
     public ExteriorSettingUI exteriorSettingUI;
     public UniversalSettingUI universalSettingUI;
+    public ComponentManagerUI componentManagerUI;
     public HelpUI helpUI;
     public FeedbackUI feedbackUI;
     public DonateUI donateUI;
@@ -32,6 +34,7 @@ public class SettingUIManager {
         downloadSettingUI = new DownloadSettingUI(context,activity);
         exteriorSettingUI = new ExteriorSettingUI(context,activity);
         universalSettingUI = new UniversalSettingUI(context,activity);
+        componentManagerUI = new ComponentManagerUI(context,activity);
         helpUI = new HelpUI(context,activity);
         feedbackUI = new FeedbackUI(context,activity);
         donateUI = new DonateUI(context,activity);
@@ -41,12 +44,13 @@ public class SettingUIManager {
         downloadSettingUI.onCreate();
         exteriorSettingUI.onCreate();
         universalSettingUI.onCreate();
+        componentManagerUI.onCreate();
         helpUI.onCreate();
         feedbackUI.onCreate();
         donateUI.onCreate();
         aboutUsUI.onCreate();
 
-        settingUIs = new BaseUI[]{universalGameSettingUI,universalSettingUI,downloadSettingUI,exteriorSettingUI,helpUI,feedbackUI,donateUI,aboutUsUI};
+        settingUIs = new BaseUI[]{universalGameSettingUI,universalSettingUI,downloadSettingUI,exteriorSettingUI,componentManagerUI,helpUI,feedbackUI,donateUI,aboutUsUI};
         switchSettingUIs(universalGameSettingUI);
     }
 

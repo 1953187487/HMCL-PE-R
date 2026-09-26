@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:visibility="invisible"
+    android:id="@+id/ui_setting_component_manager"
+    android:background="@color/launcher_ui_background"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Component Manager"
+                android:textSize="20sp"
+                android:textColor="@color/colorPureBlack"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:id="@+id/component_status_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Checking components..."
+                android:textSize="14sp"
+                android:textColor="@color/colorPureBlack"
+                android:layout_marginBottom="8dp"/>
+
+            <ProgressBar
+                android:id="@+id/component_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:max="100"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:id="@+id/check_components_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:background="@drawable/launcher_button_parent"
+                android:focusable="true"
+                android:clickable="true"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/ic_baseline_refresh_black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check Components"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPureBlack"
+                    android:layout_marginStart="18dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/download_all_components_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:background="@drawable/launcher_button_parent"
+                android:focusable="true"
+                android:clickable="true"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/ic_outline_download_black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Download All Missing"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPureBlack"
+                    android:layout_marginStart="18dp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorPureBlack"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:id="@+id/components_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

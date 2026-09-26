@@ -646,6 +646,7 @@
     <string name="setting_ui_universal">General</string>
     <string name="setting_ui_exterior">Appearance</string>
     <string name="setting_ui_download">Download</string>
+    <string name="setting_ui_component_manager">Component Manager</string>
     <string name="setting_ui_help">Help</string>
     <string name="setting_ui_feedback">Feedback</string>
     <string name="setting_ui_donate">Donators</string>
