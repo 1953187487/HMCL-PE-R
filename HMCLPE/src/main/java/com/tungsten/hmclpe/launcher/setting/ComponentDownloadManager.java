@@ -97,7 +97,7 @@ public class ComponentDownloadManager {
         // Launcher components
         components.add(new ComponentInfo(
             "Boat Launcher",
-            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/boat-launcher.zip",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/boat-launcher.zip",
             AppManifest.BOAT_LIB_DIR,
             isBoatDownloaded(),
             50 * 1024 * 1024
@@ -105,7 +105,7 @@ public class ComponentDownloadManager {
         
         components.add(new ComponentInfo(
             "Pojav Launcher",
-            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/pojav-launcher.zip",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/pojav-launcher.zip",
             AppManifest.POJAV_LIB_DIR,
             isPojavDownloaded(),
             50 * 1024 * 1024
@@ -113,7 +113,7 @@ public class ComponentDownloadManager {
         
         components.add(new ComponentInfo(
             "Caciocavallo",
-            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/caciocavallo.zip",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/caciocavallo.zip",
             AppManifest.CACIOCAVALLO_DIR,
             isCaciocavalloDownloaded(),
             20 * 1024 * 1024
@@ -121,7 +121,7 @@ public class ComponentDownloadManager {
         
         components.add(new ComponentInfo(
             "Caciocavallo 17",
-            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/caciocavallo17.zip",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/caciocavallo17.zip",
             AppManifest.CACIOCAVALLO17_DIR,
             isCaciocavallo17Downloaded(),
             20 * 1024 * 1024
@@ -130,7 +130,7 @@ public class ComponentDownloadManager {
         // Plugin components
         components.add(new ComponentInfo(
             "Forge Installer",
-            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/forge-installer.zip",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/forge-installer.zip",
             AppManifest.PLUGIN_DIR + "/installer",
             isPluginDownloaded("installer"),
             5 * 1024 * 1024
@@ -138,7 +138,7 @@ public class ComponentDownloadManager {
         
         components.add(new ComponentInfo(
             "Touch Injector",
-            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/touch-injector.zip",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/touch-injector.zip",
             AppManifest.PLUGIN_DIR + "/touch",
             isPluginDownloaded("touch"),
             10 * 1024 * 1024
@@ -146,7 +146,7 @@ public class ComponentDownloadManager {
         
         components.add(new ComponentInfo(
             "Authlib Injector",
-            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/authlib-injector.zip",
+            "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/authlib-injector.zip",
             AppManifest.PLUGIN_DIR + "/login/authlib-injector",
             isPluginDownloaded("login/authlib-injector"),
             5 * 1024 * 1024
@@ -384,7 +384,7 @@ public class ComponentDownloadManager {
     }
 
     private String getJavaDownloadUrl(String version, String arch) {
-        return "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/java-" + version + "-" + arch + ".zip";
+        return "https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.4/java-" + version + "-" + arch + ".zip";
     }
 
     private long getJavaSize(String version) {
