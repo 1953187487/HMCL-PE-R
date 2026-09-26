@@ -102,18 +102,12 @@ public class ModVersionAdapter extends BaseAdapter {
         });
         viewHolder.item.setOnClickListener(view12 -> {
             ui.selectedVersion = list.get(i);
-            if (ui.resourceType == 0 || ui.resourceType == 2) {
+            if (ui.resourceType == 0 || ui.resourceType == 2 || ui.resourceType == 3) {
                 EditDownloadNameDialog dialog = new EditDownloadNameDialog(context, ui, list.get(i), true, null);
                 dialog.show();
             }
             if (ui.resourceType == 1) {
-
-            }
-            if (ui.resourceType == 3) {
-                Intent intent = new Intent(context, FolderChooser.class);
-                intent.putExtra(Constants.SELECTION_MODE, Constants.SELECTION_MODES.SINGLE_SELECTION.ordinal());
-                intent.putExtra(Constants.INITIAL_DIRECTORY, new File(AppManifest.DEFAULT_GAME_DIR).getAbsolutePath());
-                ui.activity.startActivityForResult(intent, DownloadResourceUI.DOWNLOAD_RESOURCE_REQUEST);
+                // shaders not supported
             }
         });
         return view;
