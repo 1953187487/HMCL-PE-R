@@ -33,7 +33,7 @@ import com.tungsten.hmclpe.launcher.dialogs.control.AddViewDialog;
 import com.tungsten.hmclpe.launcher.dialogs.control.ChildManagerDialog;
 import com.tungsten.hmclpe.launcher.dialogs.control.EditControlPatternDialog;
 import com.tungsten.hmclpe.launcher.dialogs.GameLogDialog;
-import com.tungsten.hmclpe.launcher.dialogs.Hin2nMenuDialog;
+import com.tungsten.hmclpe.launcher.dialogs.TerracottaMultiplayerDialog;
 import com.tungsten.hmclpe.launcher.list.local.controller.ChildLayout;
 import com.tungsten.hmclpe.launcher.list.local.controller.ControlPattern;
 import com.tungsten.hmclpe.launcher.mod.ModManager;
@@ -86,7 +86,7 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
     public TextView mouseSizeText;
     public SeekBar mouseSizeSeekbar;
     public SwitchCompat switchHideUI;
-    public Button openHin2nMenu;
+    public Button openMultiplayerMenu;
     public Button forceExit;
     public Button addMod;
     public Button viewLog;
@@ -220,7 +220,7 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
         mouseSizeText = activity.findViewById(R.id.mouse_size_text);
         mouseSizeSeekbar = activity.findViewById(R.id.mouse_size);
         switchHideUI = activity.findViewById(R.id.switch_hide_ui);
-        openHin2nMenu = activity.findViewById(R.id.open_hin2n_menu);
+        openMultiplayerMenu = activity.findViewById(R.id.open_hin2n_menu);
         forceExit = activity.findViewById(R.id.force_exit);
         addMod = activity.findViewById(R.id.add_mod);
         viewLog = activity.findViewById(R.id.view_log);
@@ -246,7 +246,7 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
         switchSensor.setOnCheckedChangeListener(this);
         switchHalfScreen.setOnCheckedChangeListener(this);
         switchHideUI.setOnCheckedChangeListener(this);
-        openHin2nMenu.setOnClickListener(this);
+        openMultiplayerMenu.setOnClickListener(this);
         forceExit.setOnClickListener(this);
         addMod.setOnClickListener(this);
         viewLog.setOnClickListener(this);
@@ -496,10 +496,9 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
 
     @Override
     public void onClick(View view) {
-        if (view == openHin2nMenu) {
-            // 打开陶瓦联机 (Hin2n) 菜单 - 本二改新增
-            Hin2nMenuDialog hin2nDialog = new Hin2nMenuDialog(context);
-            hin2nDialog.show();
+        if (view == openMultiplayerMenu) {
+            TerracottaMultiplayerDialog dialog = new TerracottaMultiplayerDialog(context);
+            dialog.show();
         }
         if (view == forceExit) {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);

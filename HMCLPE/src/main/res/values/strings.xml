@@ -1089,4 +1089,33 @@
     <string name="help_link_license">License (GPL v3)</string>
     <string name="help_version_info">HMCL-PE-R v%s</string>
 
+    <string name="terracotta_title">Terracotta Multiplayer</string>
+    <string name="terracotta_subtitle">P2P Virtual Network for Minecraft</string>
+    <string name="terracotta_create_room">Create Room</string>
+    <string name="terracotta_create_room_desc">Host a game and invite friends</string>
+    <string name="terracotta_join_room">Join Room</string>
+    <string name="terracotta_join_room_desc">Enter an invite code to join</string>
+    <string name="terracotta_help_title">How to Use</string>
+    <string name="terracotta_help_text">Host: 1. Create a room\n2. Start your game and open to LAN\n3. Share the invite code with friends\n\nFriend: 1. Enter the invite code\n2. Join the room\n3. Add the virtual IP:Port as a server in-game</string>
+    <string name="terracotta_state_host">Hosting Room</string>
+    <string name="terracotta_state_client">Connected as Client</string>
+    <string name="terracotta_room_id_label">Room ID</string>
+    <string name="terracotta_invite_code_label">Invite Code</string>
+    <string name="terracotta_virtual_ip_label">Virtual IP:Port</string>
+    <string name="terracotta_copy">Copy</string>
+    <string name="terracotta_copy_success">Copied to clipboard</string>
+    <string name="terracotta_connection_tip">Friends can join using the invite code above. After joining, they should add the virtual IP:Port as a server address in Minecraft.</string>
+    <string name="terracotta_disconnect">Disconnect</string>
+    <string name="terracotta_join_title">Join Room</string>
+    <string name="terracotta_join_message">Enter the invite code shared by the host</string>
+    <string name="terracotta_join_positive">Join</string>
+    <string name="terracotta_join_code_hint">Enter invite code</string>
+    <string name="terracotta_join_code_empty">Invite code cannot be empty</string>
+    <string name="terracotta_room_created">Room created successfully!</string>
+    <string name="terracotta_room_joined">Joined room successfully!</string>
+    <string name="terracotta_disconnected">Disconnected</string>
+    <string name="terracotta_loading">Connecting...</string>
+    <string name="drawer_game_menu_function_multiplayer">Multiplayer</string>
+    <string name="drawer_game_menu_function_multiplayer_open">Open</string>
+
 </resources>

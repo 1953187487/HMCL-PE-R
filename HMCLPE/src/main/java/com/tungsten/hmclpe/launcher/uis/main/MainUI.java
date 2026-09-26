@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.tungsten.hmclpe.R;
 import com.tungsten.hmclpe.auth.authlibinjector.AuthlibInjectorServer;
 import com.tungsten.hmclpe.launcher.MainActivity;
+import com.tungsten.hmclpe.launcher.dialogs.TerracottaMultiplayerDialog;
 import com.tungsten.hmclpe.launcher.launch.check.LaunchTools;
 import com.tungsten.hmclpe.launcher.list.local.game.GameListBean;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.launcher.ExteriorSettingUI;
@@ -240,7 +241,8 @@ public class MainUI extends BaseUI implements View.OnClickListener, AdapterView.
             activity.uiManager.switchMainUI(activity.uiManager.downloadUI);
         }
         if (v == startMultiPlayerUI){
-
+            TerracottaMultiplayerDialog dialog = new TerracottaMultiplayerDialog(context);
+            dialog.show();
         }
         if (v == startSettingUI){
             activity.uiManager.switchMainUI(activity.uiManager.settingUI);

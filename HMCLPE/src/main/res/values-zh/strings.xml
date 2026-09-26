@@ -1120,4 +1120,33 @@
     <string name="help_link_license">许可证 (GPL v3)</string>
     <string name="help_version_info">HMCL-PE-R v%s</string>
 
+    <string name="terracotta_title">淘瓦联机</string>
+    <string name="terracotta_subtitle">Minecraft P2P 虚拟网络</string>
+    <string name="terracotta_create_room">创建房间</string>
+    <string name="terracotta_create_room_desc">创建游戏房间并邀请好友</string>
+    <string name="terracotta_join_room">加入房间</string>
+    <string name="terracotta_join_room_desc">输入邀请码加入房间</string>
+    <string name="terracotta_help_title">使用说明</string>
+    <string name="terracotta_help_text">房主：1. 创建房间\n2. 启动游戏并开放局域网\n3. 分享邀请码给好友\n\n好友：1. 输入邀请码\n2. 加入房间\n3. 在游戏中将虚拟IP:端口作为服务器地址添加</string>
+    <string name="terracotta_state_host">正在创建房间</string>
+    <string name="terracotta_state_client">已连接（客户端）</string>
+    <string name="terracotta_room_id_label">房间 ID</string>
+    <string name="terracotta_invite_code_label">邀请码</string>
+    <string name="terracotta_virtual_ip_label">虚拟 IP:端口</string>
+    <string name="terracotta_copy">复制</string>
+    <string name="terracotta_copy_success">已复制到剪贴板</string>
+    <string name="terracotta_connection_tip">好友可以使用上方的邀请码加入。加入后，应在 Minecraft 中将虚拟IP:端口作为服务器地址添加。</string>
+    <string name="terracotta_disconnect">断开连接</string>
+    <string name="terracotta_join_title">加入房间</string>
+    <string name="terracotta_join_message">输入房主分享的邀请码</string>
+    <string name="terracotta_join_positive">加入</string>
+    <string name="terracotta_join_code_hint">输入邀请码</string>
+    <string name="terracotta_join_code_empty">邀请码不能为空</string>
+    <string name="terracotta_room_created">房间创建成功！</string>
+    <string name="terracotta_room_joined">加入房间成功！</string>
+    <string name="terracotta_disconnected">已断开连接</string>
+    <string name="terracotta_loading">连接中...</string>
+    <string name="drawer_game_menu_function_multiplayer">多人联机</string>
+    <string name="drawer_game_menu_function_multiplayer_open">打开</string>
+
 </resources>

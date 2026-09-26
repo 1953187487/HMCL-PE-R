@@ -1,16 +1,16 @@
 {
   "latestRelease": {
-    "versionCode": 10011,
-    "versionName": "1.0.7",
+    "versionCode": 10012,
+    "versionName": "1.0.8",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.7/HMCLPE-R-v1.0.7-debug.apk"],
-    "updateLog": "<b>v1.0.7</b><br><br>• Redesigned UI: completely modernized launcher interface<br>• New game log viewer: view game logs with auto-scroll in control center<br>• Removed FPS counter and terminal overlay from control center<br>• Fixed world download: proper .zip extraction after download<br>• Removed donation option from settings<br>• Rewrote help page with FAQ and useful links<br>• Added smooth launch animation when entering main menu<br>• Fixed overlapping buttons in control center layout<br>• Fixed progress text overflow on splash screen"
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.8/HMCLPE-R-v1.0.8-debug.apk"],
+    "updateLog": "<b>v1.0.8</b><br><br>• New Terracotta multiplayer: built-in P2P virtual network<br>• Multiplayer now in main menu under General section<br>• Create room and share invite code with friends<br>• Join rooms using invite code<br>• Display virtual IP:Port for in-game connection<br>• Replaced old Hin2n integration with native Terracotta UI<br>• Session persistence: room info saved locally<br>• Copy invite code and virtual IP to clipboard"
   },
   "latestPrerelease": {
-    "versionCode": 10011,
-    "versionName": "1.0.7",
+    "versionCode": 10012,
+    "versionName": "1.0.8",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.7/HMCLPE-R-v1.0.7-debug.apk"],
-    "updateLog": "<b>v1.0.7</b><br><br>UI overhaul, new game log viewer, world download fix, help rewrite, launch animation, button overlap fix."
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.8/HMCLPE-R-v1.0.8-debug.apk"],
+    "updateLog": "<b>v1.0.8</b><br><br>Terracotta multiplayer, main menu multiplayer, room creation, invite codes, virtual IP display."
   }
 }
