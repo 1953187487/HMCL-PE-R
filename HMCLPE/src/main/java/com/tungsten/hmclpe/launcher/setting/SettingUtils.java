@@ -131,6 +131,19 @@ public class SettingUtils {
             return -1;
         }
         try {
+            // Parse directory names like "JRE21", "JRE17", "JRE25", "JRE8"
+            if (version.startsWith("JRE") && version.length() > 3){
+                String num = version.substring(3);
+                // Strip non-digit suffixes
+                int end = 0;
+                while (end < num.length() && Character.isDigit(num.charAt(end))){
+                    end++;
+                }
+                if (end > 0){
+                    return Integer.parseInt(num.substring(0, end));
+                }
+            }
+            // Parse version strings like "21.0.2", "1.8.0", "17.0.9"
             String[] parts = version.split("\\.");
             if (parts[0].equals("1")){
                 return parts.length > 1 ? Integer.parseInt(parts[1]) : -1;
@@ -146,7 +159,9 @@ public class SettingUtils {
      * Resolve the major version of the JRE living in the given Java directory.
      *
      * <p>The setting stores either a directory name such as {@code JRE17} or a
-     * full path such as {@code .../java/default}; both are accepted.
+     * full path such as {@code .../java/default}; both are accepted. Falls back
+     * to parsing the directory name (e.g. {@code JRE21} → 21) when the {@code
+     * release} file is missing or unreadable.
      */
     public static int getJavaVersionByName(String name){
         if (name == null || name.isEmpty()){
@@ -159,10 +174,14 @@ public class SettingUtils {
         }
         for (JavaListBean bean : getJavaVersionInfo()){
             if (bean.name.equals(dirName)){
-                return getJavaMajorVersion(bean.version);
+                int major = getJavaMajorVersion(bean.version);
+                if (major > 0) return major;
+                // Fallback: parse directory name
+                return getJavaMajorVersion(bean.name);
             }
         }
-        return -1;
+        // Fallback: parse the name itself (e.g. "JRE21" → 21)
+        return getJavaMajorVersion(name);
     }
 
     /**
@@ -182,6 +201,10 @@ public class SettingUtils {
         int newestVersion = -1;
         for (JavaListBean bean : getJavaVersionInfo()){
             int version = getJavaMajorVersion(bean.version);
+            if (version <= 0){
+                // Fallback: parse directory name (e.g. "JRE21" → 21)
+                version = getJavaMajorVersion(bean.name);
+            }
             if (version <= 0){
                 continue;
             }
@@ -205,6 +228,17 @@ public class SettingUtils {
         }
         if (newest != null){
             return newest;
+        }
+        // Last resort: try to find a JRE by directory name pattern
+        String javaPath = AppManifest.JAVA_DIR + "/";
+        if (new File(javaPath).exists()){
+            String[] dirs = new File(javaPath).list();
+            if (dirs != null){
+                for (String dir : dirs){
+                    int version = getJavaMajorVersion(dir);
+                    if (version == requiredMajor) return dir;
+                }
+            }
         }
         return "JRE17";
     }

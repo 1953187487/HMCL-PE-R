@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -54,6 +55,9 @@ public class SplashActivity extends AppCompatActivity {
 
     public LauncherSetting launcherSetting;
 
+    private static final String PREFS_NAME = "HMCLPER_P_references";
+    private static final String KEY_AGREEMENT_ACCEPTED = "agreement_accepted";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +73,12 @@ public class SplashActivity extends AppCompatActivity {
         background = findViewById(R.id.background);
 
         initTheme();
-        requestPermission();
+
+        if (!isAgreementAccepted()) {
+            showAgreementDialog();
+        } else {
+            requestPermission();
+        }
     }
 
     @Override
@@ -144,6 +153,27 @@ public class SplashActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1000);
             }
         }
+    }
+
+    private boolean isAgreementAccepted() {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getBoolean(KEY_AGREEMENT_ACCEPTED, false);
+    }
+
+    private void showAgreementDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.agreement_title)
+                .setMessage(R.string.agreement_content)
+                .setCancelable(false)
+                .setPositiveButton(R.string.agreement_accept, (dialog, which) -> {
+                    SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                    prefs.edit().putBoolean(KEY_AGREEMENT_ACCEPTED, true).apply();
+                    requestPermission();
+                })
+                .setNegativeButton("取消", (dialog, which) -> {
+                    finish();
+                })
+                .show();
     }
 
     private void init() {

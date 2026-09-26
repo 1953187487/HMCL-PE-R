@@ -92,6 +92,16 @@ public class WorldListAdapter extends BaseAdapter {
             menu.setForceShowIcon(true);
             menu.setOnMenuItemClickListener(item -> {
                 switch (item.getItemId()){
+                    case R.id.quick_launch:
+                        // Quick launch: switch to game manager for this version
+                        String wGameVersion = world.getGameVersion();
+                        if (wGameVersion != null && !wGameVersion.equals("unknown")) {
+                            activity.publicGameSetting.currentVersion = activity.launcherSetting.gameFileDirectory + "/versions/" + wGameVersion;
+                            activity.uiManager.gameManagerUI.versionName = wGameVersion;
+                            activity.uiManager.switchMainUI(activity.uiManager.gameManagerUI);
+                            activity.uiManager.gameManagerUI.gameManagerUIManager.switchGameManagerUIs(activity.uiManager.gameManagerUI.gameManagerUIManager.versionSettingUI);
+                        }
+                        return true;
                     case R.id.manage_assets:
                         if (world.getGameVersion() == null || // old game will not write game version to level.dat
                                 (VersionNumber.isIntVersionNumber(world.getGameVersion()) // we don't parse snapshot version

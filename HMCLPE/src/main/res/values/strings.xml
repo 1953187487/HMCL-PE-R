@@ -300,6 +300,7 @@
     <string name="world_menu_manage">Manage Datapacks</string>
     <string name="world_menu_export">Export World</string>
     <string name="world_menu_open_dir">Reveal in Explorer</string>
+    <string name="world_menu_quick_launch">Quick Launch</string>
     <string name="dialog_add_mojang_account_purchase"><a href="https://www.minecraft.net/zh-hans/store/minecraft-java-edition">Buy Minecraft</a></string>
     <string name="dialog_add_mojang_account_help"><a href="https://help.minecraft.net/hc/en-us/articles/360050865492-JAVA-Account-Migration-FAQ">Migrating to Microsoft Account</a></string>
     <string name="dialog_add_mojang_account_migrate"><a href="https://www.minecraft.net/en-hans/login?return_url=/en-hans/profile">Migrate to Microsoft Account</a></string>
@@ -1053,5 +1054,10 @@
     <string name="hin2n_save_session_title">Save Room Info</string>
     <string name="hin2n_save_session_tip">Enter the invite code and virtual IP from Hin2n to save them locally for easy viewing.</string>
     <string name="hin2n_save_positive">Save</string>
+
+    <string name="agreement_title">用户须知协议</string>
+    <string name="agreement_checkbox_text">我已阅读并同意用户须知协议</string>
+    <string name="agreement_accept">同意并继续</string>
+    <string name="agreement_content">欢迎使用 HMCL-PE-R 启动器！\n\n在使用本应用前，请您仔细阅读以下条款：\n\n1. 本应用为开源项目，基于 GNU General Public License v3.0 协议发布。您有权使用、修改和分发本软件，但必须保留版权声明。\n\n2. 本应用仅用于个人学习和研究目的。您不得将本应用用于任何非法目的。\n\n3. 本应用包含 Minecraft 游戏的启动和管理功能。Minecraft 是 Mojang Studios 的注册商标，我们不对 Minecraft 本身或其内容负责。\n\n4. 本应用可能需要下载 Minecraft 游戏文件、Java 运行时环境和其他依赖组件。这些下载来自官方服务器或第三方来源，我们不对下载内容的合法性负责。\n\n5. 使用本应用下载或运行 Mod、材质包、地图等内容时，您应确保遵守相应的许可证协议。\n\n6. 本应用开发者不对因使用本应用而产生的任何数据丢失、设备损坏或其他损失承担责任。\n\n7. 本应用可能会收集基本的使用统计信息（如崩溃报告），以帮助改进应用质量。不会收集个人敏感信息。\n\n8. 本应用的网络请求用于检查更新、下载游戏文件和访问 Mod 市场。请确保您的网络连接安全。\n\n9. 如果您不同意以上条款，请立即停止使用本应用并卸载。\n\n10. 继续使用本应用即表示您已阅读并同意以上全部条款。\n\n祝游戏愉快！</string>
 
 </resources>
