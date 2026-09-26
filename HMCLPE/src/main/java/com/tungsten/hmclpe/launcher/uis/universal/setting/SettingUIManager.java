@@ -7,7 +7,6 @@ import com.tungsten.hmclpe.launcher.MainActivity;
 import com.tungsten.hmclpe.launcher.uis.tools.BaseUI;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.UniversalGameSettingUI;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.help.AboutUsUI;
-import com.tungsten.hmclpe.launcher.uis.universal.setting.right.help.DonateUI;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.help.FeedbackUI;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.help.HelpUI;
 import com.tungsten.hmclpe.launcher.uis.universal.setting.right.launcher.DownloadSettingUI;
@@ -22,7 +21,6 @@ public class SettingUIManager {
     public UniversalSettingUI universalSettingUI;
     public HelpUI helpUI;
     public FeedbackUI feedbackUI;
-    public DonateUI donateUI;
     public AboutUsUI aboutUsUI;
 
     public BaseUI[] settingUIs;
@@ -34,7 +32,6 @@ public class SettingUIManager {
         universalSettingUI = new UniversalSettingUI(context,activity);
         helpUI = new HelpUI(context,activity);
         feedbackUI = new FeedbackUI(context,activity);
-        donateUI = new DonateUI(context,activity);
         aboutUsUI = new AboutUsUI(context,activity);
 
         universalGameSettingUI.onCreate();
@@ -43,10 +40,9 @@ public class SettingUIManager {
         universalSettingUI.onCreate();
         helpUI.onCreate();
         feedbackUI.onCreate();
-        donateUI.onCreate();
         aboutUsUI.onCreate();
 
-        settingUIs = new BaseUI[]{universalGameSettingUI,universalSettingUI,downloadSettingUI,exteriorSettingUI,helpUI,feedbackUI,donateUI,aboutUsUI};
+        settingUIs = new BaseUI[]{universalGameSettingUI,universalSettingUI,downloadSettingUI,exteriorSettingUI,helpUI,feedbackUI,aboutUsUI};
         switchSettingUIs(universalGameSettingUI);
     }
 

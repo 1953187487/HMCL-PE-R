@@ -3,7 +3,257 @@
     android:orientation="vertical"
     android:id="@+id/ui_help"
     android:visibility="gone"
+    android:padding="16dp"
+    android:background="@color/colorSurface"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/help_title"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/launcher_setting_button"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:singleLine="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_faq_1_title"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_faq_1_answer"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorPureBlack"
+                    android:lineSpacingMultiplier="1.2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/launcher_setting_button"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:singleLine="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_faq_2_title"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_faq_2_answer"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorPureBlack"
+                    android:lineSpacingMultiplier="1.2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/launcher_setting_button"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:singleLine="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_faq_3_title"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_faq_3_answer"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorPureBlack"
+                    android:lineSpacingMultiplier="1.2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/launcher_setting_button"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:singleLine="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_faq_4_title"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_faq_4_answer"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorPureBlack"
+                    android:lineSpacingMultiplier="1.2"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/help_links_title"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/launcher_setting_button"
+                android:padding="10dp"
+                android:layout_marginBottom="6dp"
+                android:id="@+id/help_link_github"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:singleLine="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/help_link_github"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/launcher_setting_button"
+                android:padding="10dp"
+                android:layout_marginBottom="6dp"
+                android:id="@+id/help_link_issues"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:singleLine="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/help_link_issues"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/launcher_setting_button"
+                android:padding="10dp"
+                android:layout_marginBottom="6dp"
+                android:id="@+id/help_link_tutorial"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:singleLine="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/help_link_tutorial"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/launcher_setting_button"
+                android:padding="10dp"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/help_link_license"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:singleLine="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/help_link_license"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/help_version_info"
+                android:textSize="12sp"
+                android:textColor="@color/colorPureBlack"
+                android:layout_marginTop="8dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

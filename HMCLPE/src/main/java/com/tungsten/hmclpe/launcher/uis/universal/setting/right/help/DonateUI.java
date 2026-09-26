@@ -36,20 +36,16 @@ public class DonateUI extends BaseUI implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-        CustomAnimationUtils.showViewFromLeft(donateUI,activity,context,false);
-        if (activity.isLoaded){
-            activity.uiManager.settingUI.startDonateUI.setBackground(context.getResources().getDrawable(R.drawable.launcher_button_white));
-        }
+        CustomAnimationUtils.showViewFromLeft(donateUI, activity, context, false);
+        // startDonateUI button removed in v1.0.7
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void onStop() {
         super.onStop();
-        CustomAnimationUtils.hideViewToLeft(donateUI,activity,context,false);
-        if (activity.isLoaded){
-            activity.uiManager.settingUI.startDonateUI.setBackground(context.getResources().getDrawable(R.drawable.launcher_button_parent));
-        }
+        CustomAnimationUtils.hideViewToLeft(donateUI, activity, context, false);
+        // startDonateUI button removed in v1.0.7
     }
 
     @Override

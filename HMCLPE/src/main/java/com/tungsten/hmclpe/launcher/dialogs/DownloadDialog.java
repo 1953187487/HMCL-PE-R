@@ -133,10 +133,15 @@ public class DownloadDialog extends Dialog implements View.OnClickListener, Hand
                     } else {
                         if (resourceType == 3) {
                             extractWorldFiles();
-                        }
-                        exit();
-                        if (alert) {
-                            Toast.makeText(getContext(), getContext().getString(R.string.dialog_download_success), Toast.LENGTH_SHORT).show();
+                            exit();
+                            if (alert) {
+                                Toast.makeText(getContext(), getContext().getString(R.string.dialog_download_success), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            exit();
+                            if (alert) {
+                                Toast.makeText(getContext(), getContext().getString(R.string.dialog_download_success), Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });
@@ -152,30 +157,28 @@ public class DownloadDialog extends Dialog implements View.OnClickListener, Hand
     }
 
     private void extractWorldFiles() {
-        new Thread(() -> {
-            String savesDir = activity.launcherSetting.gameFileDirectory + "/saves";
-            try {
-                Path savesPath = new File(savesDir).toPath();
-                for (DownloadTaskListBean bean : list) {
-                    File zipFile = new File(bean.path);
-                    if (zipFile.exists() && zipFile.getName().endsWith(".zip")) {
-                        try {
-                            World world = new World(zipFile.toPath());
-                            String name = zipFile.getName();
-                            if (name.endsWith(".zip")) {
-                                name = name.substring(0, name.length() - 4);
-                            }
-                            world.install(savesPath, name);
-                            zipFile.delete();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+        String savesDir = activity.launcherSetting.gameFileDirectory + "/saves";
+        try {
+            Path savesPath = new File(savesDir).toPath();
+            for (DownloadTaskListBean bean : list) {
+                File zipFile = new File(bean.path);
+                if (zipFile.exists() && zipFile.getName().endsWith(".zip")) {
+                    try {
+                        World world = new World(zipFile.toPath());
+                        String name = zipFile.getName();
+                        if (name.endsWith(".zip")) {
+                            name = name.substring(0, name.length() - 4);
                         }
+                        world.install(savesPath, name);
+                        zipFile.delete();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
-        }).start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void throwException(Exception e) {

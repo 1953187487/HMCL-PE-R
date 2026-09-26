@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameLogMonitor {
 
@@ -24,6 +25,7 @@ public class GameLogMonitor {
     private Handler handler;
     private final List<String> logLines = new ArrayList<>();
     private OnLogUpdatedListener listener;
+    private final CopyOnWriteArrayList<OnLogUpdatedListener> additionalListeners = new CopyOnWriteArrayList<>();
     private volatile boolean running = false;
     private volatile boolean tailMode = true;
 
@@ -63,6 +65,14 @@ public class GameLogMonitor {
         }
     }
 
+    public void addListener(OnLogUpdatedListener l) {
+        additionalListeners.add(l);
+    }
+
+    public void removeListener(OnLogUpdatedListener l) {
+        additionalListeners.remove(l);
+    }
+
     private void poll() {
         if (!running) return;
 
@@ -99,6 +109,9 @@ public class GameLogMonitor {
                     lines = logLines.toArray(new String[0]);
                 }
                 listener.onLogUpdated(lines);
+                for (OnLogUpdatedListener l : additionalListeners) {
+                    l.onLogUpdated(lines);
+                }
             }
         } catch (Exception e) {
             Log.e(TAG, "Error polling log", e);

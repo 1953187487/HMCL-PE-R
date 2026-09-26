@@ -63,7 +63,11 @@ public class EditDownloadNameDialog extends Dialog implements View.OnClickListen
                     String gameDir = ui.activity.launcherSetting.gameFileDirectory;
                     String subDir = "/saves/";
                     FileUtils.createDirectory(gameDir + subDir);
-                    path = dir == null ? (gameDir + subDir + editText.getText().toString()) : dir + "/" + editText.getText().toString();
+                    String fileName = editText.getText().toString();
+                    if (!fileName.endsWith(".zip")) {
+                        fileName += ".zip";
+                    }
+                    path = dir == null ? (gameDir + subDir + fileName) : dir + "/" + fileName;
                 } else {
                     String currentVersion;
                     if (ui.resourceType == 0) {

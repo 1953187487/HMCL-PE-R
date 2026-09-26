@@ -22,7 +22,6 @@ public class SettingUI extends BaseUI implements View.OnClickListener {
     public LinearLayout startDownloadSettingUI;
     public LinearLayout startHelpUI;
     public LinearLayout startFeedbackUI;
-    public LinearLayout startDonateUI;
     public LinearLayout startAboutUsUI;
 
     public SettingUI(Context context, MainActivity activity) {
@@ -40,7 +39,6 @@ public class SettingUI extends BaseUI implements View.OnClickListener {
         startDownloadSettingUI = activity.findViewById(R.id.start_download_setting_ui);
         startHelpUI = activity.findViewById(R.id.start_help_ui);
         startFeedbackUI = activity.findViewById(R.id.start_feedback_ui);
-        startDonateUI = activity.findViewById(R.id.start_donate_ui);
         startAboutUsUI = activity.findViewById(R.id.start_about_ui);
 
         startGlobalGameSettingUI.setOnClickListener(this);
@@ -49,7 +47,6 @@ public class SettingUI extends BaseUI implements View.OnClickListener {
         startDownloadSettingUI.setOnClickListener(this);
         startHelpUI.setOnClickListener(this);
         startFeedbackUI.setOnClickListener(this);
-        startDonateUI.setOnClickListener(this);
         startAboutUsUI.setOnClickListener(this);
 
         settingUIManager = new SettingUIManager(context,activity);
@@ -106,9 +103,6 @@ public class SettingUI extends BaseUI implements View.OnClickListener {
         }
         if (v == startFeedbackUI){
             settingUIManager.switchSettingUIs(settingUIManager.feedbackUI);
-        }
-        if (v == startDonateUI){
-            settingUIManager.switchSettingUIs(settingUIManager.donateUI);
         }
         if (v == startAboutUsUI){
             settingUIManager.switchSettingUIs(settingUIManager.aboutUsUI);

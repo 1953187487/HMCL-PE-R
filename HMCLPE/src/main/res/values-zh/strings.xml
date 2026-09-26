@@ -1095,4 +1095,29 @@
     <string name="hin2n_save_session_tip">输入 Hin2n 中显示的邀请码和虚拟 IP，保存到本地方便查看。</string>
     <string name="hin2n_save_positive">保存</string>
 
+    <string name="drawer_game_menu_view_log">游戏日志</string>
+    <string name="drawer_game_menu_view_log_button">查看</string>
+    <string name="dialog_game_log_title">游戏日志</string>
+    <string name="dialog_game_log_clear">清除</string>
+    <string name="dialog_game_log_close">关闭</string>
+    <string name="dialog_game_log_auto_scroll">自动滚动：开</string>
+    <string name="dialog_game_log_auto_scroll_off">自动滚动：关</string>
+    <string name="dialog_game_log_empty">暂无日志输出。</string>
+
+    <string name="help_title">帮助与常见问题</string>
+    <string name="help_faq_1_title">如何安装游戏版本？</string>
+    <string name="help_faq_1_answer">在主菜单中选择版本，然后点击"安装"。启动器将自动下载 Java 和游戏文件。等待进度条完成即可。</string>
+    <string name="help_faq_2_title">游戏无法启动？</string>
+    <string name="help_faq_2_answer">请检查网络连接。确保存储空间充足（至少 2 GB）。如问题依旧存在，请在控制中心查看游戏日志，或访问 GitHub Issues 页面。</string>
+    <string name="help_faq_3_title">如何添加 Mod？</string>
+    <string name="help_faq_3_answer">游戏运行时，打开控制中心菜单，点击"添加 Mod"，从设备中选择 .jar 或 .zip 文件。或者从下载页面搜索并下载 Mod。</string>
+    <string name="help_faq_4_title">如何下载地图？</string>
+    <string name="help_faq_4_answer">进入下载 > 地图，浏览可用地图，点击"下载"。地图将保存到 Minecraft 存档文件夹，可从地图快捷启动菜单启动。</string>
+    <string name="help_links_title">链接</string>
+    <string name="help_link_github">GitHub 仓库</string>
+    <string name="help_link_issues">报告问题</string>
+    <string name="help_link_tutorial">使用教程</string>
+    <string name="help_link_license">许可证 (GPL v3)</string>
+    <string name="help_version_info">HMCL-PE-R v%s</string>
+
 </resources>

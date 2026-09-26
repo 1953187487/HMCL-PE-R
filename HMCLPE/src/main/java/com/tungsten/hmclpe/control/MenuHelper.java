@@ -32,6 +32,7 @@ import com.tungsten.hmclpe.control.view.TouchCharInput;
 import com.tungsten.hmclpe.launcher.dialogs.control.AddViewDialog;
 import com.tungsten.hmclpe.launcher.dialogs.control.ChildManagerDialog;
 import com.tungsten.hmclpe.launcher.dialogs.control.EditControlPatternDialog;
+import com.tungsten.hmclpe.launcher.dialogs.GameLogDialog;
 import com.tungsten.hmclpe.launcher.dialogs.Hin2nMenuDialog;
 import com.tungsten.hmclpe.launcher.list.local.controller.ChildLayout;
 import com.tungsten.hmclpe.launcher.list.local.controller.ControlPattern;
@@ -40,7 +41,6 @@ import com.tungsten.hmclpe.manifest.AppManifest;
 import com.tungsten.hmclpe.launcher.setting.InitializeSetting;
 import com.tungsten.hmclpe.launcher.setting.SettingUtils;
 import com.tungsten.hmclpe.launcher.setting.game.GameMenuSetting;
-import com.tungsten.hmclpe.monitor.FpsMonitor;
 import com.tungsten.hmclpe.monitor.GameLogMonitor;
 import com.tungsten.hmclpe.utils.file.AssetsUtils;
 import com.tungsten.hmclpe.utils.file.FileStringUtils;
@@ -89,15 +89,8 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
     public Button openHin2nMenu;
     public Button forceExit;
     public Button addMod;
-    public Button btnToggleTerminal;
-    public Button btnClearLog;
-    public Button btnCloseTerminal;
-    public TextView fpsText;
-    public TextView terminalText;
-    public LinearLayout gameStatusBar;
-    public LinearLayout gameTerminalContainer;
+    public Button viewLog;
 
-    public FpsMonitor fpsMonitor;
     public GameLogMonitor gameLogMonitor;
 
     private static final int ADD_MOD_REQUEST = 1001;
@@ -230,13 +223,7 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
         openHin2nMenu = activity.findViewById(R.id.open_hin2n_menu);
         forceExit = activity.findViewById(R.id.force_exit);
         addMod = activity.findViewById(R.id.add_mod);
-        btnToggleTerminal = activity.findViewById(R.id.btn_toggle_terminal);
-        btnClearLog = activity.findViewById(R.id.btn_clear_log);
-        btnCloseTerminal = activity.findViewById(R.id.btn_close_terminal);
-        fpsText = activity.findViewById(R.id.fps_text);
-        terminalText = activity.findViewById(R.id.terminal_text);
-        gameStatusBar = activity.findViewById(R.id.game_status_bar);
-        gameTerminalContainer = activity.findViewById(R.id.game_terminal_container);
+        viewLog = activity.findViewById(R.id.view_log);
 
         switchMenuFloat.setChecked(gameMenuSetting.menuFloatSetting.enable);
         switchMenuView.setChecked(gameMenuSetting.menuViewSetting.enable);
@@ -262,9 +249,7 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
         openHin2nMenu.setOnClickListener(this);
         forceExit.setOnClickListener(this);
         addMod.setOnClickListener(this);
-        btnToggleTerminal.setOnClickListener(this);
-        btnClearLog.setOnClickListener(this);
-        btnCloseTerminal.setOnClickListener(this);
+        viewLog.setOnClickListener(this);
 
         ArrayList<String> touchModes = new ArrayList<>();
         touchModes.add(context.getString(R.string.drawer_game_menu_control_touch_mode_create));
@@ -350,22 +335,8 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
             checkOpenMenuSetting();
         });
 
-        fpsMonitor = new FpsMonitor(fps -> {
-            if (fpsText != null) {
-                fpsText.setText("FPS: " + fps);
-            }
-        });
-        fpsMonitor.start();
-
         gameLogMonitor = new GameLogMonitor();
-        gameLogMonitor.start(gameDir, lines -> {
-            if (terminalText != null && gameTerminalContainer != null) {
-                if (gameTerminalContainer.getVisibility() == View.VISIBLE) {
-                    String text = String.join("\n", lines);
-                    terminalText.setText(text);
-                }
-            }
-        });
+        gameLogMonitor.start(gameDir, null);
 
         if (gameMenuSetting.menuSlideSetting){
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
@@ -548,33 +519,9 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
             intent.putExtra(Constants.INITIAL_DIRECTORY, Environment.getExternalStorageDirectory().getAbsolutePath());
             activity.startActivityForResult(intent, ADD_MOD_REQUEST);
         }
-        if (view == btnToggleTerminal) {
-            if (gameTerminalContainer != null) {
-                if (gameTerminalContainer.getVisibility() == View.VISIBLE) {
-                    gameTerminalContainer.setVisibility(View.GONE);
-                } else {
-                    gameTerminalContainer.setVisibility(View.VISIBLE);
-                    if (gameLogMonitor != null) {
-                        String[] lines = gameLogMonitor.getLogLines().toArray(new String[0]);
-                        if (terminalText != null) {
-                            terminalText.setText(String.join("\n", lines));
-                        }
-                    }
-                }
-            }
-        }
-        if (view == btnClearLog) {
-            if (gameLogMonitor != null) {
-                gameLogMonitor.clearLog();
-            }
-            if (terminalText != null) {
-                terminalText.setText("");
-            }
-        }
-        if (view == btnCloseTerminal) {
-            if (gameTerminalContainer != null) {
-                gameTerminalContainer.setVisibility(View.GONE);
-            }
+        if (view == viewLog) {
+            GameLogDialog logDialog = new GameLogDialog(context, gameLogMonitor);
+            logDialog.show();
         }
         if (view == editInfo){
             EditControlPatternDialog dialog = new EditControlPatternDialog(context,activity,enableNameEditor, new EditControlPatternDialog.OnPatternInfoChangeListener() {

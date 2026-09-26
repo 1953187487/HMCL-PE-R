@@ -1064,4 +1064,29 @@
     <string name="agreement_accept">同意并继续</string>
     <string name="agreement_content">欢迎使用 HMCL-PE-R 启动器！\n\n在使用本应用前，请您仔细阅读以下条款：\n\n1. 本应用为开源项目，基于 GNU General Public License v3.0 协议发布。您有权使用、修改和分发本软件，但必须保留版权声明。\n\n2. 本应用仅用于个人学习和研究目的。您不得将本应用用于任何非法目的。\n\n3. 本应用包含 Minecraft 游戏的启动和管理功能。Minecraft 是 Mojang Studios 的注册商标，我们不对 Minecraft 本身或其内容负责。\n\n4. 本应用可能需要下载 Minecraft 游戏文件、Java 运行时环境和其他依赖组件。这些下载来自官方服务器或第三方来源，我们不对下载内容的合法性负责。\n\n5. 使用本应用下载或运行 Mod、材质包、地图等内容时，您应确保遵守相应的许可证协议。\n\n6. 本应用开发者不对因使用本应用而产生的任何数据丢失、设备损坏或其他损失承担责任。\n\n7. 本应用可能会收集基本的使用统计信息（如崩溃报告），以帮助改进应用质量。不会收集个人敏感信息。\n\n8. 本应用的网络请求用于检查更新、下载游戏文件和访问 Mod 市场。请确保您的网络连接安全。\n\n9. 如果您不同意以上条款，请立即停止使用本应用并卸载。\n\n10. 继续使用本应用即表示您已阅读并同意以上全部条款。\n\n祝游戏愉快！</string>
 
+    <string name="drawer_game_menu_view_log">Game Log</string>
+    <string name="drawer_game_menu_view_log_button">View</string>
+    <string name="dialog_game_log_title">Game Log</string>
+    <string name="dialog_game_log_clear">Clear</string>
+    <string name="dialog_game_log_close">Close</string>
+    <string name="dialog_game_log_auto_scroll">Auto-Scroll: ON</string>
+    <string name="dialog_game_log_auto_scroll_off">Auto-Scroll: OFF</string>
+    <string name="dialog_game_log_empty">No log output yet.</string>
+
+    <string name="help_title">Help &amp; FAQ</string>
+    <string name="help_faq_1_title">How to install a game version?</string>
+    <string name="help_faq_1_answer">Go to the Main Menu, select a version from the dropdown, then tap \'Install\'. The launcher will download Java and game files automatically. Wait for the progress bar to complete.</string>
+    <string name="help_faq_2_title">Game doesn\'t launch?</string>
+    <string name="help_faq_2_answer">Check your internet connection. Ensure enough storage space is available (at least 2 GB for the game). If issues persist, check the Game Log in the Control Center while the game is running, or visit our GitHub Issues page.</string>
+    <string name="help_faq_3_title">How to add Mods?</string>
+    <string name="help_faq_3_answer">While the game is running, open the Control Center menu, tap \'Add Mod\', and select a .jar or .zip file from your device. Alternatively, download Mods from the Download page.</string>
+    <string name="help_faq_4_title">How to download maps?</string>
+    <string name="help_faq_4_answer">Go to Download &gt; Worlds, browse the available maps, and tap \'Download\'. The map will be saved to your Minecraft saves folder and can be launched from the World Quick Launch menu.</string>
+    <string name="help_links_title">Links</string>
+    <string name="help_link_github">GitHub Repository</string>
+    <string name="help_link_issues">Report a Bug</string>
+    <string name="help_link_tutorial">Wiki / Tutorial</string>
+    <string name="help_link_license">License (GPL v3)</string>
+    <string name="help_version_info">HMCL-PE-R v%s</string>
+
 </resources>

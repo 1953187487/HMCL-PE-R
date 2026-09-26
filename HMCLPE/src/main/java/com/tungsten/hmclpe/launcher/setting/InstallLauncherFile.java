@@ -282,6 +282,7 @@ public class InstallLauncherFile {
         bundle.putBoolean("fullscreen",activity.launcherSetting.fullscreen);
         intent.putExtras(bundle);
         activity.startActivity(intent);
+        activity.overridePendingTransition(R.anim.fade_in_scale, R.anim.fade_out_shrink);
         activity.finish();
     }
 

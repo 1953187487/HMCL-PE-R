@@ -1,16 +1,16 @@
 {
   "latestRelease": {
-    "versionCode": 10010,
-    "versionName": "1.0.6",
+    "versionCode": 10011,
+    "versionName": "1.0.7",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.6/HMCLPE-R-v1.0.6-debug.apk"],
-    "updateLog": "<b>v1.0.6</b><br><br>• Added game terminal: real-time log viewer in control center<br>• Added FPS counter: live frame rate display in status bar<br>• Added real-time mod addition: add mods from control center during gameplay<br>• Fixed game launch: improved process handling<br>• Optimized startup animation<br>• Fixed world download: auto-extract zip after download<br>• Simplified startup: removed component download check"
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.7/HMCLPE-R-v1.0.7-debug.apk"],
+    "updateLog": "<b>v1.0.7</b><br><br>• Redesigned UI: completely modernized launcher interface<br>• New game log viewer: view game logs with auto-scroll in control center<br>• Removed FPS counter and terminal overlay from control center<br>• Fixed world download: proper .zip extraction after download<br>• Removed donation option from settings<br>• Rewrote help page with FAQ and useful links<br>• Added smooth launch animation when entering main menu<br>• Fixed overlapping buttons in control center layout<br>• Fixed progress text overflow on splash screen"
   },
   "latestPrerelease": {
-    "versionCode": 10010,
-    "versionName": "1.0.6",
+    "versionCode": 10011,
+    "versionName": "1.0.7",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.6/HMCLPE-R-v1.0.6-debug.apk"],
-    "updateLog": "<b>v1.0.6</b><br><br>Game terminal with real-time log viewer, FPS counter, real-time mod addition, fixed game launch, optimized startup."
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.7/HMCLPE-R-v1.0.7-debug.apk"],
+    "updateLog": "<b>v1.0.7</b><br><br>UI overhaul, new game log viewer, world download fix, help rewrite, launch animation, button overlap fix."
   }
 }

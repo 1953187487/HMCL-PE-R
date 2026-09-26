@@ -237,7 +237,6 @@ public class PojavMinecraftActivity extends BaseMainActivity {
     @Override
     protected void onDestroy() {
         if (menuHelper != null) {
-            if (menuHelper.fpsMonitor != null) menuHelper.fpsMonitor.stop();
             if (menuHelper.gameLogMonitor != null) menuHelper.gameLogMonitor.stop();
         }
         super.onDestroy();
