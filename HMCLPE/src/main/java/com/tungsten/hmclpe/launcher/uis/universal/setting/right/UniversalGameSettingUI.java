@@ -33,6 +33,7 @@ import com.tungsten.hmclpe.launcher.VerifyInterface;
 import com.tungsten.hmclpe.launcher.dialogs.control.ControllerManagerDialog;
 import com.tungsten.hmclpe.manifest.AppManifest;
 import com.tungsten.hmclpe.launcher.uis.tools.BaseUI;
+import com.tungsten.hmclpe.launcher.setting.renderer.RendererOptions;
 import com.tungsten.hmclpe.utils.Architecture;
 import com.tungsten.hmclpe.utils.animation.CustomAnimationUtils;
 import com.tungsten.hmclpe.utils.animation.HiddenAnimationUtils;
@@ -99,10 +100,18 @@ public class UniversalGameSettingUI extends BaseUI implements View.OnClickListen
     private RadioButton launchByPojav;
 
     private RadioButton boatRendererGL4ES114;
+    private RadioButton boatRendererGL4ES115;
     private RadioButton boatRendererVirGL;
+    private RadioButton boatRendererVulkanZink;
+    private RadioButton boatRendererVGpu;
+    private RadioButton boatRendererGlideNuke;
 
     private RadioButton pojavRendererGL4ES114;
+    private RadioButton pojavRendererGL4ES115;
     private RadioButton pojavRendererVirGL;
+    private RadioButton pojavRendererVulkanZink;
+    private RadioButton pojavRendererVGpu;
+    private RadioButton pojavRendererGlideNuke;
 
     private CheckBox checkAutoRam;
     private SeekBar ramSeekBar;
@@ -191,10 +200,18 @@ public class UniversalGameSettingUI extends BaseUI implements View.OnClickListen
         launchByPojav = activity.findViewById(R.id.launch_by_pojav);
 
         boatRendererGL4ES114 = activity.findViewById(R.id.boat_renderer_gl4es_114);
+        boatRendererGL4ES115 = activity.findViewById(R.id.boat_renderer_gl4es_115);
         boatRendererVirGL = activity.findViewById(R.id.boat_renderer_virgl);
+        boatRendererVulkanZink = activity.findViewById(R.id.boat_renderer_vulkan_zink);
+        boatRendererVGpu = activity.findViewById(R.id.boat_renderer_vgpu);
+        boatRendererGlideNuke = activity.findViewById(R.id.boat_renderer_glidenuke);
 
         pojavRendererGL4ES114 = activity.findViewById(R.id.pojav_renderer_gl4es_114);
+        pojavRendererGL4ES115 = activity.findViewById(R.id.pojav_renderer_gl4es_115);
         pojavRendererVirGL = activity.findViewById(R.id.pojav_renderer_virgl);
+        pojavRendererVulkanZink = activity.findViewById(R.id.pojav_renderer_vulkan_zink);
+        pojavRendererVGpu = activity.findViewById(R.id.pojav_renderer_vgpu);
+        pojavRendererGlideNuke = activity.findViewById(R.id.pojav_renderer_glidenuke);
 
         checkAutoRam = activity.findViewById(R.id.check_auto_ram);
         ramSeekBar = activity.findViewById(R.id.ram_seek_bar);
@@ -312,10 +329,18 @@ public class UniversalGameSettingUI extends BaseUI implements View.OnClickListen
         launchByPojav.setOnClickListener(this);
 
         boatRendererGL4ES114.setOnClickListener(this);
+        boatRendererGL4ES115.setOnClickListener(this);
         boatRendererVirGL.setOnClickListener(this);
+        boatRendererVulkanZink.setOnClickListener(this);
+        boatRendererVGpu.setOnClickListener(this);
+        boatRendererGlideNuke.setOnClickListener(this);
 
         pojavRendererGL4ES114.setOnClickListener(this);
+        pojavRendererGL4ES115.setOnClickListener(this);
         pojavRendererVirGL.setOnClickListener(this);
+        pojavRendererVulkanZink.setOnClickListener(this);
+        pojavRendererVGpu.setOnClickListener(this);
+        pojavRendererGlideNuke.setOnClickListener(this);
 
         checkAutoRam.setOnCheckedChangeListener(this);
         ramSeekBar.setOnSeekBarChangeListener(this);
@@ -724,28 +749,100 @@ public class UniversalGameSettingUI extends BaseUI implements View.OnClickListen
             currentLauncher.setText(context.getText(R.string.game_setting_ui_game_launcher_pojav));
         }
         if (v == boatRendererGL4ES114){
-            boatRendererVirGL.setChecked(false);
-            activity.privateGameSetting.boatLauncherSetting.renderer = "GL4ES114";
+            for (RadioButton b : new RadioButton[]{boatRendererGL4ES115, boatRendererVirGL, boatRendererVulkanZink, boatRendererVGpu, boatRendererGlideNuke}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.boatLauncherSetting.renderer = RendererOptions.GL4ES_114;
             GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
             currentBoatRenderer.setText(context.getText(R.string.game_setting_ui_boat_renderer_gl4es_114));
         }
+        if (v == boatRendererGL4ES115){
+            for (RadioButton b : new RadioButton[]{boatRendererGL4ES114, boatRendererVirGL, boatRendererVulkanZink, boatRendererVGpu, boatRendererGlideNuke}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.boatLauncherSetting.renderer = RendererOptions.GL4ES_115;
+            GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
+            currentBoatRenderer.setText(context.getText(R.string.game_setting_ui_boat_renderer_gl4es_115));
+        }
         if (v == boatRendererVirGL){
-            boatRendererGL4ES114.setChecked(false);
-            activity.privateGameSetting.boatLauncherSetting.renderer = "VirGL";
+            for (RadioButton b : new RadioButton[]{boatRendererGL4ES114, boatRendererGL4ES115, boatRendererVulkanZink, boatRendererVGpu, boatRendererGlideNuke}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.boatLauncherSetting.renderer = RendererOptions.VIRGL;
             GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
             currentBoatRenderer.setText(context.getText(R.string.game_setting_ui_boat_renderer_virgl));
         }
+        if (v == boatRendererVulkanZink){
+            for (RadioButton b : new RadioButton[]{boatRendererGL4ES114, boatRendererGL4ES115, boatRendererVirGL, boatRendererVGpu, boatRendererGlideNuke}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.boatLauncherSetting.renderer = RendererOptions.VULKAN_ZINK;
+            GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
+            currentBoatRenderer.setText(context.getText(R.string.game_setting_ui_boat_renderer_vulkan_zink));
+        }
+        if (v == boatRendererVGpu){
+            for (RadioButton b : new RadioButton[]{boatRendererGL4ES114, boatRendererGL4ES115, boatRendererVirGL, boatRendererVulkanZink, boatRendererGlideNuke}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.boatLauncherSetting.renderer = RendererOptions.VGPU;
+            GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
+            currentBoatRenderer.setText(context.getText(R.string.game_setting_ui_boat_renderer_vgpu));
+        }
+        if (v == boatRendererGlideNuke){
+            for (RadioButton b : new RadioButton[]{boatRendererGL4ES114, boatRendererGL4ES115, boatRendererVirGL, boatRendererVulkanZink, boatRendererVGpu}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.boatLauncherSetting.renderer = RendererOptions.GLIDE_GL4ES;
+            GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
+            currentBoatRenderer.setText(context.getText(R.string.game_setting_ui_boat_renderer_glidenuke));
+        }
         if (v == pojavRendererGL4ES114){
-            pojavRendererVirGL.setChecked(false);
-            activity.privateGameSetting.pojavLauncherSetting.renderer = "opengles2";
+            for (RadioButton b : new RadioButton[]{pojavRendererGL4ES115, pojavRendererVirGL, pojavRendererVulkanZink, pojavRendererVGpu, pojavRendererGlideNuke}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.pojavLauncherSetting.renderer = RendererOptions.GL4ES_114;
             GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
             currentPojavRenderer.setText(context.getText(R.string.game_setting_ui_pojav_renderer_gl4es_114));
         }
+        if (v == pojavRendererGL4ES115){
+            for (RadioButton b : new RadioButton[]{pojavRendererGL4ES114, pojavRendererVirGL, pojavRendererVulkanZink, pojavRendererVGpu, pojavRendererGlideNuke}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.pojavLauncherSetting.renderer = RendererOptions.GL4ES_115;
+            GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
+            currentPojavRenderer.setText(context.getText(R.string.game_setting_ui_pojav_renderer_gl4es_115));
+        }
         if (v == pojavRendererVirGL){
-            pojavRendererGL4ES114.setChecked(false);
-            activity.privateGameSetting.pojavLauncherSetting.renderer = "opengles3_virgl";
+            for (RadioButton b : new RadioButton[]{pojavRendererGL4ES114, pojavRendererGL4ES115, pojavRendererVulkanZink, pojavRendererVGpu, pojavRendererGlideNuke}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.pojavLauncherSetting.renderer = RendererOptions.VIRGL;
             GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
             currentPojavRenderer.setText(context.getText(R.string.game_setting_ui_pojav_renderer_virgl));
+        }
+        if (v == pojavRendererVulkanZink){
+            for (RadioButton b : new RadioButton[]{pojavRendererGL4ES114, pojavRendererGL4ES115, pojavRendererVirGL, pojavRendererVGpu, pojavRendererGlideNuke}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.pojavLauncherSetting.renderer = RendererOptions.VULKAN_ZINK;
+            GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
+            currentPojavRenderer.setText(context.getText(R.string.game_setting_ui_pojav_renderer_vulkan_zink));
+        }
+        if (v == pojavRendererVGpu){
+            for (RadioButton b : new RadioButton[]{pojavRendererGL4ES114, pojavRendererGL4ES115, pojavRendererVirGL, pojavRendererVulkanZink, pojavRendererGlideNuke}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.pojavLauncherSetting.renderer = RendererOptions.VGPU;
+            GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
+            currentPojavRenderer.setText(context.getText(R.string.game_setting_ui_pojav_renderer_vgpu));
+        }
+        if (v == pojavRendererGlideNuke){
+            for (RadioButton b : new RadioButton[]{pojavRendererGL4ES114, pojavRendererGL4ES115, pojavRendererVirGL, pojavRendererVulkanZink, pojavRendererVGpu}){
+                if (b != null) b.setChecked(false);
+            }
+            activity.privateGameSetting.pojavLauncherSetting.renderer = RendererOptions.GLIDE_GL4ES;
+            GsonUtils.savePrivateGameSetting(activity.privateGameSetting, AppManifest.SETTING_DIR + "/private_game_setting.json");
+            currentPojavRenderer.setText(context.getText(R.string.game_setting_ui_pojav_renderer_glidenuke));
         }
         if (v == manageController){
             controllerManagerDialog = new ControllerManagerDialog(context,activity,activity.launcherSetting.fullscreen, activity.privateGameSetting.controlLayout, new ControllerManagerDialog.OnPatternChangeListener() {
