@@ -8,8 +8,13 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.Html;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.WindowMetrics;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -67,6 +72,32 @@ public class UpdateDialog extends Dialog implements View.OnClickListener {
         this.isBeta = isBeta;
         this.handler = new Handler(Looper.getMainLooper());
         init();
+        constrainAndCenter();
+    }
+
+    private void constrainAndCenter(){
+        Window w = getWindow();
+        if (w == null) return;
+        int height;
+        int width;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+            WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+            WindowMetrics metrics = wm.getCurrentWindowMetrics();
+            height = metrics.getBounds().height();
+            width = metrics.getBounds().width();
+        } else {
+            DisplayMetrics dm = new DisplayMetrics();
+            ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
+                    .getDefaultDisplay().getMetrics(dm);
+            height = dm.heightPixels;
+            width = dm.widthPixels;
+        }
+        int maxH = Math.round(height * 0.85f);
+        int maxW = Math.round(width * 0.92f);
+        w.setLayout(Math.min(1240, maxW), Math.min(maxH, 2400));
+        WindowManager.LayoutParams lp = w.getAttributes();
+        lp.gravity = Gravity.CENTER;
+        w.setAttributes(lp);
     }
 
     private void init(){

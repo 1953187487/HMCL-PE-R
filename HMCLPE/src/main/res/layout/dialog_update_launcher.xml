@@ -1,52 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="480dp"
-    android:paddingTop="18dp"
-    android:paddingStart="20dp"
-    android:paddingEnd="20dp"
-    android:paddingBottom="12dp"
-    android:layout_height="wrap_content">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/update_dialog_root"
+    android:layout_width="440dp"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:scrollbars="vertical"
+    android:scrollbarStyle="insideInset"
+    android:overScrollMode="never">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/dialog_update_title"
-            android:textSize="@dimen/text_size_big"
-            android:textColor="@color/colorPureBlack"/>
-
-        <TextView
-            android:id="@+id/update_close_btn"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:gravity="center"
-            android:text="✕"
-            android:textSize="16sp"
-            android:textColor="@color/colorPureBlack"
-            android:clickable="true"
-            android:focusable="true"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="12dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/update_card_bg"
-        android:padding="12dp">
+        android:orientation="vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/tile_hero"
+                android:src="@drawable/ic_baseline_update_black"
+                android:padding="8dp"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dialog_update_title"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPureBlack"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/dialog_update_checking"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorLinkBlue"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/update_close_btn"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:scaleType="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_baseline_close_black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/tile_primary"
+            android:padding="14dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,151 +83,158 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/dialog_update_version_name"
-                    android:textSize="@dimen/text_size_middle"
+                    android:textSize="15sp"
                     android:textColor="@color/colorPureBlack"/>
 
                 <TextView
+                    android:id="@+id/update_version_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:layout_marginStart="8dp"
-                    android:textColor="@color/colorPureBlack"
+                    android:textSize="17sp"
                     android:textStyle="bold"
-                    android:textSize="@dimen/text_size_middle"
-                    android:id="@+id/update_version_name"/>
+                    android:textColor="@color/colorPureBlack"/>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/dialog_update_type"
-                    android:textSize="@dimen/text_size_middle"
+                    android:textSize="15sp"
                     android:textColor="@color/colorPureBlack"/>
 
                 <TextView
+                    android:id="@+id/update_type"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:layout_marginStart="8dp"
-                    android:textColor="@color/colorLinkBlue"
+                    android:textSize="15sp"
                     android:textStyle="bold"
-                    android:textSize="@dimen/text_size_middle"
-                    android:id="@+id/update_type"/>
+                    android:textColor="@color/colorLinkBlue"/>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dialog_update_date"
-                    android:textSize="@dimen/text_size_middle"
-                    android:textColor="@color/colorPureBlack"/>
-
-                <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:text="@string/dialog_update_date"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorPureBlack"/>
+
+                <TextView
+                    android:id="@+id/update_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
                     android:layout_marginStart="8dp"
-                    android:textColor="@color/colorPureBlack"
-                    android:textSize="@dimen/text_size_middle"
-                    android:id="@+id/update_date"/>
+                    android:textSize="15sp"
+                    android:textColor="@color/colorPureBlack"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <TextView
-        android:layout_marginTop="14dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dialog_update_log"
-        android:textSize="@dimen/text_size_middle"
-        android:textColor="@color/colorPureBlack"
-        android:textStyle="bold"/>
-
-    <ScrollView
-        android:layout_marginTop="4dp"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="@drawable/update_card_bg"
-        android:padding="10dp">
-
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_middle"
-            android:textColor="@color/colorPureBlack"
-            android:lineSpacingExtra="3dp"
-            android:id="@+id/update_log"/>
-
-    </ScrollView>
-
-    <ProgressBar
-        android:id="@+id/update_progress"
-        android:layout_width="match_parent"
-        android:layout_height="6dp"
-        android:layout_marginTop="12dp"
-        android:max="100"
-        android:progress="0"
-        android:visibility="gone"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
-
-    <TextView
-        android:id="@+id/update_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/colorPureBlack"
-        android:textSize="13sp"
-        android:textAlignment="center"
-        android:visibility="gone"/>
-
-    <LinearLayout
-        android:layout_marginTop="12dp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:background="@drawable/update_primary_button"
-        android:id="@+id/update_button_root">
-
-        <ProgressBar
-            android:id="@+id/update_button_progress"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="10dp"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/update_button_text"
+            android:layout_marginTop="14dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_update_update"
-            android:textSize="17sp"
+            android:text="@string/dialog_update_log"
+            android:textSize="15sp"
             android:textStyle="bold"
-            android:textColor="@android:color/white"/>
+            android:textColor="@color/colorPureBlack"/>
+
+        <LinearLayout
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/tile_primary"
+            android:padding="14dp">
+
+            <TextView
+                android:id="@+id/update_log"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/colorPureBlack"
+                android:lineSpacingExtra="4dp"/>
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/update_progress"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="14dp"
+            android:max="100"
+            android:progress="0"
+            android:visibility="gone"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+        <TextView
+            android:id="@+id/update_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/colorPureBlack"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/update_primary_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/update_button_root">
+
+            <ProgressBar
+                android:id="@+id/update_button_progress"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="12dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/update_button_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dialog_update_update"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
