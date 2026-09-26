@@ -56,47 +56,55 @@ public class EditDownloadNameDialog extends Dialog implements View.OnClickListen
     public void onClick(View view) {
         if (view == positive) {
             if (!editText.getText().toString().equals("") && !editText.getText().toString().contains("/")) {
-                String currentVersion;
-                if (ui.resourceType == 0) {
-                    currentVersion = ui.activity.uiManager.downloadUI.downloadUIManager.downloadModUI.gameVersion == null ? null : ui.activity.launcherSetting.gameFileDirectory + "/versions/" + ui.activity.uiManager.downloadUI.downloadUIManager.downloadModUI.gameVersion;
-                }
-                else {
-                    currentVersion = ui.activity.uiManager.downloadUI.downloadUIManager.downloadResourcePackUI.gameVersion == null ? null : ui.activity.launcherSetting.gameFileDirectory + "/versions/" + ui.activity.uiManager.downloadUI.downloadUIManager.downloadResourcePackUI.gameVersion;
-                }
-                PrivateGameSetting privateGameSetting;
-                String gameDir;
-                if (currentVersion != null) {
-                    String settingPath = currentVersion + "/hmclpe.cfg";
-                    if (new File(settingPath).exists() && GsonUtils.getPrivateGameSettingFromFile(settingPath) != null && (GsonUtils.getPrivateGameSettingFromFile(settingPath).forceEnable || GsonUtils.getPrivateGameSettingFromFile(settingPath).enable)) {
-                        privateGameSetting = GsonUtils.getPrivateGameSettingFromFile(settingPath);
+                String name = version.getName();
+                String url = version.getFile().getUrl();
+                String path;
+                if (ui.resourceType == 3) {
+                    String gameDir = ui.activity.launcherSetting.gameFileDirectory;
+                    String subDir = "/saves/";
+                    FileUtils.createDirectory(gameDir + subDir);
+                    path = dir == null ? (gameDir + subDir + editText.getText().toString()) : dir + "/" + editText.getText().toString();
+                } else {
+                    String currentVersion;
+                    if (ui.resourceType == 0) {
+                        currentVersion = ui.activity.uiManager.downloadUI.downloadUIManager.downloadModUI.gameVersion == null ? null : ui.activity.launcherSetting.gameFileDirectory + "/versions/" + ui.activity.uiManager.downloadUI.downloadUIManager.downloadModUI.gameVersion;
+                    }
+                    else {
+                        currentVersion = ui.activity.uiManager.downloadUI.downloadUIManager.downloadResourcePackUI.gameVersion == null ? null : ui.activity.launcherSetting.gameFileDirectory + "/versions/" + ui.activity.uiManager.downloadUI.downloadUIManager.downloadResourcePackUI.gameVersion;
+                    }
+                    PrivateGameSetting privateGameSetting;
+                    String gameDir;
+                    if (currentVersion != null) {
+                        String settingPath = currentVersion + "/hmclpe.cfg";
+                        if (new File(settingPath).exists() && GsonUtils.getPrivateGameSettingFromFile(settingPath) != null && (GsonUtils.getPrivateGameSettingFromFile(settingPath).forceEnable || GsonUtils.getPrivateGameSettingFromFile(settingPath).enable)) {
+                            privateGameSetting = GsonUtils.getPrivateGameSettingFromFile(settingPath);
+                        }
+                        else {
+                            privateGameSetting = ui.activity.privateGameSetting;
+                        }
+                        if (privateGameSetting.gameDirSetting.type == 0){
+                            gameDir = ui.activity.launcherSetting.gameFileDirectory;
+                        }
+                        else if (privateGameSetting.gameDirSetting.type == 1){
+                            gameDir = currentVersion;
+                        }
+                        else {
+                            gameDir = privateGameSetting.gameDirSetting.path;
+                        }
                     }
                     else {
                         privateGameSetting = ui.activity.privateGameSetting;
+                        if (privateGameSetting.gameDirSetting.type == 0 || privateGameSetting.gameDirSetting.type == 1) {
+                            gameDir = ui.activity.launcherSetting.gameFileDirectory;
+                        }
+                        else {
+                            gameDir = privateGameSetting.gameDirSetting.path;
+                        }
                     }
-                    if (privateGameSetting.gameDirSetting.type == 0){
-                        gameDir = ui.activity.launcherSetting.gameFileDirectory;
-                    }
-                    else if (privateGameSetting.gameDirSetting.type == 1){
-                        gameDir = currentVersion;
-                    }
-                    else {
-                        gameDir = privateGameSetting.gameDirSetting.path;
-                    }
+                    String subDir = getSubDirForType(ui.resourceType);
+                    FileUtils.createDirectory(gameDir + subDir);
+                    path = dir == null ? (gameDir + subDir + editText.getText().toString()) : dir + "/" + editText.getText().toString();
                 }
-                else {
-                    privateGameSetting = ui.activity.privateGameSetting;
-                    if (privateGameSetting.gameDirSetting.type == 0 || privateGameSetting.gameDirSetting.type == 1) {
-                        gameDir = ui.activity.launcherSetting.gameFileDirectory;
-                    }
-                    else {
-                        gameDir = privateGameSetting.gameDirSetting.path;
-                    }
-                }
-                String subDir = getSubDirForType(ui.resourceType);
-                FileUtils.createDirectory(gameDir + subDir);
-                String name = version.getName();
-                String url = version.getFile().getUrl();
-                String path = dir == null ? (gameDir + subDir + editText.getText().toString()) : dir + "/" + editText.getText().toString();
                 DownloadTaskListBean downloadTaskListBean = new DownloadTaskListBean(name, url, path, "");
                 ArrayList<DownloadTaskListBean> list = new ArrayList<>();
                 list.add(downloadTaskListBean);
