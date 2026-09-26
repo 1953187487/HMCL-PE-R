@@ -1,16 +1,16 @@
 {
   "latestRelease": {
-    "versionCode": 10006,
-    "versionName": "1.0.2",
+    "versionCode": 10007,
+    "versionName": "1.0.3",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.2/HMCLPE-R-v1.0.2-debug.apk"],
-    "updateLog": "<b>v1.0.2</b><br><br>• Fixed world download: worlds now save to /saves/ instead of /resourcepacks/.<br>• Fixed update dialog: entire dialog is now scrollable so long changelogs are readable.<br>• Expanded Boat renderers: added GL4ES 1.15, Vulkan-Zink, vGPU, and GlideNuke options.<br>• Expanded Pojav renderers: added GL4ES 1.15, vGPU, and GlideNuke options.<br>• Renderer selection centralized in RendererOptions for easier future additions."
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/HMCLPE-R-v1.0.3-debug.apk"],
+    "updateLog": "<b>v1.0.3</b><br><br>• Fixed world download: worlds now download to /saves/ correctly without requiring folder selection.<br>• Fixed Java 21 launch: JRE21 directory name parsing works even when release file is missing.<br>• Extended version list: search UI now supports versions up to 26.3.<br>• Added user agreement dialog on first launch.<br>• Added quick launch from world list context menu.<br>• Improved download experience with direct download dialog for all resource types."
   },
   "latestPrerelease": {
-    "versionCode": 10006,
-    "versionName": "1.0.2",
+    "versionCode": 10007,
+    "versionName": "1.0.3",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.2/HMCLPE-R-v1.0.2-debug.apk"],
-    "updateLog": "<b>v1.0.2</b><br><br>World download path fix, scrollable update dialog, expanded Boat/Pojav renderer options."
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.3/HMCLPE-R-v1.0.3-debug.apk"],
+    "updateLog": "<b>v1.0.3</b><br><br>World download fix, Java 21 launch fix, version list extended to 26.3, user agreement, world quick launch."
   }
 }
