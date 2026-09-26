@@ -1042,6 +1042,9 @@
     <string name="drawer_game_menu_extra">其他选项</string>
     <string name="drawer_game_menu_force_exit">强制退出</string>
     <string name="drawer_game_menu_force_exit_button">退出</string>
+    <string name="drawer_game_menu_add_mod">添加模组</string>
+    <string name="drawer_game_menu_add_mod_button">添加</string>
+    <string name="drawer_game_menu_mod_added">模组添加成功</string>
 
     <string name="drawer_custom_menu_title">控制布局选项</string>
     <string name="drawer_custom_menu_current">当前方案</string>

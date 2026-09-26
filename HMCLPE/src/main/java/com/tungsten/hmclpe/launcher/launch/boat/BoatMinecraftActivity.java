@@ -241,6 +241,10 @@ public class BoatMinecraftActivity extends BoatActivity {
 
     @Override
     protected void onDestroy() {
+        if (menuHelper != null) {
+            if (menuHelper.fpsMonitor != null) menuHelper.fpsMonitor.stop();
+            if (menuHelper.gameLogMonitor != null) menuHelper.gameLogMonitor.stop();
+        }
         Intent virGLService = new Intent(this, VirGLService.class);
         stopService(virGLService);
         super.onDestroy();

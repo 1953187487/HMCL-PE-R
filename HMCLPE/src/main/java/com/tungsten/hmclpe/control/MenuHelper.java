@@ -3,11 +3,14 @@ package com.tungsten.hmclpe.control;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,6 +22,8 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.gson.Gson;
+import com.tungsten.filepicker.Constants;
+import com.tungsten.filepicker.FileChooser;
 import com.tungsten.hmclpe.R;
 import com.tungsten.hmclpe.control.bean.BaseButtonInfo;
 import com.tungsten.hmclpe.control.bean.BaseRockerViewInfo;
@@ -30,14 +35,19 @@ import com.tungsten.hmclpe.launcher.dialogs.control.EditControlPatternDialog;
 import com.tungsten.hmclpe.launcher.dialogs.Hin2nMenuDialog;
 import com.tungsten.hmclpe.launcher.list.local.controller.ChildLayout;
 import com.tungsten.hmclpe.launcher.list.local.controller.ControlPattern;
+import com.tungsten.hmclpe.launcher.mod.ModManager;
 import com.tungsten.hmclpe.manifest.AppManifest;
 import com.tungsten.hmclpe.launcher.setting.InitializeSetting;
 import com.tungsten.hmclpe.launcher.setting.SettingUtils;
 import com.tungsten.hmclpe.launcher.setting.game.GameMenuSetting;
+import com.tungsten.hmclpe.monitor.FpsMonitor;
+import com.tungsten.hmclpe.monitor.GameLogMonitor;
 import com.tungsten.hmclpe.utils.file.AssetsUtils;
 import com.tungsten.hmclpe.utils.file.FileStringUtils;
 import com.tungsten.hmclpe.utils.file.FileUtils;
+import com.tungsten.hmclpe.utils.file.UriUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
@@ -78,6 +88,19 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
     public SwitchCompat switchHideUI;
     public Button openHin2nMenu;
     public Button forceExit;
+    public Button addMod;
+    public Button btnToggleTerminal;
+    public Button btnClearLog;
+    public Button btnCloseTerminal;
+    public TextView fpsText;
+    public TextView terminalText;
+    public LinearLayout gameStatusBar;
+    public LinearLayout gameTerminalContainer;
+
+    public FpsMonitor fpsMonitor;
+    public GameLogMonitor gameLogMonitor;
+
+    private static final int ADD_MOD_REQUEST = 1001;
 
     public Spinner patternSpinner;
     public SwitchCompat editModeSwitch;
@@ -206,6 +229,14 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
         switchHideUI = activity.findViewById(R.id.switch_hide_ui);
         openHin2nMenu = activity.findViewById(R.id.open_hin2n_menu);
         forceExit = activity.findViewById(R.id.force_exit);
+        addMod = activity.findViewById(R.id.add_mod);
+        btnToggleTerminal = activity.findViewById(R.id.btn_toggle_terminal);
+        btnClearLog = activity.findViewById(R.id.btn_clear_log);
+        btnCloseTerminal = activity.findViewById(R.id.btn_close_terminal);
+        fpsText = activity.findViewById(R.id.fps_text);
+        terminalText = activity.findViewById(R.id.terminal_text);
+        gameStatusBar = activity.findViewById(R.id.game_status_bar);
+        gameTerminalContainer = activity.findViewById(R.id.game_terminal_container);
 
         switchMenuFloat.setChecked(gameMenuSetting.menuFloatSetting.enable);
         switchMenuView.setChecked(gameMenuSetting.menuViewSetting.enable);
@@ -230,6 +261,10 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
         switchHideUI.setOnCheckedChangeListener(this);
         openHin2nMenu.setOnClickListener(this);
         forceExit.setOnClickListener(this);
+        addMod.setOnClickListener(this);
+        btnToggleTerminal.setOnClickListener(this);
+        btnClearLog.setOnClickListener(this);
+        btnCloseTerminal.setOnClickListener(this);
 
         ArrayList<String> touchModes = new ArrayList<>();
         touchModes.add(context.getString(R.string.drawer_game_menu_control_touch_mode_create));
@@ -315,6 +350,23 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
             checkOpenMenuSetting();
         });
 
+        fpsMonitor = new FpsMonitor(fps -> {
+            if (fpsText != null) {
+                fpsText.setText("FPS: " + fps);
+            }
+        });
+        fpsMonitor.start();
+
+        gameLogMonitor = new GameLogMonitor();
+        gameLogMonitor.start(gameDir, lines -> {
+            if (terminalText != null && gameTerminalContainer != null) {
+                if (gameTerminalContainer.getVisibility() == View.VISIBLE) {
+                    String text = String.join("\n", lines);
+                    terminalText.setText(text);
+                }
+            }
+        });
+
         if (gameMenuSetting.menuSlideSetting){
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         }
@@ -353,7 +405,31 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        if (requestCode == ADD_MOD_REQUEST && data != null) {
+            if (resultCode == AppCompatActivity.RESULT_OK) {
+                ArrayList<Uri> selectedFiles = data.getParcelableArrayListExtra(Constants.SELECTED_ITEMS);
+                if (selectedFiles != null && !selectedFiles.isEmpty()) {
+                    Uri uri = selectedFiles.get(0);
+                    String path = UriUtils.getRealPathFromUri_AboveApi19(context, uri);
+                    if (path != null) {
+                        final String filePath = path;
+                        new Thread(() -> {
+                            try {
+                                ModManager modManager = new ModManager(gameDir + "/mods");
+                                modManager.addMod(new File(filePath).toPath());
+                                activity.runOnUiThread(() -> {
+                                    Toast.makeText(context, context.getString(R.string.drawer_game_menu_mod_added), Toast.LENGTH_SHORT).show();
+                                });
+                            } catch (Exception e) {
+                                activity.runOnUiThread(() -> {
+                                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                });
+                            }
+                        }).start();
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -464,6 +540,41 @@ public class MenuHelper implements CompoundButton.OnCheckedChangeListener, View.
             builder.setNegativeButton(context.getString(R.string.dialog_force_exit_negative), (dialogInterface, i) -> {});
             AlertDialog dialog = builder.create();
             dialog.show();
+        }
+        if (view == addMod) {
+            Intent intent = new Intent(context, FileChooser.class);
+            intent.putExtra(Constants.SELECTION_MODE, Constants.SELECTION_MODES.SINGLE_SELECTION.ordinal());
+            intent.putExtra(Constants.ALLOWED_FILE_EXTENSIONS, "jar;zip");
+            intent.putExtra(Constants.INITIAL_DIRECTORY, Environment.getExternalStorageDirectory().getAbsolutePath());
+            activity.startActivityForResult(intent, ADD_MOD_REQUEST);
+        }
+        if (view == btnToggleTerminal) {
+            if (gameTerminalContainer != null) {
+                if (gameTerminalContainer.getVisibility() == View.VISIBLE) {
+                    gameTerminalContainer.setVisibility(View.GONE);
+                } else {
+                    gameTerminalContainer.setVisibility(View.VISIBLE);
+                    if (gameLogMonitor != null) {
+                        String[] lines = gameLogMonitor.getLogLines().toArray(new String[0]);
+                        if (terminalText != null) {
+                            terminalText.setText(String.join("\n", lines));
+                        }
+                    }
+                }
+            }
+        }
+        if (view == btnClearLog) {
+            if (gameLogMonitor != null) {
+                gameLogMonitor.clearLog();
+            }
+            if (terminalText != null) {
+                terminalText.setText("");
+            }
+        }
+        if (view == btnCloseTerminal) {
+            if (gameTerminalContainer != null) {
+                gameTerminalContainer.setVisibility(View.GONE);
+            }
         }
         if (view == editInfo){
             EditControlPatternDialog dialog = new EditControlPatternDialog(context,activity,enableNameEditor, new EditControlPatternDialog.OnPatternInfoChangeListener() {

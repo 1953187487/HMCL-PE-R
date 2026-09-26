@@ -1020,6 +1020,9 @@
     <string name="drawer_game_menu_extra">Other Options</string>
     <string name="drawer_game_menu_force_exit">Force exit</string>
     <string name="drawer_game_menu_force_exit_button">Exit</string>
+    <string name="drawer_game_menu_add_mod">Add mod</string>
+    <string name="drawer_game_menu_add_mod_button">Add</string>
+    <string name="drawer_game_menu_mod_added">Mod added successfully</string>
     <string name="ui_about_about">About</string>
     <string name="ui_about_fork_desc">HMCL-PE-R is a community-derived work of HMCL-PE 2.0.8 (Tungstend), maintained by 1953187487 and licensed under GPLv3. All upstream copyright notices are preserved.</string>
     <string name="drawer_custom_menu_title">Control Layout Options</string>

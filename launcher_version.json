@@ -1,16 +1,16 @@
 {
   "latestRelease": {
-    "versionCode": 10009,
-    "versionName": "1.0.5",
+    "versionCode": 10010,
+    "versionName": "1.0.6",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.5/HMCLPE-R-v1.0.5-debug.apk"],
-    "updateLog": "<b>v1.0.5</b><br><br>• Fixed world download: auto-extract zip after download<br>• Simplified startup: removed component download check<br>• Fixed game launch: improved Java version detection<br>• Fixed mod search UI: no more blue overlay blocking dropdown<br>• Extended Java support: JRE8/17/21/25<br>• Added user agreement on first launch<br>• Added world quick launch from context menu<br>• Enhanced download progress with percentage text<br>• Added update complete animation<br>• Extended version list to 26.3"
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.6/HMCLPE-R-v1.0.6-debug.apk"],
+    "updateLog": "<b>v1.0.6</b><br><br>• Added game terminal: real-time log viewer in control center<br>• Added FPS counter: live frame rate display in status bar<br>• Added real-time mod addition: add mods from control center during gameplay<br>• Fixed game launch: improved process handling<br>• Optimized startup animation<br>• Fixed world download: auto-extract zip after download<br>• Simplified startup: removed component download check"
   },
   "latestPrerelease": {
-    "versionCode": 10009,
-    "versionName": "1.0.5",
+    "versionCode": 10010,
+    "versionName": "1.0.6",
     "date": "2026.09.26",
-    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.5/HMCLPE-R-v1.0.5-debug.apk"],
-    "updateLog": "<b>v1.0.5</b><br><br>Fixed world download extraction, simplified startup, fixed game launch."
+    "url": ["https://github.com/1953187487/HMCL-PE-R/releases/download/v1.0.6/HMCLPE-R-v1.0.6-debug.apk"],
+    "updateLog": "<b>v1.0.6</b><br><br>Game terminal with real-time log viewer, FPS counter, real-time mod addition, fixed game launch, optimized startup."
   }
 }

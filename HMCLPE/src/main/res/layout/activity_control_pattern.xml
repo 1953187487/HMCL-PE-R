@@ -5,22 +5,135 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.tungsten.hmclpe.control.view.LayoutPanel
-        android:background="@color/colorTransparent"
-        android:id="@+id/base_layout"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.tungsten.hmclpe.control.view.TouchCharInput
-            android:layout_width="1px"
-            android:layout_height="1px"
-            android:background="@android:color/transparent"
-            android:ems="10"
-            android:imeOptions="flagNoFullscreen|flagNoExtractUi|flagNoPersonalizedLearning|actionDone"
-            android:inputType="textFilter|textImeMultiLine|textAutoComplete|textAutoCorrect"
-            android:id="@+id/input_scanner"/>
+        <com.tungsten.hmclpe.control.view.LayoutPanel
+            android:background="@color/colorTransparent"
+            android:id="@+id/base_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    </com.tungsten.hmclpe.control.view.LayoutPanel>
+            <com.tungsten.hmclpe.control.view.TouchCharInput
+                android:layout_width="1px"
+                android:layout_height="1px"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:imeOptions="flagNoFullscreen|flagNoExtractUi|flagNoPersonalizedLearning|actionDone"
+                android:inputType="textFilter|textImeMultiLine|textAutoComplete|textAutoCorrect"
+                android:id="@+id/input_scanner"/>
+
+        </com.tungsten.hmclpe.control.view.LayoutPanel>
+
+        <LinearLayout
+            android:id="@+id/game_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:gravity="center_vertical"
+            android:background="#80000000">
+
+            <TextView
+                android:id="@+id/fps_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="FPS: --"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                android:singleLine="true"/>
+
+            <Button
+                android:id="@+id/btn_toggle_terminal"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Log"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:background="@drawable/launcher_setting_button"
+                android:visibility="visible"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/game_terminal_container"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:background="#CC000000"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:gravity="center_vertical"
+                android:background="#80000000">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Game Log"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp"/>
+
+                <Button
+                    android:id="@+id/btn_clear_log"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:text="Clear"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="9sp"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:background="@drawable/launcher_setting_button"/>
+
+                <Button
+                    android:id="@+id/btn_close_terminal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:text="X"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="9sp"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/launcher_setting_button"/>
+
+            </LinearLayout>
+
+            <ScrollView
+                android:id="@+id/terminal_scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/terminal_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#44FF44"
+                    android:textSize="8sp"
+                    android:fontFamily="monospace"/>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </FrameLayout>
 
     <RelativeLayout
         android:layout_marginTop="30dp"
@@ -613,6 +726,38 @@
                             android:gravity="center"
                             android:background="@drawable/launcher_setting_button"
                             android:id="@+id/force_exit"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:padding="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/drawer_game_menu_add_mod"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorPureBlack"
+                            android:singleLine="true"
+                            android:layout_gravity="center"/>
+
+                        <Button
+                            android:singleLine="true"
+                            android:textAllCaps="false"
+                            android:layout_width="60dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:text="@string/drawer_game_menu_add_mod_button"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="11sp"
+                            android:gravity="center"
+                            android:background="@drawable/launcher_setting_button"
+                            android:id="@+id/add_mod"/>
 
                     </LinearLayout>
 
